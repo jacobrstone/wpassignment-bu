@@ -1,507 +1,513 @@
 create table parcels (
-	parcel_id INT NOT NULL AUTO_INCREMENT,
+	parcel_id INT AUTO_INCREMENT,
 	parcel_status VARCHAR(18),
 	tracking_number VARCHAR(50),
 	order_date DATE,
+	city VARCHAR(50),
+	street_address VARCHAR(50),
+	postcode VARCHAR(50),
+	country VARCHAR(50),
     PRIMARY KEY(parcel_id)
 );
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (1, 'Dispatched', 'RU266062986JL', '2019-10-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (2, 'Dispatched', 'SR496641641QL', '2021-09-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (3, 'Returned to sender', 'GX786873383QW', '2021-03-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (4, 'Payment received', 'EP151192342DV', '2021-10-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (5, 'Lost in transit', 'ZP016671032VO', '2018-03-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (6, 'Out for delivery', 'QT694236053BA', '2020-06-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (7, 'Dispatched', 'UO782038741WY', '2020-01-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (8, 'Payment received', 'RG413167564AE', '2020-12-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (9, 'Delivered', 'IR674772857DQ', '2019-10-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (10, 'Delivered', 'ZJ264184199WH', '2017-12-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (11, 'Delivered', 'ND866025539RE', '2020-01-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (12, 'Parcel diverted', 'WT078442767NS', '2019-11-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (13, 'Parcel diverted', 'ZD772222470BO', '2019-01-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (14, 'Parcel diverted', 'PG191416626KA', '2018-12-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (15, 'Dispatched', 'FQ264472770BP', '2021-03-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (16, 'Out for delivery', 'ME115646876DO', '2019-06-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (17, 'Out for delivery', 'VN048854303KK', '2020-03-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (18, 'Lost in transit', 'VI446411583TU', '2018-02-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (19, 'Payment received', 'LQ866588494ID', '2019-11-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (20, 'Held at PO', 'IG634519471KB', '2021-11-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (21, 'Returned to sender', 'OY863749924PL', '2020-07-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (22, 'Out for delivery', 'GW718559071ZQ', '2019-11-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (23, 'Out for delivery', 'TL135162015MX', '2019-10-31');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (24, 'Delivered', 'DA962074751EU', '2020-01-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (25, 'Parcel diverted', 'MW218696843OA', '2018-06-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (26, 'Out for delivery', 'MP257501639MX', '2020-01-23');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (27, 'Out for delivery', 'QA044649585IP', '2020-02-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (28, 'Lost in transit', 'QV360188852PE', '2018-03-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (29, 'Lost in transit', 'UZ116567212ZX', '2018-09-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (30, 'Payment received', 'SN052461122GK', '2021-04-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (31, 'Out for delivery', 'UQ622815235KY', '2020-03-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (32, 'Payment received', 'XC181100906CB', '2020-05-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (33, 'Held at PO', 'LV219057552HL', '2019-05-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (34, 'Payment received', 'VG955890538ZB', '2021-08-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (35, 'Payment received', 'RG226813070IR', '2020-08-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (36, 'Delivered', 'ZL625189903EN', '2019-08-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (37, 'Lost in transit', 'UT269897436IB', '2020-05-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (38, 'Out for delivery', 'RZ470168320ZC', '2018-12-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (39, 'Delivered', 'WZ971341744PS', '2019-02-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (40, 'Out for delivery', 'HZ380763613EN', '2021-07-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (41, 'Dispatched', 'UR862871159DC', '2019-01-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (42, 'Delivered', 'UD822389018TW', '2021-02-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (43, 'Dispatched', 'XQ121214053GX', '2018-10-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (44, 'Delivered', 'ZV218114889TK', '2021-02-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (45, 'Dispatched', 'SV987263672YG', '2021-02-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (46, 'Payment received', 'GY379045721OD', '2018-03-31');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (47, 'Delivered', 'MI798779228OR', '2020-08-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (48, 'Held at PO', 'QJ315768597FX', '2020-05-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (49, 'Out for delivery', 'XE946515262CG', '2019-08-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (50, 'Dispatched', 'YG257873349FF', '2019-02-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (51, 'Delivered', 'CQ283887997YL', '2018-05-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (52, 'Held at PO', 'CV507826879MW', '2018-12-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (53, 'Payment received', 'XX227792866RD', '2019-11-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (54, 'Payment received', 'IQ342255818AF', '2018-06-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (55, 'Held at PO', 'LF265266850WJ', '2019-12-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (56, 'Delivered', 'BE813696550VF', '2021-01-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (57, 'Held at PO', 'VQ432407513BO', '2020-02-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (58, 'Delivered', 'JL139054622SJ', '2018-09-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (59, 'Lost in transit', 'KU705817173JI', '2018-04-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (60, 'Delivered', 'IP333596051GG', '2019-04-23');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (61, 'Lost in transit', 'VY690151481WK', '2018-10-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (62, 'Delivered', 'DB161397951DN', '2020-02-23');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (63, 'Delivered', 'MS127297297NP', '2021-07-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (64, 'Payment received', 'PJ775211984FR', '2019-06-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (65, 'Held at PO', 'WH542073980NK', '2019-07-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (66, 'Payment received', 'DX980228492FZ', '2021-03-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (67, 'Delivered', 'HL050528586HN', '2018-03-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (68, 'Parcel diverted', 'IZ880668450VZ', '2021-04-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (69, 'Parcel diverted', 'AT093594904IG', '2018-09-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (70, 'Out for delivery', 'CY221249402EL', '2020-09-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (71, 'Out for delivery', 'FU338785122OM', '2020-09-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (72, 'Payment received', 'PA075133092OK', '2019-12-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (73, 'Lost in transit', 'EY756416111BM', '2020-02-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (74, 'Held at PO', 'ZZ812656739EK', '2020-07-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (75, 'Parcel diverted', 'RR585459596EI', '2020-10-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (76, 'Out for delivery', 'IY685642208HW', '2021-02-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (77, 'Parcel diverted', 'YX757302109FW', '2018-05-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (78, 'Delivered', 'RQ995092723SN', '2021-05-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (79, 'Returned to sender', 'ZA830480188VA', '2019-12-31');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (80, 'Out for delivery', 'QO775746997UZ', '2019-02-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (81, 'Out for delivery', 'SI031243353SY', '2019-05-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (82, 'Delivered', 'CD583995290VJ', '2019-02-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (83, 'Out for delivery', 'AR575903470UV', '2018-10-23');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (84, 'Out for delivery', 'KT140538818PC', '2021-10-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (85, 'Payment received', 'WC231955102NN', '2020-01-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (86, 'Out for delivery', 'NG252125412ZA', '2019-07-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (87, 'Held at PO', 'EQ817280068FU', '2018-07-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (88, 'Out for delivery', 'XP577033626DA', '2020-10-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (89, 'Lost in transit', 'FK364501483CQ', '2020-12-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (90, 'Payment received', 'FF638753354DT', '2020-10-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (91, 'Out for delivery', 'TO786992257HE', '2019-08-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (92, 'Held at PO', 'US650102392PK', '2020-01-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (93, 'Delivered', 'GH742925840YP', '2020-03-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (94, 'Dispatched', 'AA899290978ZK', '2020-11-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (95, 'Lost in transit', 'SX381211366HG', '2019-12-31');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (96, 'Dispatched', 'GB738818912ER', '2021-05-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (97, 'Out for delivery', 'OS409266015ZY', '2018-04-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (98, 'Out for delivery', 'AI580759993FM', '2020-01-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (99, 'Delivered', 'VE779107030SV', '2021-06-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (100, 'Held at PO', 'FJ472638701RO', '2021-08-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (101, 'Out for delivery', 'DN443609939FC', '2021-11-23');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (102, 'Dispatched', 'MF800459167ZW', '2021-06-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (103, 'Parcel diverted', 'XY620473110SQ', '2021-02-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (104, 'Payment received', 'JK657288988OM', '2019-07-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (105, 'Lost in transit', 'XE880946936RS', '2019-10-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (106, 'Payment received', 'VH409813349BM', '2018-02-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (107, 'Out for delivery', 'MX973926283VA', '2020-09-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (108, 'Parcel diverted', 'RC297972980GN', '2019-09-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (109, 'Returned to sender', 'RT079775120YI', '2018-11-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (110, 'Out for delivery', 'AT171227948RD', '2018-05-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (111, 'Delivered', 'TV437441189BK', '2020-08-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (112, 'Returned to sender', 'JK623811855KN', '2020-12-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (113, 'Out for delivery', 'PI834307155UP', '2020-04-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (114, 'Dispatched', 'JV130176024OW', '2019-05-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (115, 'Delivered', 'ET457973765ZS', '2020-05-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (116, 'Out for delivery', 'JD599066341EG', '2020-06-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (117, 'Payment received', 'GM331587129DJ', '2019-09-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (118, 'Lost in transit', 'CM922527830WY', '2019-03-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (119, 'Dispatched', 'OA912818304IH', '2018-08-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (120, 'Dispatched', 'TL626544572VO', '2018-11-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (121, 'Returned to sender', 'XD872844834LD', '2021-06-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (122, 'Parcel diverted', 'QM831855807KZ', '2018-10-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (123, 'Payment received', 'TC959356253IU', '2020-04-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (124, 'Out for delivery', 'ZB628962888OX', '2018-12-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (125, 'Delivered', 'YL066168711JO', '2020-10-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (126, 'Dispatched', 'PB532184276HM', '2018-12-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (127, 'Out for delivery', 'ZY564907143LP', '2020-09-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (128, 'Parcel diverted', 'CT220286723ML', '2020-12-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (129, 'Out for delivery', 'MC101516607KH', '2018-06-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (130, 'Dispatched', 'FJ187322713DV', '2021-02-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (131, 'Parcel diverted', 'VQ744385917WL', '2020-09-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (132, 'Returned to sender', 'LF073773434PX', '2018-09-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (133, 'Out for delivery', 'MP372498655NH', '2020-09-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (134, 'Payment received', 'HL645643807EV', '2020-10-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (135, 'Returned to sender', 'KG967669800ST', '2019-05-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (136, 'Payment received', 'SO880432019ZL', '2021-02-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (137, 'Out for delivery', 'HB031108990LC', '2019-07-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (138, 'Delivered', 'YM577126765XM', '2019-06-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (139, 'Parcel diverted', 'YZ624886550LC', '2019-12-31');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (140, 'Delivered', 'UR432641890AF', '2020-10-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (141, 'Payment received', 'LL487817195GZ', '2021-10-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (142, 'Held at PO', 'AB208890978PO', '2019-01-23');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (143, 'Out for delivery', 'UX089704807OQ', '2021-04-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (144, 'Held at PO', 'KA057593221WL', '2020-09-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (145, 'Dispatched', 'QH022515860RQ', '2021-01-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (146, 'Payment received', 'QF556201600BC', '2019-10-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (147, 'Payment received', 'BE491219814DP', '2019-08-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (148, 'Held at PO', 'WF349021914DS', '2018-10-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (149, 'Out for delivery', 'RI496756536YF', '2021-10-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (150, 'Payment received', 'AT318893666US', '2018-09-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (151, 'Parcel diverted', 'OV262886464CM', '2019-07-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (152, 'Lost in transit', 'SD698756581TU', '2019-06-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (153, 'Delivered', 'WO552142949BI', '2019-11-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (154, 'Payment received', 'UI808816722NN', '2018-02-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (155, 'Held at PO', 'PX277917583GT', '2019-06-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (156, 'Out for delivery', 'SR127061257PJ', '2021-05-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (157, 'Payment received', 'UQ616251732XY', '2020-03-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (158, 'Payment received', 'HO277551432II', '2020-07-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (159, 'Held at PO', 'CE923566171TU', '2019-08-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (160, 'Payment received', 'UG846834919UV', '2019-06-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (161, 'Held at PO', 'LM687790870BO', '2018-06-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (162, 'Dispatched', 'BQ842769691FY', '2018-06-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (163, 'Dispatched', 'GH469081885QE', '2021-08-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (164, 'Dispatched', 'JP978315379QL', '2020-06-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (165, 'Delivered', 'DQ265340290EM', '2019-12-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (166, 'Dispatched', 'NN310055090CE', '2020-12-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (167, 'Delivered', 'HL906519391AV', '2018-11-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (168, 'Returned to sender', 'FS563416572UP', '2020-07-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (169, 'Delivered', 'UI407970313TX', '2019-11-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (170, 'Delivered', 'FF217715315QZ', '2020-03-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (171, 'Held at PO', 'FP236616484WH', '2019-09-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (172, 'Payment received', 'UK887143496LE', '2020-05-24');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (173, 'Dispatched', 'ZJ564177296UY', '2021-09-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (174, 'Parcel diverted', 'SP797055532NB', '2018-02-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (175, 'Payment received', 'ME982166575VH', '2021-07-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (176, 'Out for delivery', 'GC299508767ZP', '2018-08-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (177, 'Delivered', 'WP650419049DP', '2020-10-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (178, 'Out for delivery', 'KR886534980GI', '2018-11-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (179, 'Payment received', 'EN591476662ND', '2019-08-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (180, 'Parcel diverted', 'DG582817815UW', '2018-07-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (181, 'Held at PO', 'OO479907811DH', '2019-12-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (182, 'Lost in transit', 'DT351599735QB', '2018-06-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (183, 'Delivered', 'II746182590JV', '2020-08-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (184, 'Payment received', 'NV416081216YM', '2019-08-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (185, 'Dispatched', 'FC275735487FS', '2018-05-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (186, 'Dispatched', 'GB183983015RL', '2017-12-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (187, 'Delivered', 'RO394042399IP', '2019-05-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (188, 'Dispatched', 'IT512110504BE', '2018-09-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (189, 'Out for delivery', 'OA243372819WM', '2021-02-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (190, 'Dispatched', 'NK805520422JV', '2020-08-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (191, 'Out for delivery', 'EF560401188AB', '2020-08-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (192, 'Dispatched', 'JV221554373PH', '2021-09-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (193, 'Delivered', 'GQ235388606WB', '2018-08-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (194, 'Payment received', 'GT183004509TR', '2020-09-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (195, 'Out for delivery', 'ED321308816NC', '2020-05-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (196, 'Parcel diverted', 'TV819005885ED', '2020-06-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (197, 'Parcel diverted', 'DY472544050VC', '2018-02-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (198, 'Lost in transit', 'EX917043916DB', '2018-03-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (199, 'Parcel diverted', 'XR726650108OK', '2018-01-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (200, 'Held at PO', 'WC530641440NK', '2018-10-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (201, 'Held at PO', 'DZ330979862SE', '2020-04-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (202, 'Delivered', 'QB323112465PZ', '2020-07-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (203, 'Held at PO', 'VV169293604GX', '2018-04-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (204, 'Dispatched', 'LI069515133LL', '2018-08-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (205, 'Out for delivery', 'SQ399463018PI', '2020-12-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (206, 'Payment received', 'YF085910093BX', '2020-07-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (207, 'Parcel diverted', 'GI257472537HA', '2018-11-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (208, 'Out for delivery', 'MR802255625QO', '2018-02-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (209, 'Returned to sender', 'OE165080948LX', '2019-08-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (210, 'Out for delivery', 'LI737767121MH', '2019-06-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (211, 'Returned to sender', 'RW631933754XS', '2018-04-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (212, 'Delivered', 'PQ655892546PO', '2020-12-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (213, 'Delivered', 'FL940144503EQ', '2021-09-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (214, 'Returned to sender', 'CR638584402KH', '2018-05-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (215, 'Payment received', 'YB426134807TR', '2019-06-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (216, 'Delivered', 'EU397007697TX', '2018-06-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (217, 'Out for delivery', 'ZS009973687DV', '2021-10-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (218, 'Held at PO', 'MJ224263914YS', '2018-01-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (219, 'Dispatched', 'HI004733833QA', '2018-06-24');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (220, 'Out for delivery', 'WE899014559KW', '2019-02-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (221, 'Held at PO', 'ZL673405658UQ', '2019-03-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (222, 'Out for delivery', 'GE020101809YA', '2019-04-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (223, 'Lost in transit', 'YN407591856WP', '2020-04-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (224, 'Returned to sender', 'LG944385137JO', '2020-06-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (225, 'Payment received', 'TN633933513YI', '2020-02-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (226, 'Held at PO', 'NO547301196TG', '2020-01-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (227, 'Dispatched', 'PG179112837MQ', '2018-05-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (228, 'Returned to sender', 'OD592060442HS', '2020-08-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (229, 'Lost in transit', 'PA908991566TD', '2021-08-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (230, 'Delivered', 'DU241255244PF', '2020-05-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (231, 'Payment received', 'KZ116107358XU', '2021-08-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (232, 'Dispatched', 'KV965688963SJ', '2020-04-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (233, 'Delivered', 'PQ154229040PR', '2020-07-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (234, 'Payment received', 'YR189147019BA', '2021-01-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (235, 'Delivered', 'JU377135870WA', '2019-06-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (236, 'Dispatched', 'VQ061133920XN', '2018-05-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (237, 'Dispatched', 'BV997673395YU', '2021-07-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (238, 'Delivered', 'SZ246418904RP', '2019-08-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (239, 'Out for delivery', 'UL965235460VV', '2020-07-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (240, 'Delivered', 'XI198091028FN', '2020-03-31');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (241, 'Dispatched', 'CP441531170GN', '2019-12-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (242, 'Out for delivery', 'AI805005574KI', '2020-12-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (243, 'Delivered', 'SN195524712TC', '2020-08-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (244, 'Dispatched', 'NF685602421MR', '2021-07-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (245, 'Held at PO', 'ZP566124888KR', '2019-04-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (246, 'Out for delivery', 'FK146919086CN', '2018-01-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (247, 'Lost in transit', 'NL146138781HL', '2021-08-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (248, 'Payment received', 'TN960183788JA', '2020-05-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (249, 'Dispatched', 'CV411794324QV', '2021-02-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (250, 'Lost in transit', 'SU340447054WE', '2019-04-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (251, 'Delivered', 'EV552448622PA', '2018-09-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (252, 'Out for delivery', 'DO112717579HM', '2019-03-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (253, 'Payment received', 'WU265623009PY', '2020-10-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (254, 'Dispatched', 'BG513543672UQ', '2021-07-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (255, 'Dispatched', 'HT620865901MB', '2019-01-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (256, 'Dispatched', 'GU865603972LM', '2018-02-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (257, 'Parcel diverted', 'MS042444568GG', '2018-08-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (258, 'Payment received', 'CU513953353EI', '2017-12-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (259, 'Delivered', 'CO850169266BA', '2018-02-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (260, 'Out for delivery', 'FE322029539ZE', '2019-01-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (261, 'Parcel diverted', 'XH925412739XF', '2018-04-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (262, 'Delivered', 'NZ614424361KR', '2021-10-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (263, 'Payment received', 'RO571877292LO', '2018-02-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (264, 'Delivered', 'KE367433983HO', '2021-11-24');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (265, 'Dispatched', 'NI614119793JL', '2021-03-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (266, 'Out for delivery', 'KV258717172KF', '2019-12-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (267, 'Payment received', 'WH948022191OJ', '2020-08-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (268, 'Payment received', 'FP085327578QA', '2018-10-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (269, 'Delivered', 'QS220375453PC', '2020-09-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (270, 'Payment received', 'ED770793790IO', '2020-04-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (271, 'Payment received', 'OH944784063GJ', '2018-07-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (272, 'Delivered', 'IB166682059RZ', '2021-04-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (273, 'Out for delivery', 'CA109229273TB', '2021-06-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (274, 'Delivered', 'OK808775752XC', '2019-05-24');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (275, 'Out for delivery', 'TZ091671191XB', '2019-05-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (276, 'Parcel diverted', 'BO644455121XW', '2021-08-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (277, 'Delivered', 'EX002779687MT', '2020-09-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (278, 'Out for delivery', 'QF056391696YE', '2019-04-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (279, 'Out for delivery', 'HS041318208KI', '2019-10-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (280, 'Delivered', 'AT414781158DU', '2018-02-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (281, 'Delivered', 'MB216677539QY', '2018-12-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (282, 'Dispatched', 'UI902741154ZG', '2018-03-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (283, 'Out for delivery', 'WR080331875IF', '2018-01-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (284, 'Dispatched', 'ZS010048443FK', '2018-08-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (285, 'Parcel diverted', 'BR066444621OC', '2019-11-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (286, 'Dispatched', 'LB734457920FV', '2019-06-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (287, 'Delivered', 'XQ721740068SA', '2020-01-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (288, 'Held at PO', 'CS000864142VD', '2020-03-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (289, 'Dispatched', 'HB917716029MX', '2019-02-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (290, 'Payment received', 'GY477504239EN', '2018-10-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (291, 'Held at PO', 'QT998748579BL', '2019-09-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (292, 'Dispatched', 'DC849654849PX', '2020-01-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (293, 'Dispatched', 'JX053219228IW', '2021-07-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (294, 'Dispatched', 'BL318905708RE', '2021-08-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (295, 'Payment received', 'TH468904818PD', '2021-01-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (296, 'Held at PO', 'LM632148005YF', '2020-07-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (297, 'Held at PO', 'ZM571214873MD', '2021-08-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (298, 'Held at PO', 'IL959659205SJ', '2018-08-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (299, 'Delivered', 'IB338893954BW', '2018-06-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (300, 'Held at PO', 'OA608035377FJ', '2020-06-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (301, 'Out for delivery', 'NO601803055XT', '2018-02-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (302, 'Out for delivery', 'MA725820848YH', '2019-11-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (303, 'Returned to sender', 'YB140146270UL', '2018-02-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (304, 'Dispatched', 'UQ339534996VO', '2021-10-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (305, 'Payment received', 'ML697737289XY', '2019-11-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (306, 'Payment received', 'FW594953226ZF', '2018-03-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (307, 'Payment received', 'QK154305641QI', '2018-03-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (308, 'Payment received', 'RM544405653DX', '2020-07-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (309, 'Held at PO', 'BT561073890GC', '2018-07-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (310, 'Out for delivery', 'NH824536933RK', '2019-02-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (311, 'Held at PO', 'NT738773609KA', '2020-12-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (312, 'Out for delivery', 'QP389305415PV', '2019-05-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (313, 'Dispatched', 'AS333150944CN', '2018-06-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (314, 'Parcel diverted', 'QI836972775OW', '2018-03-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (315, 'Delivered', 'AW053527806GW', '2019-10-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (316, 'Out for delivery', 'OJ288328471SS', '2020-03-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (317, 'Out for delivery', 'UN367414477GH', '2018-01-23');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (318, 'Out for delivery', 'SR930318305HE', '2020-09-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (319, 'Parcel diverted', 'WK781959943RJ', '2017-12-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (320, 'Held at PO', 'UJ595999751RB', '2020-03-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (321, 'Returned to sender', 'FE499131996FY', '2018-01-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (322, 'Delivered', 'YK635227903FC', '2021-11-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (323, 'Held at PO', 'PK384094422KR', '2021-03-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (324, 'Held at PO', 'SM934910201UR', '2019-02-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (325, 'Out for delivery', 'DT963109828GL', '2019-12-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (326, 'Delivered', 'VU049236629MV', '2020-10-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (327, 'Held at PO', 'UD823951489LR', '2020-01-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (328, 'Payment received', 'SX747162405VS', '2017-12-24');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (329, 'Delivered', 'OX008196878BF', '2019-11-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (330, 'Parcel diverted', 'XC311263573YT', '2018-03-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (331, 'Held at PO', 'HU727051422UV', '2019-02-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (332, 'Out for delivery', 'QU611497570WL', '2017-11-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (333, 'Dispatched', 'BJ444694624FH', '2018-08-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (334, 'Payment received', 'UA959794185TN', '2018-06-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (335, 'Payment received', 'LM965511484KA', '2019-03-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (336, 'Returned to sender', 'AX661412465BY', '2020-12-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (337, 'Out for delivery', 'FB961221367PZ', '2020-09-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (338, 'Parcel diverted', 'OV946211883RA', '2019-05-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (339, 'Out for delivery', 'TH058544886DX', '2019-02-24');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (340, 'Dispatched', 'DG018215830QU', '2018-10-23');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (341, 'Returned to sender', 'TD951233442AS', '2021-03-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (342, 'Held at PO', 'AA193824273CX', '2020-06-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (343, 'Delivered', 'RD246067179HW', '2020-07-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (344, 'Out for delivery', 'AR415846772YB', '2021-10-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (345, 'Delivered', 'KQ779290919CP', '2020-07-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (346, 'Delivered', 'AR005269257ME', '2018-11-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (347, 'Dispatched', 'AC418686957AQ', '2018-02-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (348, 'Dispatched', 'QM042133050AZ', '2021-08-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (349, 'Held at PO', 'PN050896322PY', '2021-09-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (350, 'Parcel diverted', 'HD827039226UG', '2019-09-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (351, 'Dispatched', 'VH104346982AT', '2020-07-31');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (352, 'Out for delivery', 'NE235135287XH', '2017-12-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (353, 'Out for delivery', 'EO116522194CY', '2019-11-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (354, 'Returned to sender', 'AH213005298VE', '2019-05-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (355, 'Delivered', 'PI748597897ZR', '2021-08-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (356, 'Dispatched', 'EI000980184CN', '2021-07-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (357, 'Delivered', 'GE839021700VU', '2018-06-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (358, 'Parcel diverted', 'GW935881371PM', '2020-10-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (359, 'Held at PO', 'JB637388662ZN', '2021-11-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (360, 'Held at PO', 'IV273826435SY', '2020-11-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (361, 'Out for delivery', 'TD444152548YQ', '2020-02-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (362, 'Payment received', 'OE855612720NZ', '2019-12-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (363, 'Delivered', 'CO028793746LT', '2018-08-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (364, 'Out for delivery', 'FS638903316RO', '2021-09-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (365, 'Out for delivery', 'BT241228147NG', '2019-01-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (366, 'Parcel diverted', 'HZ920219712ZR', '2021-05-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (367, 'Parcel diverted', 'AP900855259KJ', '2020-10-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (368, 'Out for delivery', 'TE215586525CE', '2020-11-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (369, 'Held at PO', 'AT754244732ZP', '2020-03-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (370, 'Dispatched', 'EP693830529HJ', '2019-02-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (371, 'Delivered', 'GG298578625GL', '2021-03-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (372, 'Parcel diverted', 'QD819026013KL', '2018-02-18');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (373, 'Delivered', 'LX036340357HQ', '2020-03-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (374, 'Delivered', 'AK434349141EP', '2019-07-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (375, 'Payment received', 'IG163896760HO', '2020-06-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (376, 'Held at PO', 'PI256467651RL', '2020-04-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (377, 'Held at PO', 'RE280133728BB', '2018-06-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (378, 'Dispatched', 'PM725493803QN', '2018-07-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (379, 'Delivered', 'HE650011737EX', '2021-06-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (380, 'Out for delivery', 'ZF402516452IV', '2019-12-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (381, 'Out for delivery', 'FR733719825KE', '2019-08-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (382, 'Held at PO', 'MJ061235823TJ', '2018-02-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (383, 'Payment received', 'HO767400523IV', '2020-12-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (384, 'Returned to sender', 'MB134204558UD', '2019-11-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (385, 'Parcel diverted', 'XP959556925WO', '2019-02-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (386, 'Lost in transit', 'IN411898894WT', '2021-08-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (387, 'Out for delivery', 'HP950393813IS', '2021-01-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (388, 'Payment received', 'MR799947589CR', '2020-08-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (389, 'Out for delivery', 'TR842335420KF', '2019-04-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (390, 'Returned to sender', 'NW787904965BT', '2020-12-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (391, 'Parcel diverted', 'IT998874731JW', '2018-11-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (392, 'Payment received', 'YL848949488NA', '2021-04-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (393, 'Delivered', 'MX538012499AB', '2019-10-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (394, 'Held at PO', 'PG683128620WL', '2018-05-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (395, 'Delivered', 'MW243303568MH', '2020-12-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (396, 'Dispatched', 'PR575893563KY', '2021-05-22');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (397, 'Out for delivery', 'OZ968421461WM', '2020-03-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (398, 'Delivered', 'IJ986555968ZI', '2018-10-23');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (399, 'Delivered', 'AX411442829KA', '2021-11-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (400, 'Lost in transit', 'HW505468662NF', '2018-10-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (401, 'Out for delivery', 'TD915631935QN', '2021-11-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (402, 'Delivered', 'US450607915MZ', '2021-06-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (403, 'Delivered', 'EB744143563FA', '2021-02-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (404, 'Payment received', 'XT906767014KG', '2021-09-24');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (405, 'Dispatched', 'ET702119677NR', '2018-11-24');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (406, 'Out for delivery', 'JL038036165CN', '2021-08-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (407, 'Held at PO', 'ZA947934092BR', '2017-12-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (408, 'Parcel diverted', 'HX873580509HE', '2020-04-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (409, 'Parcel diverted', 'MT421665797JY', '2019-12-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (410, 'Out for delivery', 'EA937464578EJ', '2020-12-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (411, 'Delivered', 'AQ944677927TR', '2019-10-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (412, 'Delivered', 'PG534344740KZ', '2018-12-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (413, 'Held at PO', 'BO243831759TU', '2019-01-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (414, 'Delivered', 'IO223590136AT', '2021-11-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (415, 'Parcel diverted', 'WP859286029KO', '2019-04-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (416, 'Out for delivery', 'YK414710669QH', '2019-07-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (417, 'Out for delivery', 'KZ899029798TE', '2021-08-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (418, 'Delivered', 'JE046043901ZE', '2021-05-31');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (419, 'Payment received', 'ZU585135652JA', '2020-09-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (420, 'Parcel diverted', 'LH194843274LD', '2021-03-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (421, 'Delivered', 'QS622551714ZG', '2018-04-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (422, 'Out for delivery', 'QS649127882JW', '2020-10-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (423, 'Out for delivery', 'EB420009605HZ', '2019-12-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (424, 'Delivered', 'GY790680786IN', '2021-06-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (425, 'Out for delivery', 'ZU322090260WT', '2020-02-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (426, 'Payment received', 'RH465139648XF', '2020-03-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (427, 'Delivered', 'MA864454049ST', '2020-05-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (428, 'Out for delivery', 'GA305938571GD', '2020-06-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (429, 'Out for delivery', 'DT026479751SO', '2021-05-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (430, 'Delivered', 'RJ310450349DH', '2021-04-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (431, 'Out for delivery', 'EA299486030IZ', '2018-03-29');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (432, 'Dispatched', 'KQ651317116PO', '2017-12-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (433, 'Out for delivery', 'EG428388923SB', '2019-09-27');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (434, 'Parcel diverted', 'GX787442367CR', '2020-09-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (435, 'Delivered', 'FE103049034XS', '2020-03-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (436, 'Out for delivery', 'FP514071939JQ', '2020-12-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (437, 'Held at PO', 'WL232738357GM', '2020-02-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (438, 'Lost in transit', 'WB062634695MQ', '2020-06-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (439, 'Payment received', 'TQ742026852BX', '2019-07-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (440, 'Delivered', 'MX266052038CE', '2020-09-16');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (441, 'Returned to sender', 'ST538007236YC', '2019-11-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (442, 'Parcel diverted', 'HD707094453SG', '2019-09-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (443, 'Delivered', 'PJ628436151DH', '2020-01-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (444, 'Parcel diverted', 'HG539234961EW', '2021-11-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (445, 'Payment received', 'AF201090697EJ', '2018-07-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (446, 'Dispatched', 'OE527211130CU', '2018-04-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (447, 'Dispatched', 'OT433819845KU', '2021-02-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (448, 'Delivered', 'BC814962259MP', '2020-12-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (449, 'Parcel diverted', 'MY172176778KU', '2018-05-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (450, 'Lost in transit', 'MG409092044ML', '2018-09-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (451, 'Dispatched', 'KN291302806TS', '2020-06-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (452, 'Returned to sender', 'HK227673552TN', '2020-06-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (453, 'Delivered', 'XB848160827CC', '2021-01-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (454, 'Out for delivery', 'IK431341998GB', '2019-05-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (455, 'Out for delivery', 'SG845160355RY', '2020-09-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (456, 'Out for delivery', 'WO474964142US', '2019-11-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (457, 'Delivered', 'JC314528097OC', '2019-04-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (458, 'Payment received', 'DQ146413720MG', '2021-06-03');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (459, 'Payment received', 'RT840017529PK', '2020-03-07');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (460, 'Held at PO', 'JH143003124XR', '2018-07-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (461, 'Delivered', 'KI730063324EN', '2021-02-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (462, 'Dispatched', 'RZ800003325FJ', '2021-02-09');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (463, 'Payment received', 'ZE316655806MC', '2017-12-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (464, 'Out for delivery', 'JD029347207GX', '2021-09-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (465, 'Parcel diverted', 'RG743302329AF', '2019-10-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (466, 'Payment received', 'RM400655729IR', '2020-08-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (467, 'Delivered', 'OF051183812BV', '2018-06-21');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (468, 'Delivered', 'XU613036183DX', '2018-09-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (469, 'Out for delivery', 'ON429321007IC', '2017-12-13');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (470, 'Delivered', 'NW234678171SV', '2018-08-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (471, 'Parcel diverted', 'BI886226155RO', '2020-05-17');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (472, 'Delivered', 'AL481917054GI', '2019-07-12');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (473, 'Held at PO', 'NI000889604YP', '2017-12-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (474, 'Out for delivery', 'ZQ497790854JF', '2021-09-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (475, 'Held at PO', 'EU987794144HD', '2018-06-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (476, 'Parcel diverted', 'DE852513742NF', '2019-10-08');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (477, 'Payment received', 'SD334695026DX', '2019-05-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (478, 'Out for delivery', 'SS585370487AY', '2019-03-05');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (479, 'Delivered', 'EW404672406AU', '2019-06-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (480, 'Delivered', 'DH620932636JC', '2020-02-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (481, 'Out for delivery', 'KL200492447ON', '2019-06-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (482, 'Dispatched', 'ON967946137GY', '2018-04-20');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (483, 'Out for delivery', 'RR717457755ZG', '2020-02-14');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (484, 'Payment received', 'TF191069570LF', '2019-12-02');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (485, 'Dispatched', 'ED117734118OV', '2018-04-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (486, 'Out for delivery', 'JC627137151HB', '2017-12-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (487, 'Dispatched', 'CX315393411PJ', '2021-08-04');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (488, 'Out for delivery', 'MZ143497270FA', '2019-07-11');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (489, 'Delivered', 'NM018960507JW', '2018-08-31');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (490, 'Out for delivery', 'BZ809559257BQ', '2020-01-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (491, 'Dispatched', 'VJ214722297XI', '2018-09-06');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (492, 'Held at PO', 'TC974782550CF', '2018-08-25');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (493, 'Delivered', 'EH395500367OJ', '2019-01-30');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (494, 'Dispatched', 'WP207202025ZV', '2020-12-15');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (495, 'Parcel diverted', 'PH073038169VH', '2018-09-28');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (496, 'Out for delivery', 'BG632135267AE', '2021-09-26');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (497, 'Payment received', 'WU368539077RP', '2019-08-01');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (498, 'Delivered', 'GH084341711AL', '2020-07-10');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (499, 'Payment received', 'SW682325089QH', '2020-06-19');
-insert into parcels (parcel_id, parcel_status, tracking_number, order_date) values (500, 'Dispatched', 'QY798099371EZ', '2018-09-05');
+
+insert into parcels(parcel_id, parcel_status, tracking_number, order_date, city, street_address, postcode, country) VALUES
+(1, 'Held at PO', 'WG507201122YP', '2021-11-07', 'Zhudian', '1 Amoth Road', null, 'CN'),
+(2, 'Delivered', 'KK683919143AM', '2021-10-27', 'Phuket', '1 Chinook Pass', '83120', 'TH'),
+(3, 'Dispatched', 'GR069967325TK', '2020-09-28', 'Karlskoga', '58 Claremont Circle', '691 78', 'SE'),
+(4, 'Dispatched', 'XG097040853ZX', '2018-06-29', 'Hushan', '42 Shasta Hill', null, 'CN'),
+(5, 'Out for delivery', 'QI245490841RF', '2020-02-28', 'Jönköping', '818 Luster Pass', '553 33', 'SE'),
+(6, 'Lost in transit', 'KS582931257NP', '2019-09-15', 'Ambulong', '9 Sundown Park', '5615', 'PH'),
+(7, 'Dispatched', 'YF396538898UF', '2021-03-20', 'Sunzhuang', '44654 Lawn Lane', null, 'CN'),
+(8, 'Dispatched', 'PJ737593540QA', '2021-07-10', 'Marseille', '3840 Eliot Street', '13269 CEDEX 08', 'FR'),
+(9, 'Dispatched', 'OE581540914SC', '2018-11-19', 'Nove-Misto', '255 Riverside Circle', null, 'UA'),
+(10, 'Dispatched', 'NT737352132ZT', '2018-09-10', 'Jenang Selatan', '77 Di Loreto Crossing', null, 'ID'),
+(11, 'Out for delivery', 'ED046755709WD', '2018-01-01', 'Keli', '319 Warner Point', null, 'CN'),
+(12, 'Lost in transit', 'WU186383875IP', '2018-04-04', 'Tobelo', '5 Maryland Alley', null, 'ID'),
+(13, 'Lost in transit', 'MH250038243RU', '2021-02-18', 'Dzerzhinsk', '483 Sunbrook Road', '607614', 'RU'),
+(14, 'Lost in transit', 'LG952512943VC', '2021-03-28', 'Herrera', '57 Browning Pass', '4326', 'AR'),
+(15, 'Out for delivery', 'TK146317601JQ', '2018-05-31', 'Farshūţ', '98587 Colorado Park', null, 'EG'),
+(16, 'Returned to sender', 'MD286269339BF', '2018-01-09', 'Zhangcunping', '56880 Lunder Alley', null, 'CN'),
+(17, 'Held at PO', 'SF309567190MW', '2019-04-28', 'Huaguo', '785 Forster Court', null, 'CN'),
+(18, 'Parcel diverted', 'KN466697758SA', '2019-10-04', 'Roldanillo', '58 Kensington Alley', '761558', 'CO'),
+(19, 'Held at PO', 'OE362376312KY', '2020-10-27', 'Bernardo de Irigoyen', '850 Lawn Place', '2248', 'AR'),
+(20, 'Payment received', 'XP376489156TN', '2018-05-28', 'Vilarinho da Castanheira', '38 Westend Park', '5140-279', 'PT'),
+(21, 'Payment received', 'JT513815177VN', '2019-02-14', 'Gjegjan', '42 Moland Avenue', null, 'AL'),
+(22, 'Lost in transit', 'CW647705804ZZ', '2019-12-01', 'Rio Branco', '37804 Sauthoff Alley', '78275-000', 'BR'),
+(23, 'Parcel diverted', 'BO217134162UJ', '2018-05-25', 'Weston', '2102 Hoffman Park', 'GU32', 'GB'),
+(24, 'Held at PO', 'SX692249003NN', '2019-10-21', 'Iperó', '376 Browning Point', '18560-000', 'BR'),
+(25, 'Held at PO', 'OG657851899KG', '2018-08-11', 'Rosario', '4578 Moose Lane', '4187', 'AR'),
+(26, 'Held at PO', 'ZB788978910JO', '2018-03-06', 'Khemisset', '5484 Sheridan Circle', null, 'MA'),
+(27, 'Dispatched', 'OH868651925IE', '2020-11-08', 'Chengyang', '7 Anthes Street', null, 'CN'),
+(28, 'Payment received', 'OS128525245LU', '2018-07-23', 'Santa María Ixhuatán', '6383 Victoria Road', '06010', 'GT'),
+(29, 'Out for delivery', 'FN688456494MS', '2019-07-20', 'Santa Cruz', '35 Sunbrook Trail', null, 'HN'),
+(30, 'Out for delivery', 'ED754391412OR', '2020-10-22', 'Göteborg', '29605 Atwood Court', '402 57', 'SE'),
+(31, 'Out for delivery', 'QP852069159JI', '2021-01-24', 'Lagunas', '43 Northport Circle', null, 'PE'),
+(32, 'Returned to sender', 'PL485431111VF', '2018-03-02', 'Digah', '1457 Garrison Junction', null, 'AZ'),
+(33, 'Parcel diverted', 'OM957634441HN', '2021-06-25', 'Xianyuan', '5 Raven Drive', null, 'CN'),
+(34, 'Payment received', 'VQ729283957EZ', '2019-07-08', 'Kihniö', '15616 Meadow Vale Center', '39820', 'FI'),
+(35, 'Payment received', 'CC156090051VX', '2019-03-24', 'Xiaji', '3240 Warner Center', null, 'CN'),
+(36, 'Lost in transit', 'CM448455918KQ', '2019-08-21', 'Luofang', '2675 Carberry Hill', null, 'CN'),
+(37, 'Out for delivery', 'VP765673511VF', '2019-10-17', 'Kombapari', '91 Di Loreto Pass', null, 'ID'),
+(38, 'Delivered', 'KG815930273XQ', '2018-02-03', 'Río Viejo', '27475 Homewood Drive', '134507', 'CO'),
+(39, 'Out for delivery', 'BE189991060KB', '2019-04-28', 'Bojonggaling', '63084 Washington Circle', null, 'ID'),
+(40, 'Out for delivery', 'OZ161611432XT', '2018-02-05', 'Tuhe', '07 Eastwood Place', null, 'CN'),
+(41, 'Payment received', 'KO680182552PA', '2018-04-02', 'Kōriyama', '8719 Anniversary Road', '963-8878', 'JP'),
+(42, 'Parcel diverted', 'CH938951811QG', '2020-07-20', 'Gafsa', '9158 Portage Court', null, 'TN'),
+(43, 'Returned to sender', 'UN061161707KN', '2021-01-16', 'Trảng Bàng', '16 Coolidge Place', null, 'VN'),
+(44, 'Dispatched', 'FV635600933UF', '2021-11-14', 'Chadong', '2 Kim Center', null, 'CN'),
+(45, 'Dispatched', 'YR323353050EH', '2021-02-27', 'Sorocaba', '82 Rigney Street', '18000-000', 'BR'),
+(46, 'Lost in transit', 'MO815063631RL', '2021-03-27', 'Shaba Zhen', '0 Glacier Hill Avenue', null, 'CN'),
+(47, 'Delivered', 'GT500866064VN', '2021-07-30', 'Moulins', '77 Buell Center', '03017 CEDEX', 'FR'),
+(48, 'Dispatched', 'WT448933253WA', '2020-08-05', 'Fenshui', '740 Mitchell Alley', null, 'CN'),
+(49, 'Payment received', 'AO717484181VG', '2021-08-14', 'Al Jawādīyah', '34 Hansons Hill', null, 'SY'),
+(50, 'Delivered', 'LJ800296334ZL', '2020-04-13', 'Pishaj', '8390 Vernon Court', null, 'AL'),
+(51, 'Delivered', 'CX557539025IF', '2019-01-31', 'Konstantynów', '5 Dottie Avenue', '21-543', 'PL'),
+(52, 'Parcel diverted', 'KY310023694WC', '2020-05-01', 'Bayt Ūlā', '6 Pennsylvania Alley', null, 'PS'),
+(53, 'Out for delivery', 'RB601833738RD', '2021-01-24', 'Velké Opatovice', '59 Pankratz Street', '679 63', 'CZ'),
+(54, 'Out for delivery', 'XY935237627XL', '2020-03-02', 'Bankaw', '5469 Golf View Parkway', '1211', 'PH'),
+(55, 'Dispatched', 'LM962491355BT', '2020-09-26', 'El Cerrito', '6 Maywood Drive', '48203', 'MX'),
+(56, 'Dispatched', 'IL143797652VR', '2020-04-09', 'Bolekhiv', '420 Scofield Place', null, 'UA'),
+(57, 'Out for delivery', 'QX292754059XH', '2020-08-06', 'Saint-Fargeau-Ponthierry', '12826 Summerview Junction', '77986 CEDEX', 'FR'),
+(58, 'Delivered', 'IC721979928FF', '2020-10-15', 'Tópaga', '948 Wayridge Parkway', '152047', 'CO'),
+(59, 'Out for delivery', 'VO337840352KY', '2020-02-18', 'Mach', '29 Ronald Regan Parkway', '77011', 'PK'),
+(60, 'Out for delivery', 'EQ428744175PG', '2021-10-09', 'Bichena', '2320 Hoard Way', null, 'ET'),
+(61, 'Parcel diverted', 'HT544183884OW', '2020-07-15', 'Pexiligais', '4760 Dakota Junction', '2725-619', 'PT'),
+(62, 'Out for delivery', 'SV276791020WI', '2019-05-11', 'Manadhoo', '80 8th Trail', null, 'MV'),
+(63, 'Dispatched', 'WV520780361YO', '2020-10-20', 'Sanjiangkou', '7 Lerdahl Terrace', null, 'CN'),
+(64, 'Parcel diverted', 'EU347921814EA', '2018-04-29', 'Avignon', '6716 Glendale Pass', '84019 CEDEX 1', 'FR'),
+(65, 'Held at PO', 'XL254086099DI', '2018-10-09', 'Santa Teresa', '6 Clyde Gallagher Drive', '5717', 'PH'),
+(66, 'Out for delivery', 'AR552077052VU', '2020-03-01', 'Tegalrejo', '6270 Kipling Park', null, 'ID'),
+(67, 'Held at PO', 'XU974709219TR', '2020-11-27', 'Cesvaine', '6973 Donald Avenue', null, 'LV'),
+(68, 'Dispatched', 'PP254833581GI', '2020-12-16', 'Séléa', '24206 Clemons Center', null, 'KM'),
+(69, 'Parcel diverted', 'PQ712686367UO', '2020-02-12', 'Višnjevac', '0 Longview Terrace', '43226', 'HR'),
+(70, 'Held at PO', 'GS966444156BD', '2018-02-15', 'Rialma', '888 Declaration Alley', '76310-000', 'BR'),
+(71, 'Parcel diverted', 'UX945464264JF', '2019-07-03', 'Lyon', '428 Heath Center', '69239 CEDEX 02', 'FR'),
+(72, 'Delivered', 'VN660248594HW', '2019-01-30', 'Gorgoram', '250 Jenifer Circle', null, 'NG'),
+(73, 'Out for delivery', 'NJ607272379MI', '2019-04-04', 'Siedliska', '29166 Bluestem Drive', '38-324', 'PL'),
+(74, 'Delivered', 'YO718234036PY', '2021-07-09', 'Guluoshan', '28059 Logan Junction', null, 'CN'),
+(75, 'Lost in transit', 'GD483236042IH', '2020-06-26', 'Dvurechensk', '453 Nobel Park', '624013', 'RU'),
+(76, 'Delivered', 'GQ293209702BE', '2019-01-09', 'Marco', '25 Warbler Junction', null, 'PE'),
+(77, 'Dispatched', 'IT264384888JD', '2018-01-22', 'Gangmian', '7874 Morningstar Terrace', null, 'CN'),
+(78, 'Parcel diverted', 'GE022761092NU', '2021-05-27', 'Huatan', '967 Manitowish Hill', null, 'CN'),
+(79, 'Returned to sender', 'TR164409522VV', '2018-01-29', 'Lewoluo', '92 Dayton Drive', null, 'ID'),
+(80, 'Delivered', 'ZA023889260FM', '2021-02-22', 'Haikoudajie', '93 Barnett Plaza', null, 'CN'),
+(81, 'Lost in transit', 'MP105085796HY', '2019-07-03', 'Aykol', '59518 Troy Court', null, 'CN'),
+(82, 'Lost in transit', 'YS883064803XH', '2018-04-26', 'Beppu', '81144 Toban Park', '891-0704', 'JP'),
+(83, 'Payment received', 'SG087851029JK', '2020-12-13', 'São Tomé', '4 Vidon Pass', '4795-549', 'PT'),
+(84, 'Returned to sender', 'LJ910129932ST', '2021-10-22', 'Almeirim', '0 Bonner Crossing', '2080-006', 'PT'),
+(85, 'Parcel diverted', 'GQ747516258ZJ', '2020-05-01', 'Cô Tô', '98255 Dwight Avenue', null, 'VN'),
+(86, 'Lost in transit', 'FZ972664030OP', '2019-11-04', 'Penghu', '31938 Ohio Avenue', null, 'CN'),
+(87, 'Held at PO', 'CB892359736FR', '2019-12-20', 'Malapaubhara', '8 Meadow Ridge Street', null, 'ID'),
+(88, 'Out for delivery', 'EL235066059GD', '2018-01-15', 'Kambia', '58140 Elmside Terrace', null, 'SL'),
+(89, 'Parcel diverted', 'XQ736188725TB', '2021-07-22', 'Podkamennaya Tunguska', '0 Golf Course Avenue', '663246', 'RU'),
+(90, 'Out for delivery', 'MP714324995UE', '2018-03-30', 'Vänersborg', '603 Graceland Pass', '462 87', 'SE'),
+(91, 'Parcel diverted', 'NI912411485EZ', '2021-07-22', 'Paulínia', '3 Swallow Point', '13140-000', 'BR'),
+(92, 'Dispatched', 'EK400656953PC', '2021-01-23', 'Kwolla', '248 Erie Center', null, 'NG'),
+(93, 'Out for delivery', 'QQ176810297LW', '2020-09-28', 'Putrajaya', '70 Milwaukee Alley', '62530', 'MY'),
+(94, 'Dispatched', 'HV263531318RR', '2021-06-17', 'Barra de Carrasco', '97 Glacier Hill Trail', null, 'UY'),
+(95, 'Payment received', 'FL106434679SW', '2019-12-11', 'Shuangnian', '3112 Morningstar Pass', null, 'CN'),
+(96, 'Held at PO', 'CK376935644DH', '2018-06-20', 'Penghua', '0 4th Trail', null, 'CN'),
+(97, 'Out for delivery', 'JE034868288LE', '2019-02-23', 'Zhongyuanlu', '34 Anthes Junction', null, 'CN'),
+(98, 'Payment received', 'YR426609302SN', '2019-11-14', 'Siguinon', '79719 Declaration Parkway', '6542', 'PH'),
+(99, 'Payment received', 'SD247767391JD', '2019-08-02', 'Shadui', '84730 Nevada Drive', null, 'CN'),
+(100, 'Held at PO', 'WF234712051TY', '2019-10-03', 'Łopuszno', '71273 Melrose Park', '26-070', 'PL'),
+(101, 'Delivered', 'PN538980926DA', '2020-12-07', 'Maogou', '9 Old Gate Parkway', null, 'CN'),
+(102, 'Out for delivery', 'FH447830286TF', '2018-03-04', 'Palayan City', '1710 Knutson Lane', '3132', 'PH'),
+(103, 'Out for delivery', 'HV348563782YU', '2019-04-20', 'Nowosielce-Gniewosz', '06267 Butternut Lane', '38-507', 'PL'),
+(104, 'Out for delivery', 'MP204135445RY', '2018-11-13', 'La Paz', '25200 West Center', '5590', 'AR'),
+(105, 'Held at PO', 'NT367269357YO', '2018-07-10', 'Baranusa', '77 Bashford Alley', null, 'ID'),
+(106, 'Parcel diverted', 'EP286494806VL', '2021-05-23', 'Bhopālwāla', '527 Nevada Court', '51130', 'PK'),
+(107, 'Out for delivery', 'RN989878947WT', '2017-12-01', 'Santo Estêvão', '5992 Mallard Center', '44190-000', 'BR'),
+(108, 'Delivered', 'AW997775077MX', '2017-12-07', 'Čížkovice', '1 Heath Point', '411 12', 'CZ'),
+(109, 'Delivered', 'ZN314865458EH', '2021-10-04', 'Kalemie', '65493 Norway Maple Parkway', null, 'CD'),
+(110, 'Payment received', 'WF605371784ES', '2019-12-30', 'Lille', '390 Buhler Road', '59044 CEDEX', 'FR'),
+(111, 'Payment received', 'GW468929768RU', '2020-08-31', 'Concordia', '998 Brickson Park Pass', '3200', 'AR'),
+(112, 'Out for delivery', 'HO986183931DX', '2019-02-07', 'Omiš', '64283 Magdeline Center', '21310', 'HR'),
+(113, 'Dispatched', 'OK666368326DT', '2020-04-13', 'Suna', '781 Jackson Lane', '612450', 'RU'),
+(114, 'Payment received', 'KJ800209118KF', '2017-12-11', 'Yaozhuang', '5 John Wall Pass', null, 'CN'),
+(115, 'Out for delivery', 'BS638202285IR', '2017-12-04', 'Panjakent', '16296 Alpine Plaza', null, 'TJ'),
+(116, 'Payment received', 'XJ987774540JN', '2018-11-05', 'Takengon', '5812 Meadow Vale Circle', null, 'ID'),
+(117, 'Out for delivery', 'JE952785198GB', '2021-02-20', 'San Antonio', '748 Farragut Terrace', null, 'PE'),
+(118, 'Parcel diverted', 'BY245417934GC', '2021-03-28', 'Cienfuegos', '3099 Anniversary Hill', null, 'CU'),
+(119, 'Delivered', 'LX778029896IR', '2019-03-03', 'Anthoúsa', '651 Calypso Way', null, 'GR'),
+(120, 'Dispatched', 'ZU946244351QM', '2021-03-01', 'Kebonkaret', '10 Kenwood Junction', null, 'ID'),
+(121, 'Dispatched', 'YO846783721OZ', '2018-06-10', 'Longtang', '61 Express Avenue', null, 'CN'),
+(122, 'Out for delivery', 'QT341149304YU', '2020-06-17', 'Yichun', '422 Hallows Terrace', null, 'CN'),
+(123, 'Out for delivery', 'HB950088566YB', '2018-10-08', 'Tikiw', '5 Florence Point', '3109', 'PH'),
+(124, 'Dispatched', 'GO117522044FU', '2019-10-03', 'Willowdale', '2361 Waubesa Junction', 'M3H', 'CA'),
+(125, 'Returned to sender', 'XE259050731KF', '2018-07-08', 'Okocim', '104 Huxley Street', '32-865', 'PL'),
+(126, 'Dispatched', 'TI990312662AZ', '2018-08-02', 'København', '7492 Vahlen Pass', '1260', 'DK'),
+(127, 'Delivered', 'LG058435474PR', '2020-03-01', 'Sumberbaru', '2 Loeprich Pass', null, 'ID'),
+(128, 'Dispatched', 'FH720523874QR', '2021-04-05', 'Florianópolis', '50 Westridge Hill', '88000-000', 'BR'),
+(129, 'Parcel diverted', 'OR319951694GF', '2020-09-18', 'Myronivka', '370 Bowman Park', null, 'UA'),
+(130, 'Dispatched', 'BE253775331RB', '2021-02-13', 'Kárystos', '914 Stone Corner Avenue', null, 'GR'),
+(131, 'Dispatched', 'BN398515964KT', '2019-06-15', 'Kedungwringin', '40372 Melody Avenue', null, 'ID'),
+(132, 'Held at PO', 'YD352673562IP', '2018-05-16', 'Ussuriysk', '5 Brickson Park Trail', '356532', 'RU'),
+(133, 'Dispatched', 'AU770813455CG', '2018-09-16', 'Jiangmen', '29 Gateway Street', null, 'CN'),
+(134, 'Delivered', 'CU567365334ES', '2021-10-29', 'Eindhoven', '02 Red Cloud Point', '5609', 'NL'),
+(135, 'Dispatched', 'LC287870567GX', '2021-01-13', 'São Mateus do Maranhão', '00 Namekagon Drive', '65470-000', 'BR'),
+(136, 'Returned to sender', 'UQ552096591QF', '2020-03-12', 'Zainsk', '0137 Pleasure Drive', '423524', 'RU'),
+(137, 'Out for delivery', 'XJ860825390BH', '2021-08-01', 'Sayán', '64 Debra Parkway', null, 'PE'),
+(138, 'Payment received', 'FA083312988PO', '2020-04-08', 'Duisburg', '90 Bonner Lane', '47139', 'DE'),
+(139, 'Delivered', 'KT455545894RA', '2018-06-22', 'Moch', '393 Hauk Street', null, 'FM'),
+(140, 'Held at PO', 'FR132574974NV', '2018-06-26', 'Kampinos', '9 Mccormick Road', '05-085', 'PL'),
+(141, 'Payment received', 'YR294445550NA', '2020-09-22', 'Sorochuco', '69 Schmedeman Drive', null, 'PE'),
+(142, 'Out for delivery', 'BW706898220WP', '2018-11-16', 'Córdoba', '589 Loeprich Junction', '632027', 'CO'),
+(143, 'Payment received', 'PJ834510815PX', '2021-02-17', 'Doibang', '19676 Harbort Pass', null, 'ID'),
+(144, 'Delivered', 'IP955990563OR', '2019-09-14', 'Petaling Jaya', '4 Ilene Court', '46801', 'MY'),
+(145, 'Dispatched', 'VD051345582DN', '2021-03-28', 'Tsaratanana', '36387 Grayhawk Lane', null, 'MG'),
+(146, 'Delivered', 'EB839805944OI', '2018-09-27', 'Shuinanxu', '33 Coolidge Terrace', null, 'CN'),
+(147, 'Dispatched', 'AR504735285UQ', '2021-06-14', 'Medan', '91 South Pass', null, 'ID'),
+(148, 'Delivered', 'RQ209336929UK', '2020-07-10', 'Kopidlno', '387 Sycamore Pass', '507 32', 'CZ'),
+(149, 'Returned to sender', 'BB344367229FK', '2018-03-16', 'Jargalant', '68420 Sutteridge Street', null, 'MN'),
+(150, 'Returned to sender', 'IF701049983RY', '2020-03-31', 'Argir', '704 Oak Trail', '165', 'FO'),
+(151, 'Payment received', 'TB421565233SX', '2021-03-14', 'Gościeradów', '794 Jay Center', '23-231', 'PL'),
+(152, 'Returned to sender', 'RS792551781YG', '2019-01-08', 'Mādabā', '43 Homewood Lane', null, 'JO'),
+(153, 'Held at PO', 'VZ581404531AO', '2020-12-26', 'Arcachon', '0 Mayfield Lane', '33314 CEDEX', 'FR'),
+(154, 'Returned to sender', 'NF096279112WZ', '2021-02-21', 'Tōbetsu', '99669 Longview Park', '883-0103', 'JP'),
+(155, 'Payment received', 'HX647346578CN', '2021-06-05', 'Eslöv', '2504 Atwood Pass', '241 91', 'SE'),
+(156, 'Held at PO', 'XI350028644EN', '2018-01-02', 'Pallasovka', '282 Grayhawk Parkway', '404264', 'RU'),
+(157, 'Held at PO', 'OE144382828QV', '2020-10-01', 'Hongwansi', '839 Brickson Park Alley', null, 'CN'),
+(158, 'Payment received', 'YU777120160OE', '2021-05-09', 'Studzionka', '78123 Merry Center', '43-245', 'PL'),
+(159, 'Dispatched', 'UN118107214VS', '2020-11-23', 'Yekimovichi', '7497 Glendale Avenue', '216533', 'RU'),
+(160, 'Delivered', 'FE181911482UJ', '2021-05-24', 'Nelahozeves', '54834 Schlimgen Center', '277 51', 'CZ'),
+(161, 'Payment received', 'OC794147767WU', '2021-03-18', 'Heshengbao', '539 Nelson Avenue', null, 'CN'),
+(162, 'Payment received', 'NR008932154JM', '2018-09-12', 'São Filipe', '5240 Logan Pass', null, 'CV'),
+(163, 'Held at PO', 'BN730604245LW', '2021-09-29', 'Gondang', '43 Farwell Avenue', null, 'ID'),
+(164, 'Out for delivery', 'RB689756641LK', '2020-07-04', 'Menggusi', '6605 Starling Junction', null, 'CN'),
+(165, 'Returned to sender', 'GV113333764VL', '2018-05-11', 'Cái Nhum', '83 Rowland Alley', null, 'VN'),
+(166, 'Delivered', 'SS638641317UN', '2019-03-31', 'Tiko', '03198 Village Center', null, 'CM'),
+(167, 'Dispatched', 'AC541224330PU', '2021-10-15', 'Rodatychi', '378 Linden Plaza', null, 'UA'),
+(168, 'Payment received', 'CK295511215EH', '2019-08-08', 'Kuressaare', '34 Scott Way', null, 'EE'),
+(169, 'Dispatched', 'GM985218736OU', '2020-11-14', 'Catamayo', '5 Merrick Street', null, 'EC'),
+(170, 'Out for delivery', 'PD613123379MR', '2019-06-29', 'Kahama', '4 Mesta Pass', null, 'TZ'),
+(171, 'Payment received', 'SZ276834511XI', '2019-06-23', 'Quimilí', '28956 Thompson Street', '3740', 'AR'),
+(172, 'Dispatched', 'SJ898463987IB', '2019-09-22', 'Weru', '70606 Victoria Avenue', null, 'ID'),
+(173, 'Out for delivery', 'QO319004940GF', '2020-09-17', 'Bantu', '3524 Talisman Hill', null, 'ID'),
+(174, 'Lost in transit', 'AC408599292ON', '2018-12-02', 'Ovidiopol’', '7347 Maple Wood Circle', null, 'UA'),
+(175, 'Delivered', 'VW301802562BY', '2021-04-11', 'Dallas', '7256 Hallows Avenue', '75397', 'US'),
+(176, 'Delivered', 'SI779932864FA', '2020-04-22', 'Bethlehem', '59 Pankratz Court', null, 'PS'),
+(177, 'Held at PO', 'YS684213095RH', '2018-05-23', 'Don Mueang', '2915 Toban Crossing', '10220', 'TH'),
+(178, 'Held at PO', 'YZ721126908GV', '2018-02-06', 'San Antonio de los Cobres', '713 Oak Hill', '4411', 'AR'),
+(179, 'Dispatched', 'VP333057135HI', '2018-08-27', 'Xiangshan', '438 Killdeer Way', null, 'CN'),
+(180, 'Delivered', 'FY275387068PN', '2020-07-15', 'Bovec', '2 Del Mar Crossing', '5230', 'SI'),
+(181, 'Delivered', 'SU011271679WI', '2018-06-04', 'Victoria', '49 Cascade Hill', 'VCT', 'MT'),
+(182, 'Dispatched', 'ZV984572414XD', '2021-09-07', 'Jingyang', '154 American Park', null, 'CN'),
+(183, 'Out for delivery', 'VX152033536ZV', '2020-02-12', 'Lacolle', '76414 Michigan Crossing', 'E5A', 'CA'),
+(184, 'Out for delivery', 'OF690265987NU', '2019-12-07', 'Tual', '078 Ridgeview Junction', null, 'ID'),
+(185, 'Delivered', 'TA132659887OY', '2018-11-22', 'Drohobych', '5906 Eastwood Plaza', null, 'UA'),
+(186, 'Dispatched', 'CX669958290IV', '2021-01-19', 'Al Ya‘rubīyah', '30 Gale Plaza', null, 'SY'),
+(187, 'Delivered', 'KF291329098PT', '2020-03-07', 'Sayḩūt', '0289 Service Drive', null, 'YE'),
+(188, 'Delivered', 'HS603241457TG', '2019-04-18', 'Mankoeng', '1 Northview Pass', '0769', 'ZA'),
+(189, 'Delivered', 'DP746314780CS', '2021-03-03', 'Bitung', '79752 Wayridge Center', null, 'ID'),
+(190, 'Dispatched', 'WC742583012QE', '2020-02-01', 'Yangxipu', '4461 Cottonwood Road', null, 'CN'),
+(191, 'Lost in transit', 'FI079745791VY', '2019-04-03', 'Postira', '9667 Claremont Avenue', '21410', 'HR'),
+(192, 'Dispatched', 'XN922419668WU', '2019-02-16', 'Divnomorskoye', '531 Columbus Alley', '353490', 'RU'),
+(193, 'Held at PO', 'LB972229143GV', '2020-04-05', 'San Jose', '01 Shasta Hill', '95138', 'US'),
+(194, 'Delivered', 'DH169117080KX', '2019-03-16', 'Mayo', '80136 Trailsway Way', '94140', 'TH'),
+(195, 'Returned to sender', 'JH278786512RM', '2019-09-28', 'Ferdinandovac', '3 Bultman Plaza', '48356', 'HR'),
+(196, 'Dispatched', 'RR968372376AK', '2020-03-04', 'Shuangjie', '8 Warbler Terrace', null, 'CN'),
+(197, 'Lost in transit', 'CV109435958CU', '2021-06-17', 'Sremčica', '260 Norway Maple Circle', null, 'RS'),
+(198, 'Delivered', 'FH097516147HT', '2019-05-22', 'Amolatar', '3266 Eggendart Terrace', null, 'UG'),
+(199, 'Dispatched', 'WN477385187IQ', '2021-07-06', 'Ungsang', '3 Nova Hill', null, 'KR'),
+(200, 'Returned to sender', 'ZH881319004GX', '2019-04-17', 'Magarao', '78221 Becker Junction', '4403', 'PH'),
+(201, 'Returned to sender', 'RO174287999PM', '2018-01-02', 'Kertai', '78 Onsgard Center', null, 'CN'),
+(202, 'Held at PO', 'DG375946083HB', '2020-10-23', 'Panadura', '8 Maywood Crossing', '12500', 'LK'),
+(203, 'Out for delivery', 'JM714912987VL', '2021-10-25', 'Nizhnekamsk', '4114 Tomscot Road', '423579', 'RU'),
+(204, 'Parcel diverted', 'AF071656984HT', '2021-05-20', 'Mozelos', '45784 Onsgard Pass', '4535-160', 'PT'),
+(205, 'Parcel diverted', 'LM492988582DK', '2021-07-15', 'Hajnówka', '0 Gulseth Pass', '17-201', 'PL'),
+(206, 'Parcel diverted', 'NU922554072SJ', '2020-02-26', 'Hongshi', '852 Dixon Crossing', null, 'CN'),
+(207, 'Delivered', 'KS683901390LL', '2019-06-16', 'Klimontów', '01 Oakridge Road', '32-112', 'PL'),
+(208, 'Out for delivery', 'RO897195985PT', '2017-12-17', 'Barão de Melgaço', '459 Elgar Avenue', '78190-000', 'BR'),
+(209, 'Delivered', 'UC328976749CX', '2019-04-15', 'Aş Şalw', '52827 Dwight Plaza', null, 'YE'),
+(210, 'Delivered', 'TO860830804AS', '2019-01-13', 'Caminaca', '00813 School Street', null, 'PE'),
+(211, 'Parcel diverted', 'JZ612261551IX', '2018-10-03', 'Sidi Bouzid', '5 Logan Terrace', null, 'TN'),
+(212, 'Payment received', 'VW566510263BK', '2020-07-09', 'San Luis', '04024 Kedzie Hill', '27400', 'MX'),
+(213, 'Held at PO', 'IW940575346TI', '2019-03-04', 'Adzopé', '062 Fairview Circle', null, 'CI'),
+(214, 'Dispatched', 'CS946870448LZ', '2020-06-02', 'Antas', '892 Homewood Pass', '2630-224', 'PT'),
+(215, 'Out for delivery', 'TO516379424CO', '2019-06-18', 'Gunem', '4 Dakota Plaza', null, 'ID'),
+(216, 'Held at PO', 'QZ426730949FW', '2019-08-05', 'Al Maşlūb', '15989 Shoshone Parkway', null, 'YE'),
+(217, 'Out for delivery', 'BC276830415YE', '2021-08-04', 'San Francisco', '63113 Sauthoff Park', '8501', 'PH'),
+(218, 'Dispatched', 'ZD707735046XT', '2019-05-25', 'Mondlo', '70 Butternut Alley', '2525', 'ZA'),
+(219, 'Dispatched', 'JW285054527VY', '2020-12-24', 'Oštarije', '9 Pawling Lane', '47302', 'HR'),
+(220, 'Lost in transit', 'TD924385731QV', '2018-05-15', 'Tucumã', '882 Carberry Court', '68385-000', 'BR'),
+(221, 'Out for delivery', 'VC018535196CX', '2021-10-27', 'Tāfuna', '14362 Roth Pass', '96799', 'AS'),
+(222, 'Delivered', 'OL902062069MC', '2018-02-13', 'Xiaomiaozi', '52066 Karstens Hill', null, 'CN'),
+(223, 'Held at PO', 'RT362056145FK', '2020-07-19', 'Obertyn', '51345 Maywood Hill', null, 'UA'),
+(224, 'Dispatched', 'CS169282951DL', '2020-05-13', 'La Libertad', '9 Messerschmidt Park', null, 'EC'),
+(225, 'Dispatched', 'FF479442316WC', '2020-07-16', 'Turba', '5725 Moulton Place', null, 'EE'),
+(226, 'Delivered', 'BU038414553LV', '2021-04-01', 'Tecka', '538 Cascade Point', '9201', 'AR'),
+(227, 'Payment received', 'AZ189539352DC', '2018-08-17', 'Janaúba', '56114 Dapin Place', '39440-000', 'BR'),
+(228, 'Out for delivery', 'VN097285643PL', '2021-02-05', 'Jinchuan', '093 Leroy Court', null, 'CN'),
+(229, 'Out for delivery', 'CG436083338KF', '2019-03-08', 'Sabnie', '5619 Thompson Place', '08-331', 'PL'),
+(230, 'Out for delivery', 'GA087345545OL', '2018-02-03', 'Solnechnyy', '474 Kensington Lane', '681008', 'RU'),
+(231, 'Returned to sender', 'NI390139171BP', '2020-04-26', 'Lugu', '32059 Sutteridge Junction', null, 'CN'),
+(232, 'Delivered', 'BT092687496IF', '2018-05-22', 'Aurora', '479 Debra Park', '60505', 'US'),
+(233, 'Out for delivery', 'JH925229646AI', '2018-07-12', 'Takaishi', '8 Corscot Avenue', '215-0003', 'JP'),
+(234, 'Delivered', 'EG963976114XK', '2021-05-11', 'Yaodian', '6529 Barnett Place', null, 'CN'),
+(235, 'Returned to sender', 'EH813091090RX', '2020-07-28', 'Nagqu', '90 Hansons Crossing', null, 'CN'),
+(236, 'Dispatched', 'TA308227136WE', '2018-11-24', 'Choroszcz', '14638 Stuart Street', '16-070', 'PL'),
+(237, 'Parcel diverted', 'VX826196457TA', '2020-11-18', 'Humniska', '9 Gale Crossing', '36-206', 'PL'),
+(238, 'Out for delivery', 'MW188474086OR', '2020-01-11', 'Ongandjera', '19345 Heath Hill', null, 'NA'),
+(239, 'Parcel diverted', 'UE388502514VK', '2020-04-23', 'Magdeburg', '4 Barnett Pass', '39130', 'DE'),
+(240, 'Lost in transit', 'AN724178769IN', '2021-10-02', 'Urungpigang', '64710 Ramsey Avenue', null, 'ID'),
+(241, 'Payment received', 'MG350789744TJ', '2019-02-03', '‘Akko', '833 Hoard Parkway', null, 'IL'),
+(242, 'Out for delivery', 'LJ230795626EN', '2018-04-07', 'Hongxi', '82 North Park', null, 'CN'),
+(243, 'Dispatched', 'JR961464784NM', '2020-03-30', 'Daur', '0851 Arkansas Way', '67410', 'PK'),
+(244, 'Out for delivery', 'PL554286131XJ', '2021-03-10', 'Binalonan', '29286 Graedel Hill', '2436', 'PH'),
+(245, 'Out for delivery', 'GJ684205982AF', '2020-10-02', 'Osapsio', '36547 Texas Parkway', null, 'ID'),
+(246, 'Parcel diverted', 'RO606284791AP', '2018-10-07', 'Marseille', '93 Melvin Center', '13382 CEDEX 13', 'FR'),
+(247, 'Held at PO', 'ZG978993662SY', '2019-07-07', 'Colcabamba', '5363 Melvin Circle', null, 'PE'),
+(248, 'Delivered', 'TT905613770US', '2018-02-13', 'Kotanopan', '8 Ilene Road', null, 'ID'),
+(249, 'Dispatched', 'GC040087795FL', '2019-06-22', 'Guayabetal', '07079 Logan Center', '251857', 'CO'),
+(250, 'Delivered', 'QO970577039KL', '2020-12-22', 'Inhambane', '042 Arrowood Court', null, 'MZ'),
+(251, 'Out for delivery', 'EH516929894EW', '2021-11-22', 'Sagana', '80 Lukken Plaza', '3129', 'PH'),
+(252, 'Parcel diverted', 'VV996269361DC', '2021-10-15', 'Krousón', '7 Burning Wood Lane', null, 'GR'),
+(253, 'Lost in transit', 'BP342354077TI', '2018-01-05', 'Quận Sáu', '99166 Harper Circle', null, 'VN'),
+(254, 'Delivered', 'IQ248646212GR', '2018-02-18', 'Paty do Alferes', '590 Hovde Street', '26950-000', 'BR'),
+(255, 'Out for delivery', 'BA508907834CF', '2017-12-13', 'Chojna', '0038 Kensington Alley', '74-500', 'PL'),
+(256, 'Dispatched', 'ZV484349479EK', '2018-04-16', 'Solok Timur', '1 Veith Terrace', null, 'ID'),
+(257, 'Out for delivery', 'GW260278435MQ', '2020-08-25', 'Aragua de Barcelona', '67669 Dunning Lane', null, 'VE'),
+(258, 'Returned to sender', 'TA161078990RJ', '2020-09-18', 'Tanggan', '67 Bluestem Street', null, 'CN'),
+(259, 'Returned to sender', 'CI899874634IP', '2019-04-24', 'Bagakay', '59659 Westport Street', '7214', 'PH'),
+(260, 'Delivered', 'LY754709084GH', '2018-03-11', 'Mafa', '3 Summit Hill', null, 'ID'),
+(261, 'Out for delivery', 'GU282221799VD', '2018-05-09', 'Senovo', '85 Beilfuss Road', '8281', 'SI'),
+(262, 'Parcel diverted', 'CG593733459FE', '2020-01-12', 'Shuangxiqiao', '4324 Rigney Parkway', null, 'CN'),
+(263, 'Dispatched', 'FE826279879NK', '2021-08-09', 'Zuocun', '59 Lighthouse Bay Alley', null, 'CN'),
+(264, 'Held at PO', 'UZ623053456CR', '2021-03-31', 'Kyurdarmir', '502 Surrey Alley', null, 'AZ'),
+(265, 'Dispatched', 'PQ408271250AT', '2021-09-04', 'Mellieħa', '490 Ryan Lane', 'MLH', 'MT'),
+(266, 'Delivered', 'LH600868284DW', '2019-12-07', 'Sikeshu', '4 Florence Street', null, 'CN'),
+(267, 'Payment received', 'CW116903286JE', '2021-01-26', 'Clarin', '7298 Stone Corner Court', '7201', 'PH'),
+(268, 'Out for delivery', 'FP996072360EV', '2020-09-12', 'Bazzāryah', '360 Fulton Trail', null, 'PS'),
+(269, 'Out for delivery', 'UD373767982GT', '2018-06-22', 'Trondheim', '03 Ronald Regan Center', '7042', 'NO'),
+(270, 'Payment received', 'FA017438289PL', '2018-04-21', 'San Pedro Necta', '41 Boyd Alley', '13006', 'GT'),
+(271, 'Out for delivery', 'IY271970655HS', '2018-07-03', 'Nueve de Julio', '1468 Marcy Park', '3606', 'AR'),
+(272, 'Payment received', 'AV669619537QU', '2018-10-13', 'Huangshi', '805 Sullivan Street', null, 'CN'),
+(273, 'Held at PO', 'TP305716510ZA', '2019-08-27', 'Boa Esperança', '68116 Merchant Center', '87390-000', 'BR'),
+(274, 'Out for delivery', 'ZZ209219885ET', '2018-01-24', 'Las Palmas', '299 Becker Point', '40054', 'MX'),
+(275, 'Payment received', 'CV478183228KY', '2021-01-18', 'Wola Jachowa', '78 Farragut Way', '01-943', 'PL'),
+(276, 'Payment received', 'DF500829211PE', '2021-07-29', 'Guanshui', '99 Swallow Point', null, 'CN'),
+(277, 'Payment received', 'GS627952641HI', '2021-03-31', 'Al Jubayhah', '10805 Calypso Center', null, 'JO'),
+(278, 'Lost in transit', 'BK977020327EF', '2021-08-04', 'Nanjing', '54 Loftsgordon Place', null, 'CN'),
+(279, 'Payment received', 'KE670687717VN', '2019-05-16', 'Petrovo-Dal’neye', '11317 Red Cloud Lane', '143422', 'RU'),
+(280, 'Dispatched', 'XJ798172223QT', '2018-05-25', 'El Cortezo', '230 Declaration Crossing', null, 'PA'),
+(281, 'Delivered', 'SN155803864VJ', '2021-03-02', 'Dubrovka', '0622 Nova Junction', '242750', 'RU'),
+(282, 'Payment received', 'IY316104055UW', '2019-06-01', 'Longtang', '79654 Cascade Lane', null, 'CN'),
+(283, 'Out for delivery', 'HS884093206UK', '2021-08-19', 'Karangsari', '0 Scoville Lane', null, 'ID'),
+(284, 'Delivered', 'OY469561046CR', '2019-06-03', 'Kihurio', '95095 Harbort Circle', null, 'TZ'),
+(285, 'Delivered', 'KT304918738NB', '2020-11-01', 'Veyno', '18240 Crowley Center', null, 'BY'),
+(286, 'Payment received', 'TY242489612ES', '2019-11-04', 'Negotino', '8 Raven Alley', '1440', 'MK'),
+(287, 'Delivered', 'PX910343053GE', '2019-09-20', 'Feira de Santana', '37957 Jenna Avenue', '44000-000', 'BR'),
+(288, 'Dispatched', 'VQ860353493RN', '2019-07-04', 'Kushnytsya', '6 Talisman Circle', null, 'UA'),
+(289, 'Delivered', 'QR267745543VN', '2019-03-02', 'Anjō', '84 Huxley Court', '473-0938', 'JP'),
+(290, 'Delivered', 'AE239827228ZW', '2019-02-25', 'Mrozy', '98292 Dorton Center', '05-320', 'PL'),
+(291, 'Held at PO', 'TL296765654RJ', '2018-04-01', 'Normanton', '7312 Artisan Point', 'LE15', 'GB'),
+(292, 'Returned to sender', 'PQ731356756OI', '2019-03-05', 'Hushi', '5 School Lane', null, 'CN'),
+(293, 'Out for delivery', 'RF178053952ZC', '2021-02-16', 'Paclolo', '27738 Michigan Junction', '6103', 'PH'),
+(294, 'Payment received', 'AB446683964PG', '2021-10-07', 'Verbilki', '11912 Oak Valley Road', '141930', 'RU'),
+(295, 'Out for delivery', 'GD154085387PF', '2020-07-20', 'Cicheng', '39806 Crest Line Center', null, 'CN'),
+(296, 'Held at PO', 'ZR720102800GF', '2018-04-30', 'Rawawilis', '97 Gina Alley', null, 'ID'),
+(297, 'Out for delivery', 'MF233750405HD', '2018-12-08', 'Guotan', '866 Maple Wood Road', null, 'CN'),
+(298, 'Out for delivery', 'VM043155172YL', '2019-02-27', 'Hashimoto', '36211 Aberg Avenue', '999-8242', 'JP'),
+(299, 'Delivered', 'MT675282304KT', '2020-11-16', 'Veracruz', '84 Aberg Avenue', null, 'HN'),
+(300, 'Dispatched', 'FU230010655UQ', '2018-05-17', 'Toledo', '1568 Ohio Pass', '43615', 'US'),
+(301, 'Payment received', 'XL331172396YY', '2018-09-21', 'Södertälje', '6 Crescent Oaks Place', '151 22', 'SE'),
+(302, 'Payment received', 'FF849934092XD', '2021-01-25', 'Obrera', '712 Melody Point', '88680', 'MX'),
+(303, 'Out for delivery', 'RC807999238EZ', '2019-04-29', 'Burauen', '4 Dryden Lane', '6516', 'PH'),
+(304, 'Dispatched', 'GK295790200XF', '2018-02-11', 'Imsil', '284 Drewry Crossing', null, 'KR'),
+(305, 'Delivered', 'KY360671926SH', '2021-10-17', 'Otavalo', '5 Clyde Gallagher Plaza', null, 'EC'),
+(306, 'Returned to sender', 'HG789889055TS', '2021-04-30', 'Gumi', '1 Forest Dale Terrace', null, 'KR'),
+(307, 'Payment received', 'OT283745473YU', '2018-10-29', 'Ulluaya', '0703 Rutledge Alley', '368324', 'RU'),
+(308, 'Out for delivery', 'NH726366681XX', '2018-08-07', 'Pocrí', '39448 Katie Junction', null, 'PA'),
+(309, 'Delivered', 'JQ708918085GG', '2021-10-29', 'Frederico Westphalen', '1334 Prairie Rose Drive', '98400-000', 'BR'),
+(310, 'Delivered', 'AM290935325KI', '2020-12-14', 'Sao Hai', '22 Manley Street', '18160', 'TH'),
+(311, 'Parcel diverted', 'QJ379887276OY', '2019-10-13', 'Nakhon Nayok', '73999 Del Sol Pass', '26120', 'TH'),
+(312, 'Payment received', 'WU895367640ZD', '2020-07-11', 'Bandhagen', '583 Clemons Way', '124 54', 'SE'),
+(313, 'Dispatched', 'JR105097007ZW', '2021-10-28', 'Sanbao', '4603 Surrey Pass', null, 'CN'),
+(314, 'Payment received', 'TQ130714392UX', '2019-08-18', 'Cabusao', '0 Coleman Pass', '4406', 'PH'),
+(315, 'Payment received', 'NI807835089BU', '2020-12-25', 'Shah Alam', '9952 Westridge Hill', '40612', 'MY'),
+(316, 'Out for delivery', 'JB772228147LJ', '2018-04-02', 'Chandal Bā’ī', '03645 Marcy Hill', null, 'AF'),
+(317, 'Delivered', 'HX006755659FZ', '2018-09-21', 'Montenegro', '743 Tony Place', '633008', 'CO'),
+(318, 'Dispatched', 'ME998581557BY', '2018-02-05', 'Nagareyama', '4 Fieldstone Court', '270-0164', 'JP'),
+(319, 'Payment received', 'KD375744856AI', '2020-05-30', 'Nanlin', '50191 Warrior Point', null, 'CN'),
+(320, 'Parcel diverted', 'XK351762942TA', '2018-10-27', 'Kuybyshev', '69 Johnson Lane', '632351', 'RU'),
+(321, 'Dispatched', 'VO534193616ZT', '2020-09-05', 'Raci Kulon', '031 Springview Center', null, 'ID'),
+(322, 'Out for delivery', 'AX831235216WG', '2021-01-27', 'Hupalivka', '9 Logan Center', null, 'UA'),
+(323, 'Out for delivery', 'QZ400007535FN', '2019-06-24', 'Shangsanji', '295 Independence Hill', null, 'CN'),
+(324, 'Dispatched', 'BJ257687054VI', '2020-10-09', 'Huichang', '43 Comanche Junction', null, 'CN'),
+(325, 'Out for delivery', 'EN764661775OM', '2020-08-15', 'Dafundo', '5951 Stephen Street', '1495-701', 'PT'),
+(326, 'Parcel diverted', 'EG405085118ON', '2018-06-13', 'Chishui', '4 Karstens Plaza', null, 'CN'),
+(327, 'Parcel diverted', 'UR962411461CM', '2021-09-23', 'Xuân Trường', '5112 Arkansas Lane', null, 'VN'),
+(328, 'Lost in transit', 'GD236961521HV', '2018-01-05', 'Zheleznovodsk', '3 Kipling Drive', '357408', 'RU'),
+(329, 'Delivered', 'UZ003044448RP', '2018-01-21', 'Gala', '17295 Moulton Circle', '3090-710', 'PT'),
+(330, 'Delivered', 'ST272507766DJ', '2018-09-12', 'Pavlodol’skaya', '49 8th Pass', '363731', 'RU'),
+(331, 'Delivered', 'OM379237559TU', '2018-11-13', 'Kutno', '5 John Wall Alley', '93-524', 'PL'),
+(332, 'Payment received', 'WV154874558TP', '2020-04-05', 'Muarabuliti', '5944 Messerschmidt Street', null, 'ID'),
+(333, 'Out for delivery', 'ON744832476IG', '2021-09-15', 'Židlochovice', '35958 Hansons Park', '667 01', 'CZ'),
+(334, 'Dispatched', 'II908177416QD', '2021-01-21', 'Bánica', '71 Caliangt Park', '10802', 'DO'),
+(335, 'Delivered', 'JX576553058RO', '2021-04-12', 'Jun’an', '5549 Derek Drive', null, 'CN'),
+(336, 'Parcel diverted', 'TR094309428CV', '2021-03-02', 'Mombok', '014 Iowa Pass', null, 'ID'),
+(337, 'Out for delivery', 'MN787744101EB', '2021-05-26', 'Irkliyevskaya', '8876 Merrick Trail', '353144', 'RU'),
+(338, 'Payment received', 'GN072108695BH', '2020-11-05', 'Vetluga', '01 Myrtle Place', '606860', 'RU'),
+(339, 'Delivered', 'SO996722204XO', '2020-01-20', 'Yushan', '36156 Spaight Road', null, 'CN'),
+(340, 'Out for delivery', 'WH391373382WI', '2021-05-26', 'Załuski', '146 Veith Crossing', '09-142', 'PL'),
+(341, 'Dispatched', 'OW666119340LW', '2020-08-09', 'Fresno', '58 Bluejay Park', '93704', 'US'),
+(342, 'Out for delivery', 'CG836728806VY', '2018-10-18', 'Thaton', '6 Kedzie Pass', null, 'MM'),
+(343, 'Out for delivery', 'NU191399732OH', '2021-07-12', 'Sidu', '47 Sugar Road', null, 'CN'),
+(344, 'Out for delivery', 'SH222695462SV', '2020-03-09', 'Xinning', '8506 Nevada Crossing', null, 'CN'),
+(345, 'Delivered', 'GV391094794BK', '2021-09-12', 'Quimbaya', '70092 Bowman Point', '634027', 'CO'),
+(346, 'Delivered', 'DT200651328OZ', '2018-04-02', 'Kutloanong', '148 Stone Corner Alley', '1984', 'ZA'),
+(347, 'Payment received', 'PF207921966QR', '2021-09-16', 'Tashanta', '970 Basil Terrace', '649787', 'RU'),
+(348, 'Dispatched', 'RH351805950OO', '2018-05-10', 'Klippan', '24 Trailsway Pass', '264 31', 'SE'),
+(349, 'Held at PO', 'EP955575537LL', '2019-09-14', 'Labelle', '148 Old Gate Road', 'N2L', 'CA'),
+(350, 'Dispatched', 'NN442388720IS', '2021-09-11', 'Tongshan', '4 School Parkway', null, 'CN'),
+(351, 'Out for delivery', 'LN181130470EL', '2019-10-14', 'Arteche', '51776 Troy Pass', '6822', 'PH'),
+(352, 'Held at PO', 'YS659096031WX', '2019-06-29', 'Toride', '62835 Express Park', '302-0004', 'JP'),
+(353, 'Parcel diverted', 'EQ071060344QJ', '2021-10-09', 'Zagreb - Centar', '448 Farwell Alley', '10020', 'HR'),
+(354, 'Returned to sender', 'RK397886687TO', '2018-07-17', 'Obiaruku Quarters', '316 Grayhawk Parkway', null, 'NG'),
+(355, 'Out for delivery', 'VR245630088AV', '2018-02-07', 'Gwanda', '23 Columbus Circle', null, 'ZW'),
+(356, 'Dispatched', 'DG247548836LF', '2021-08-20', 'Andir', '4 Merchant Terrace', null, 'ID'),
+(357, 'Payment received', 'PS137449361GV', '2018-02-23', 'Panyuran', '42 Rigney Junction', null, 'ID'),
+(358, 'Returned to sender', 'EH581678326ZX', '2021-07-04', 'Zhangxiong', '8918 Bowman Hill', null, 'CN'),
+(359, 'Parcel diverted', 'UB673116039WT', '2019-12-27', 'Yingde’er', '9325 Hagan Way', null, 'CN'),
+(360, 'Delivered', 'OG340709459SJ', '2018-08-15', 'Nong Bun Nak', '3840 Miller Court', '42130', 'TH'),
+(361, 'Returned to sender', 'FR816072965XY', '2019-11-06', 'Winseler', '7532 Warner Circle', 'L-9696', 'LU'),
+(362, 'Delivered', 'IO316683704GX', '2018-08-19', 'Hejia', '12 Portage Circle', null, 'CN'),
+(363, 'Delivered', 'PA110423498LP', '2018-03-25', 'Badong', '35540 Walton Park', null, 'ID'),
+(364, 'Delivered', 'ZO374966751IO', '2021-08-03', 'Binguang', '9 Valley Edge Alley', '5400', 'PH'),
+(365, 'Lost in transit', 'KM935380916LR', '2018-04-24', 'San Luis', '0888 Browning Drive', '8511', 'PH'),
+(366, 'Held at PO', 'VI826046323RF', '2019-06-03', 'Panguruan', '7885 Victoria Center', null, 'ID'),
+(367, 'Delivered', 'XS628660651TI', '2019-01-04', 'Leśna Podlaska', '76 Springview Junction', '21-542', 'PL'),
+(368, 'Delivered', 'OM319246555LZ', '2018-06-27', 'Nabunturan', '95053 Mayer Terrace', '8106', 'PH'),
+(369, 'Payment received', 'JX417469619NT', '2020-03-27', 'Jistebnice', '5965 Johnson Way', '391 33', 'CZ'),
+(370, 'Returned to sender', 'YC493874773RX', '2019-03-21', 'Mikstat', '011 Stone Corner Street', '63-510', 'PL'),
+(371, 'Delivered', 'RW230076468JM', '2018-01-05', 'Krimpen aan den IJssel', '9 Sage Crossing', '2924', 'NL'),
+(372, 'Lost in transit', 'EM851831224KD', '2021-06-22', 'Czeremcha', '60 Elmside Way', '17-240', 'PL'),
+(373, 'Parcel diverted', 'RX490175522AX', '2018-08-10', 'Pidvolochys’k', '2 Comanche Terrace', null, 'UA'),
+(374, 'Out for delivery', 'LV292231929DD', '2017-12-22', 'Cangkuang', '2738 Daystar Court', null, 'ID'),
+(375, 'Delivered', 'ZY444902132NU', '2018-02-01', 'Vuhlehirs’k', '7 Kipling Terrace', null, 'UA'),
+(376, 'Out for delivery', 'IV290447629IO', '2018-04-06', 'Cullalabo del Sur', '99443 Dakota Alley', '3323', 'PH'),
+(377, 'Payment received', 'BN138628930WC', '2019-06-11', 'Arjawinangun', '3626 Rutledge Drive', null, 'ID'),
+(378, 'Payment received', 'JC696492517GI', '2018-08-01', 'Wuyao', '9788 West Way', null, 'CN'),
+(379, 'Parcel diverted', 'SX936280760SA', '2020-09-17', 'Ciervo Petiso', '378 Harper Court', '3515', 'AR'),
+(380, 'Dispatched', 'RO818368415XI', '2021-01-01', 'Uyuni', '34820 Elmside Pass', null, 'BO'),
+(381, 'Dispatched', 'SK818175864WI', '2019-03-08', 'Miastko', '0 Roxbury Terrace', '77-201', 'PL'),
+(382, 'Delivered', 'WZ992052176OA', '2019-11-25', 'Huanxi', '23 Springs Court', null, 'CN'),
+(383, 'Out for delivery', 'YS209416287OI', '2020-08-30', 'Huayuan', '94 Memorial Avenue', null, 'CN'),
+(384, 'Returned to sender', 'TE039410471IV', '2019-12-02', 'Mesquite', '5422 Almo Crossing', '75185', 'US'),
+(385, 'Delivered', 'LC241768652PG', '2019-11-06', 'Santa Cruz', '01 David Court', '51462', 'MX'),
+(386, 'Parcel diverted', 'VF435770969RQ', '2019-12-03', 'Horní Jelení', '4 Crescent Oaks Pass', '533 74', 'CZ'),
+(387, 'Lost in transit', 'WE868536390WP', '2019-02-04', 'Anuling', '0 Golf Circle', '4501', 'PH'),
+(388, 'Dispatched', 'LM388867932TO', '2018-07-09', 'Cihe', '871 Merchant Circle', null, 'CN'),
+(389, 'Delivered', 'LC499570380WG', '2020-07-05', 'Kostel', '574 Tennyson Crossing', '8331', 'SI'),
+(390, 'Out for delivery', 'XN537693102TI', '2018-04-03', 'Orlando', '1756 Valley Edge Junction', '32835', 'US'),
+(391, 'Delivered', 'EI072022731EH', '2020-02-08', 'Chantilly', '27 Hanson Parkway', '60647 CEDEX', 'FR'),
+(392, 'Returned to sender', 'NV881201589VB', '2020-10-04', 'Sunfang', '77925 Rusk Drive', null, 'CN'),
+(393, 'Delivered', 'YR949823225TU', '2018-10-27', 'Zouiat ech Cheïkh', '10393 Buell Alley', null, 'MA'),
+(394, 'Parcel diverted', 'CQ857822681CB', '2019-02-15', 'Pujocucho', '7485 Shoshone Alley', null, 'PE'),
+(395, 'Delivered', 'II170269209UJ', '2020-11-13', 'Esuk Oron', '9 Maywood Plaza', null, 'NG'),
+(396, 'Lost in transit', 'DX470946441HY', '2017-12-15', 'Ciénaga de Oro', '960 Meadow Ridge Pass', '232538', 'CO'),
+(397, 'Payment received', 'HA468777207SV', '2019-06-10', 'Sioah', '6833 Logan Street', null, 'ID'),
+(398, 'Delivered', 'DB870939540AW', '2018-08-23', 'Kivertsi', '13374 Stuart Way', null, 'UA'),
+(399, 'Held at PO', 'PH447415650IA', '2018-11-27', 'Wuku', '18990 Hazelcrest Plaza', null, 'CN'),
+(400, 'Out for delivery', 'UD943844338QN', '2021-01-21', 'Mariana', '30301 Morningstar Way', '35420-000', 'BR'),
+(401, 'Payment received', 'WQ488109479VJ', '2018-06-01', 'Yerevan', '20 Reinke Court', null, 'AM'),
+(402, 'Dispatched', 'PI969126478GK', '2021-01-28', 'Kolno', '07916 Atwood Drive', '18-500', 'PL'),
+(403, 'Held at PO', 'YT330597748KK', '2018-12-13', 'Plátanos', '8 Loomis Hill', null, 'GR'),
+(404, 'Out for delivery', 'TR418837459ED', '2020-02-08', 'Shalizhai', '0 Melody Plaza', null, 'CN'),
+(405, 'Held at PO', 'TF770285435RY', '2020-08-18', 'Caen', '81 Pine View Alley', '14008 CEDEX 1', 'FR'),
+(406, 'Dispatched', 'WO932113692OG', '2019-06-09', 'Santi Suk', '58517 Derek Road', '61150', 'TH'),
+(407, 'Dispatched', 'TA664717139OH', '2021-03-21', 'Villa Ocampo', '72 Duke Crossing', '3580', 'AR'),
+(408, 'Held at PO', 'OM495336727QW', '2021-07-22', 'Tiébo', '3 Reindahl Pass', null, 'SN'),
+(409, 'Payment received', 'RA178694812QW', '2020-05-17', 'San Juan del Cesar', '2053 Tennessee Alley', '444038', 'CO'),
+(410, 'Dispatched', 'YZ866572181TO', '2019-09-04', 'Ankou', '050 Gale Park', null, 'CN'),
+(411, 'Payment received', 'JC959112021KW', '2020-10-08', 'Saint-Étienne', '39 Scoville Way', '42045 CEDEX 1', 'FR'),
+(412, 'Payment received', 'IV364666370LY', '2021-03-10', 'Garmo', '736 Cottonwood Terrace', null, 'CN'),
+(413, 'Dispatched', 'DB006823406JD', '2019-06-04', 'Bagarmossen', '03677 South Way', '128 48', 'SE'),
+(414, 'Out for delivery', 'LU891214383KS', '2021-05-08', 'Duancun', '3771 Riverside Point', null, 'CN'),
+(415, 'Dispatched', 'ZJ573040864HH', '2019-12-02', 'Genova', '95338 Tennyson Drive', '16124', 'IT'),
+(416, 'Delivered', 'MR928112608VO', '2018-07-05', 'Pysznica', '55 Carpenter Avenue', '37-403', 'PL'),
+(417, 'Payment received', 'VU483206581IC', '2021-05-06', 'Sugihmukti', '4 Hagan Park', null, 'ID'),
+(418, 'Payment received', 'QA902163000FB', '2018-01-11', 'Quintã', '13118 Straubel Crossing', '5100-724', 'PT'),
+(419, 'Payment received', 'RR565269598WA', '2019-04-25', 'Tovarnik', '1336 Schmedeman Street', '32249', 'HR'),
+(420, 'Delivered', 'UH460377868WR', '2018-05-14', 'Jaqué', '82688 Karstens Park', null, 'PA'),
+(421, 'Payment received', 'QR530018350GX', '2021-07-24', 'Jindong', '53 Kennedy Point', null, 'CN'),
+(422, 'Delivered', 'WX631769250PW', '2020-02-02', 'Murygino', '0899 Reinke Plaza', '613641', 'RU'),
+(423, 'Parcel diverted', 'UB473491887NQ', '2020-11-26', 'Budenovetc', '4 Iowa Court', '307374', 'RU'),
+(424, 'Dispatched', 'XO228937645RQ', '2018-03-06', 'Shaoxing', '67670 Paget Street', null, 'CN'),
+(425, 'Dispatched', 'KZ403422086RE', '2019-03-07', 'Lexington', '586 Milwaukee Court', '40515', 'US'),
+(426, 'Delivered', 'PL994987761HM', '2021-11-26', 'Zhong’an', '9 Hansons Avenue', null, 'CN'),
+(427, 'Delivered', 'GE914805707DA', '2021-10-24', 'Susanino', '26654 Orin Pass', '157090', 'RU'),
+(428, 'Out for delivery', 'RR903609398PM', '2021-04-16', 'Sanxi', '42899 Bunting Pass', null, 'CN'),
+(429, 'Payment received', 'HL194445193RC', '2021-06-07', 'Kabarnet', '183 Carberry Terrace', null, 'KE'),
+(430, 'Out for delivery', 'IU310961158GF', '2021-04-10', 'Qo’ng’irot Shahri', '6 Elka Avenue', null, 'UZ'),
+(431, 'Out for delivery', 'OP362076428VX', '2020-02-21', 'Höllviken', '91 Tomscot Park', '236 41', 'SE'),
+(432, 'Dispatched', 'XU844839354JK', '2020-12-16', 'Vittoriosa', '320 Parkside Parkway', 'ZTN', 'MT'),
+(433, 'Out for delivery', 'RN726557270PR', '2019-07-23', 'Pak Chong', '890 Buell Lane', '30130', 'TH'),
+(434, 'Payment received', 'JH572300291QO', '2019-07-18', 'Shangwuzhuang', '189 Tomscot Crossing', null, 'CN'),
+(435, 'Returned to sender', 'ZQ184916724SF', '2021-09-04', 'Lazarevac', '10605 Lillian Trail', null, 'RS'),
+(436, 'Dispatched', 'NK942635389YX', '2021-03-09', 'Ozerne', '061 Towne Point', null, 'UA'),
+(437, 'Dispatched', 'DI615164243EL', '2018-05-19', 'Tulsa', '95454 Portage Plaza', '74184', 'US'),
+(438, 'Out for delivery', 'RJ616503925CW', '2021-07-16', 'Ambatolampy', '0 Shoshone Way', null, 'MG'),
+(439, 'Out for delivery', 'FS935085330NG', '2018-01-28', 'Bamusso', '80 Duke Court', null, 'CM'),
+(440, 'Out for delivery', 'QJ562071843VE', '2021-10-11', 'Yuelai', '694 Jay Place', null, 'CN'),
+(441, 'Dispatched', 'AT737583569NF', '2021-03-23', 'Sinacaban', '3 Sommers Park', '7203', 'PH'),
+(442, 'Dispatched', 'NY126476500MT', '2020-07-12', 'Vessada', '83282 Dexter Lane', '3810-609', 'PT'),
+(443, 'Returned to sender', 'XS074559581TW', '2019-01-05', 'Achanizo', '9 Kennedy Crossing', null, 'PE'),
+(444, 'Held at PO', 'TW426309970PK', '2020-12-03', 'Slavuta', '50945 Wayridge Crossing', null, 'UA'),
+(445, 'Delivered', 'FF540933398MJ', '2018-06-21', 'Horta', '6 Lillian Avenue', '5155-305', 'PT'),
+(446, 'Dispatched', 'QU536007668OG', '2021-08-25', 'Kara Suu', '0299 Luster Junction', null, 'KG'),
+(447, 'Dispatched', 'GI881745792DT', '2018-07-06', 'Buenos Aires', '1005 Cherokee Avenue', '1871', 'AR'),
+(448, 'Parcel diverted', 'CX023908264BL', '2018-04-20', 'Tazhuang', '21 Daystar Trail', null, 'CN'),
+(449, 'Lost in transit', 'BD144216834KD', '2021-02-13', 'Serawai', '580 Ridgeway Parkway', null, 'ID'),
+(450, 'Out for delivery', 'HJ707462555UF', '2018-06-27', 'Macon', '33 Barby Center', '31205', 'US'),
+(451, 'Payment received', 'FZ332600564CE', '2018-03-31', 'Zlaté Hory', '795 Summer Ridge Hill', '793 76', 'CZ'),
+(452, 'Out for delivery', 'GC901874393YI', '2020-03-28', 'Moss', '9837 Transport Drive', '1536', 'NO'),
+(453, 'Out for delivery', 'VW735861273PH', '2021-04-16', 'Dalarik', '3132 Luster Lane', null, 'AM'),
+(454, 'Lost in transit', 'GC308028077UZ', '2019-12-18', 'Houping', '57 Jana Trail', null, 'CN'),
+(455, 'Parcel diverted', 'UY601937711CP', '2018-01-02', 'Aurora', '2 Marquette Lane', '7020', 'PH'),
+(456, 'Returned to sender', 'NV016872936DD', '2018-10-11', 'Jinhu', '6414 Mesta Park', null, 'CN'),
+(457, 'Returned to sender', 'MY641125697XY', '2019-05-11', 'Krasnovishersk', '36 Kenwood Road', '618593', 'RU'),
+(458, 'Dispatched', 'QJ031461074PH', '2018-02-03', 'Energetik', '947 Heffernan Way', '600902', 'RU'),
+(459, 'Delivered', 'TJ215798706FW', '2021-11-19', 'Huntsville', '40 Melvin Terrace', '35895', 'US'),
+(460, 'Dispatched', 'FN165435676BH', '2021-02-02', 'Savonranta', '3490 Garrison Court', '58300', 'FI'),
+(461, 'Dispatched', 'PL552507357RI', '2018-10-31', 'Nedašov', '71373 Browning Place', '763 32', 'CZ'),
+(462, 'Out for delivery', 'FY557071118VF', '2020-11-18', 'Tegarenkrajan', '02411 3rd Hill', null, 'ID'),
+(463, 'Dispatched', 'ME429592719DP', '2020-09-02', 'La Calera', '06600 Holy Cross Terrace', '4158', 'AR'),
+(464, 'Held at PO', 'BF036762881IH', '2018-08-23', 'Hayil', '1586 Declaration Junction', null, 'SA'),
+(465, 'Delivered', 'YW607149865RP', '2021-07-26', 'Ḩawsh ‘Īsá', '1360 Holmberg Plaza', null, 'EG'),
+(466, 'Delivered', 'XA658857756CX', '2021-11-21', 'Oinófyta', '74 Longview Hill', null, 'GR'),
+(467, 'Out for delivery', 'UQ063321436IR', '2021-05-07', 'Delanggu', '02808 Maywood Hill', null, 'ID'),
+(468, 'Dispatched', 'JN197984971YE', '2020-02-02', 'San Pablo', '41 Russell Court', null, 'VE'),
+(469, 'Lost in transit', 'GE503715369MB', '2021-06-12', 'Changzhou', '802 Grim Trail', null, 'CN'),
+(470, 'Delivered', 'KK520932669OV', '2019-05-27', 'Ayacucho', '75 Marquette Lane', null, 'PE'),
+(471, 'Delivered', 'AK315289649TZ', '2019-10-02', 'Asikkala', '91 Melrose Point', '17320', 'FI'),
+(472, 'Out for delivery', 'LZ346582305LQ', '2018-12-03', 'Kentau', '0507 Blaine Pass', null, 'KZ'),
+(473, 'Held at PO', 'QR271602379XC', '2017-12-21', 'Łodygowice', '55 Marcy Drive', '34-325', 'PL'),
+(474, 'Dispatched', 'KH585648462ZU', '2020-09-12', 'Granja do Tedo', '4097 Grasskamp Court', '5120-165', 'PT'),
+(475, 'Parcel diverted', 'XW792295465PL', '2018-12-22', 'Houjie', '1936 Arrowood Avenue', null, 'CN'),
+(476, 'Delivered', 'DJ227357644WU', '2018-05-13', 'Río Grande', '00 Forest Crossing', null, 'PE'),
+(477, 'Parcel diverted', 'NB652031533RS', '2019-10-01', 'Qingyun', '2763 Stang Plaza', null, 'CN'),
+(478, 'Out for delivery', 'JY275506374JE', '2021-09-05', 'Masty', '8383 Westerfield Crossing', null, 'BY'),
+(479, 'Delivered', 'WL489911029QL', '2021-05-03', 'Parengan', '9 Mesta Plaza', null, 'ID'),
+(480, 'Payment received', 'SV875022337AC', '2019-10-28', 'Chortkiv', '2888 Welch Junction', null, 'UA'),
+(481, 'Payment received', 'ZY651830609IZ', '2018-05-27', 'Hesi', '79 Lake View Place', null, 'CN'),
+(482, 'Dispatched', 'TS182450499UE', '2020-05-17', 'Nanxindian', '242 Jana Center', null, 'CN'),
+(483, 'Delivered', 'HX346216364XA', '2020-11-22', 'Doetinchem', '511 Lukken Terrace', '7004', 'NL'),
+(484, 'Out for delivery', 'HF608875347DR', '2019-10-19', 'Paços', '2397 Marquette Plaza', '3700-803', 'PT'),
+(485, 'Lost in transit', 'XP561627393JT', '2019-05-20', 'Ševica', '3 Manufacturers Avenue', null, 'RS'),
+(486, 'Payment received', 'CV205548855BS', '2019-06-23', 'Old Shinyanga', '719 Fordem Way', null, 'TZ'),
+(487, 'Payment received', 'LH094096727SM', '2020-12-04', 'Al Qaţīf', '67508 Ridgeway Point', null, 'SA'),
+(488, 'Out for delivery', 'QW177668833RW', '2021-02-18', 'Yongfeng', '54404 Pennsylvania Road', null, 'CN'),
+(489, 'Out for delivery', 'RH936102832RG', '2020-09-01', 'San Isidro', '5 Vernon Park', '54730', 'MX'),
+(490, 'Delivered', 'MF666210849SZ', '2021-04-04', 'Zhuozishan', '1091 Acker Alley', null, 'CN'),
+(491, 'Dispatched', 'CJ486921838EE', '2020-04-14', 'Chenggan', '15592 Portage Street', null, 'CN'),
+(492, 'Parcel diverted', 'ME097707395YE', '2020-02-09', 'Clonskeagh', '41 Troy Crossing', 'D04', 'IE'),
+(493, 'Delivered', 'JB973576577QR', '2019-05-17', 'Grati Satu', '3 Ryan Pass', null, 'ID'),
+(494, 'Returned to sender', 'IN891349452LJ', '2019-09-01', 'Bantilan', '4838 Arkansas Court', null, 'ID'),
+(495, 'Out for delivery', 'YE483535645SU', '2020-01-01', 'Shiziqiao', '289 Memorial Avenue', null, 'CN'),
+(496, 'Payment received', 'KH449051090PD', '2019-12-10', 'Krasnodon', '78 Swallow Alley', null, 'UA'),
+(497, 'Dispatched', 'PE211288701VL', '2019-08-10', 'Tawangrejo', '03 Norway Maple Parkway', null, 'ID'),
+(498, 'Delivered', 'DB496139827VO', '2018-05-18', 'Dahu', '8450 Gale Street', null, 'CN'),
+(499, 'Out for delivery', 'PG625268304PB', '2017-12-22', 'Quilpué', '23379 Stang Pass', null, 'CL'),
+(500, 'Dispatched', 'SN381400819PM', '2020-02-14', 'Mahuta', '387 Gerald Junction', null, 'TZ');
