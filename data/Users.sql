@@ -6,6 +6,7 @@ create table Users (
 	password VARCHAR(50),
     PRIMARY KEY(user_id)
 );
+
 insert into Users (user_id, first_name, last_name, email, password) values (1, 'Tabatha', 'Swainsbury', 'tswainsbury0@telegraph.co.uk', 'dukm0kg3qyt762y22azp');
 insert into Users (user_id, first_name, last_name, email, password) values (2, 'Tiertza', 'Parham', 'tparham1@youtu.be', '8j9e552dpq43qdnq523n');
 insert into Users (user_id, first_name, last_name, email, password) values (3, 'Janice', 'Ferrettini', 'jferrettini2@cloudflare.com', 'mntqmywbyvtcpokneyqi');

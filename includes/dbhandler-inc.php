@@ -1,7 +1,7 @@
 <?php
 // Database login credentials
 $username = "s5210168";
-$password = "7FnKAEM9qK7Pe7jwVEWVCFxECd4hug9V";
+$dbpassword = "7FnKAEM9qK7Pe7jwVEWVCFxECd4hug9V";
 $host = "db.bucomputing.uk";
 $port = 6612; 
 $database = $username;
@@ -17,11 +17,12 @@ $connection = mysqli_init(); // Initializes MySQLi and returns a resource for us
         mysqli_ssl_set($connection, NULL, NULL, NULL, '/public_html/sys_tests', NULL);
 
         // Connect the MySQL connection
-        mysqli_real_connect($connection, $host, $username, $password, $database, $port, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
+        mysqli_real_connect($connection, $host, $username, $dbpassword, $database, $port, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
         if (mysqli_connect_errno()) 
         { // If connection error
             // Display error message and stop the script. We can't do any database work as there is no connection to use
             echo "<p>Failed to connect to MySQL. " .
             "Error (" . mysqli_connect_errno() . "): " . mysqli_connect_error() . "</p>";
         } 
-    }
+    } 
+mysqli_set_charset($connection, "utf8"); 

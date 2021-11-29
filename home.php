@@ -1,5 +1,5 @@
 <?php include_once "nav.php" ?>
-<?php require "connectdb.php"?>
+<?php require_once 'includes/dbhandler-inc.php'?>
 
 <h1>Dashboard</h1>
 

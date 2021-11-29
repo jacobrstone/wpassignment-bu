@@ -1,4 +1,4 @@
-<?php require "connectdb.php"?>
+<?php require_once 'includes/dbhandler-inc.php'?>
 <?php include_once "nav.php" ?>
     <h1>Admin View - All packages, Trackers, Destinations and Dates</h1>
     <?php 
@@ -13,6 +13,7 @@
 
     // stores the database connection data, from connectdb ($connection), and the query data $get_parcel_data into a $result variable
     $result = mysqli_query($connection, $get_parcel_data); ?>
+    <?php mysqli_close($connection); ?>
     <table> <!-- HTML Table to format all the MySQL data -->
         <caption>Parcels</caption>
         <tr id="head">
@@ -41,7 +42,6 @@
             echo "</tr>";
         }
         // finally, close the connection once we're finished with it
-        mysqli_close($connection);
         ?>
     </table>
 

@@ -9,6 +9,8 @@
 <body>
     <nav>
     <a href="home.php">Home</a>
+    <a href="login.php">Login</a>
+    <a href="signup.php">Sign Up</a>
     <a href="AdminView.php">Admin</a>
     <a href="TrackerView.php">Track</a>   
     </nav>
