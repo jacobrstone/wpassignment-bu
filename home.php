@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOTS | Delivery Order Tracking Service</title>
-</head>
-<body>
-    <h1>Dashboard</h1>
+<?php include_once "nav.php" ?>
+<?php require "connectdb.php"?>
 
-    
-</body>
-</html>
+<h1>Dashboard</h1>
+
+<p>Tracking Number*</p>
+
+<input type="text" id="tracking_number_input" placeholder="e.g. AA123456789UK">
+<button id="search_button">Track Parcel</button>
+
+
+<?php include_once "footer.php" ?>
+
