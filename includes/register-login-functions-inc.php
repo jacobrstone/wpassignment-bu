@@ -1,4 +1,6 @@
 <?php 
+session_start(); 
+// All functions below here are for REGSITERING a new user 
 
 // Empty field check
 function emptyInputSignUp($firstName, $secondName, $email, $password, $passwordVerified) 
@@ -59,7 +61,8 @@ function matchPassword($password, $passwordVerified)
 
 function usernameExists($connection, $email) // this can function as both our signup and our login function 
 {
-    $query = "SELECT * FROM Users WHERE email = ?;"; 
+    $query = "SELECT * FROM Users WHERE email = ?"; 
+    
     // using a prepared statement, so that users cannot enter code into the textfields and break website, stopping injection and enhancing security.
     $statement = mysqli_stmt_init($connection);
     if(!mysqli_stmt_prepare($statement, $query)) // checking if the prepared statement fails, before checking for success (for security purposes) 
@@ -70,6 +73,9 @@ function usernameExists($connection, $email) // this can function as both our si
     // pass in the statement to execute, and the data types of the other parameters (N '<symbol> for n parameters') 1 's' for 1 parameter ($email)
     mysqli_stmt_bind_param($statement, "s", $email);
     mysqli_stmt_execute($statement); // now run the statement 
+    
+    // $result = mysqli_query($connection, $query); 
+
     $resultData = mysqli_stmt_get_result($statement); // get the data from the just executed SQL statement
 
     // this if will complete two functions. 
@@ -77,13 +83,14 @@ function usernameExists($connection, $email) // this can function as both our si
     // if false, set result to false and return it, which throws the exception in our signup-inc.php script
     if($row = mysqli_fetch_assoc($resultData)) // create variable row as we fetch resultData as an associative array and check if its true
     {
-        return $row;
+        return $row; 
     } 
     else 
     {
         $result = false; 
         return $result; 
     }
+    // mysqli_close($connection); 
     mysqli_stmt_close($statement);
 }
 
@@ -106,4 +113,50 @@ function createUser($connection, $firstName, $secondName, $email, $password) // 
     mysqli_stmt_close($statement); // close the prepared statement 
     header("location: ../signup.php?error=none"); // send the user back to the signup page 
     exit();
+}
+
+// All functions below here are for LOGGING IN an already registered user 
+
+// Checking that the user isn't trying to log in with blank credentials 
+function emptyInputLogin($username, $user_password) 
+{
+    $result = false;
+    if(empty($username) || empty($user_password)) // check that neither username or password fields are not empty
+    {
+        $result = true;
+    }
+    else 
+    {
+        $result = false;
+    }
+    return $result; // return a boolean 
+}
+
+function loginUser($connection, $email, $password)
+{
+    $usernameExists = usernameExists($connection, $email);  
+
+    if($usernameExists === false)
+    {
+        header("location: ../login.php?error=invalidLogin"); 
+        exit();
+    }
+
+    $passwordHashed = $usernameExists["password"]; // grabbing the hashed password from the database
+    $checkPassword = password_verify($password, $passwordHashed); // if this returns true, we know they match
+
+    if($checkPassword === false) // if checkPassword is false, send the user back to the session and exit the script
+    {
+        header("location: ../login.php?error=wrongPassword");
+        exit();
+    }
+    else if($checkPassword === true) // if true 
+    {
+        session_start(); // create a new session upon successful login
+        // create session super globals that access the usernameExists associative array to obtain DB columns 
+        $_SESSION["userid"] = $usernameExists["email"]; 
+        $_SESSION["password"] = $usernameExists["password"];
+        header("location: ../home.php"); 
+        exit();
+    }
 }

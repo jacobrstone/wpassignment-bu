@@ -1,9 +1,9 @@
-create table Users (
+ create table Users (
 	user_id INT AUTO_INCREMENT,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
 	email VARCHAR(50),
-	password VARCHAR(50),
+	password VARCHAR(128),
     PRIMARY KEY(user_id)
 );
 
