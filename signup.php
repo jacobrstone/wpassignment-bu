@@ -12,4 +12,35 @@
     </form>
 </section>
 
+<?php 
+
+    $errorMessage = $_GET["error"];
+
+    switch($errorMessage)
+    {
+        case "emptyInput":
+            echo "<p>Please fill in all fields</p>";
+            break; 
+        case "invalidName":
+            echo "<p>Please enter an appropriate name</p>"; 
+            break;
+        case "invalidEmail":
+            echo "<p>Please enter a valid email</p>";
+            break;
+        case "passwordMismatch": 
+            echo "<p>Please make sure both passwords are matching</p>";
+            break; 
+        case "usernameTaken": 
+            echo "<p>That email is already in use</p>"; 
+            break;
+        case "statementFailed":
+            echo "<p>Oh, it seems something went wrong - Try again!</p>"; 
+            break;
+        case "none": 
+            echo "<p>Congrats, you've signed up!</p>";
+            break;
+    }
+?>
+
+
 <?php include_once 'footer.php' ?>
