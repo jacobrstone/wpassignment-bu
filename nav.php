@@ -11,13 +11,13 @@
     <nav>
     <a href="home.php">Home</a>
     <?php
-    if(isset($_SESSION["userid"])) 
-    {
+    if(isset($_SESSION["userid"])) // checking that the user is already logged in
+    { // display these links instead, if they are logged in
         echo "<a href='account.php'>My Account</a>"; 
         echo "<a href='includes/logout-inc.php'>Log Out</a>"; 
     }
     else 
-    {
+    { // if they aren't logged in, offer options to sign up or login 
         echo "<a href='signup.php'>Sign Up</a>";
         echo "<a href='login.php'>Login</a>";
     }
