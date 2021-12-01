@@ -6,7 +6,7 @@
         $secondName = $_POST['second-name'];
         $email = $_POST['email'];
         $user_password = $_POST['password'];
-        $passwordVerified = $_POST['verify-password'];
+        $passwordVerified = $_POST['verify-password']; 
         // including our database handling script and credential verifying scripts
         require_once 'dbhandler-inc.php';
         require_once 'register-login-functions-inc.php'; 
@@ -38,7 +38,7 @@
             exit();
         }
         
-        createUser($connection, $firstName, $secondName, $email, $user_password); 
+        createUser($connection, $firstName, $secondName, $email, $user_password, 0); 
     }
     else {
         header("location: ../signup.php"); 

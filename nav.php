@@ -9,20 +9,24 @@
 </head>
 <body>
     <nav>
-    <a href="home.php">Home</a>
-    <?php
-    if(isset($_SESSION["userid"])) // checking that the user is already logged in
-    { // display these links instead, if they are logged in
-        echo "<a href='account.php'>My Account</a>"; 
-        echo "<a href='includes/logout-inc.php'>Log Out</a>"; 
-    }
-    else 
-    { // if they aren't logged in, offer options to sign up or login 
-        echo "<a href='signup.php'>Sign Up</a>";
-        echo "<a href='login.php'>Login</a>";
-    }
-    ?>
-    <a href="AdminView.php">Admin</a>
-    <a href="TrackerView.php">Track</a>   
+        <ul>
+            <li><a href="home.php">Home</a></li>
+            <?php
+            if(isset($_SESSION["userid"])) // checking that the user is already logged in
+            { // display these links instead, if they are logged in
+                echo "<li><a href='account.php'>My Account</a></li>"; 
+                echo "<li><a href='includes/logout-inc.php'>Log Out</a></li>"; 
+                if($_SESSION["adminStatus"] === 1)
+                {
+                    echo "<li><a href='AdminView.php'>Admin</a></li>";
+                }
+            }
+            else 
+            { // if they aren't logged in, offer options to sign up or login 
+                echo "<li><a href='signup.php'>Sign Up</a></li>";
+                echo "<li><a href='login.php'>Login</a></li>";
+            }
+            ?>
+        </ul>
     </nav>
     <hr>

@@ -5,9 +5,10 @@
 
 <p>Tracking Number*</p>
 
-<input type="text" id="tracking_number_input" placeholder="e.g. AA123456789UK">
-<button id="search_button">Track Parcel</button>
-
+<form action="TrackerView.php" method="POST">
+    <input type="text" id="tracking_number_input" placeholder="e.g. AA123456789UK">
+    <button id="search_button">Track Parcel</button>
+</form>
 
 <?php include_once "footer.php" ?>
 

@@ -94,9 +94,9 @@ function usernameExists($connection, $email) // this can function as both our si
     mysqli_stmt_close($statement);
 }
 
-function createUser($connection, $firstName, $secondName, $email, $password) // this can function as both our signup and our login function 
+function createUser($connection, $firstName, $secondName, $email, $password, $adminStatus) // this can function as both our signup and our login function 
 {
-    $query = "INSERT INTO Users(first_name, last_name, email, password) VALUES(?, ?, ?, ?);"; 
+    $query = "INSERT INTO Users(first_name, last_name, email, password, adminStatus) VALUES(?, ?, ?, ?, ?);"; 
     // using a prepared statement, so that users cannot enter code into the textfields and break website, stopping injection and enhancing security.
     $statement = mysqli_stmt_init($connection);
     if(!mysqli_stmt_prepare($statement, $query)) // checking if the prepared statement fails, before checking for success (for security purposes) 
@@ -108,7 +108,7 @@ function createUser($connection, $firstName, $secondName, $email, $password) // 
     // hasing the password - so that anyone who somehow gains access to the DB / data breach occures, they cannot see the raw password data 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT); 
     // pass in the statement to execute, and the data types of the other parameters (each 's' is datatype of parameter) 4 's' for $username, and $email
-    mysqli_stmt_bind_param($statement, "ssss", $firstName, $secondName, $email, $hashedPassword);
+    mysqli_stmt_bind_param($statement, "ssssi", $firstName, $secondName, $email, $hashedPassword, $adminStatus);
     mysqli_stmt_execute($statement); // now run the statement 
     mysqli_stmt_close($statement); // close the prepared statement 
     header("location: ../signup.php?error=none"); // send the user back to the signup page 
@@ -152,10 +152,11 @@ function loginUser($connection, $email, $password)
     }
     else if($checkPassword === true) // if true 
     {
-        session_start(); // create a new session upon successful login
+        // create a new session upon successful login - (done on line 1 of script)
         // create session super globals that access the usernameExists associative array to obtain DB columns 
         $_SESSION["userid"] = $usernameExists["email"]; 
         $_SESSION["password"] = $usernameExists["password"];
+        $_SESSION["adminStatus"] = $usernameExists["adminStatus"]; 
         header("location: ../home.php"); 
         exit();
     }

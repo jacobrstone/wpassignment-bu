@@ -19,6 +19,9 @@
         case "wrongPassword":
             echo "<p>Password incorrect</p>"; 
             break;
+        case "wrongEmail":
+            echo "<p>Email incorrect</p>"; 
+            break;
     }
 ?>
 <?php include_once 'footer.php' ?>
