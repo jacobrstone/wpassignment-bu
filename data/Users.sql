@@ -4,10 +4,9 @@ create table Users (
 	last_name VARCHAR(50)NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	password VARCHAR(150) NOT NULL,
-	adminStatus INT NOT NULL
+	adminStatus INT(1) NOT NULL, 
+    PRIMARY KEY(user_id)
 );
-
-insert into Users (user_id, first_name, last_name, email, password, adminStatus) values (101,'admin', 'test', 'admin@test.com', 'admin', 1);
 
 insert into Users (user_id, first_name, last_name, email, password, adminStatus) values (1, 'Rycca', 'Greaves', 'rgreaves0@imageshack.us', 'a3ylohhuoffy6cckr9qa', 0);
 insert into Users (user_id, first_name, last_name, email, password, adminStatus) values (2, 'Dal', 'Casolla', 'dcasolla1@last.fm', 'h4qfbl386mut6gi1osoe', 0);

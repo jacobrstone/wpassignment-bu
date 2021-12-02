@@ -1,6 +1,6 @@
 <?php 
-header("location: ../home.php"); // make sure no user can navigate to this script via the url (if they do, boot them to the home page)
-exit();
+// header("location: ../home.php"); // make sure no user can navigate to this script via the url (if they do, boot them to the home page)
+// exit();
 session_start(); 
 // All functions below here are for REGSITERING a new user 
 
