@@ -12,8 +12,9 @@
     ORDER BY parcels.order_date DESC, parcels.tracking_number LIMIT 25";
 
     // stores the database connection data, from connectdb ($connection), and the query data $get_parcel_data into a $result variable
-    $result = mysqli_query($connection, $get_parcel_data); ?>
-    <?php mysqli_close($connection); ?>
+    $result = mysqli_query($connection, $get_parcel_data);
+    mysqli_close($connection); // close the connection, as we have our data stored in result
+    ?>
     <table> <!-- HTML Table to format all the MySQL data -->
         <caption>Parcels</caption>
         <tr id="head">
@@ -43,7 +44,6 @@
             "<td>" . $row["adminStatus"] . "</td>";
             echo "</tr>";
         }
-        // finally, close the connection once we're finished with it
         ?>
     </table>
 

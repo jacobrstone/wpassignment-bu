@@ -1,9 +1,18 @@
 <?php 
 header("location: ../home.php"); // make sure no user can navigate to this script via the url (if they do, boot them to the home page)
+exit();
 session_start(); 
 // All functions below here are for REGSITERING a new user 
 
-// Empty field check
+/**
+ * Checks if the user input fields are null or not
+ * @param string $firstName - first name input box on the sign up page
+ * @param string $secondName - second name input box on the sign up page 
+ * @param string $email - user's email input box on the sign up page 
+ * @param string $password - user's password input box on the sign up page 
+ * @param string $passwordVerified - the repeat password input box on the sign up page
+ * @return boolean returns either true or false after checking all the inputs for nullness
+ */
 function emptyInputSignUp($firstName, $secondName, $email, $password, $passwordVerified) 
 {
     $result=false; // set result to false by default
@@ -73,9 +82,7 @@ function usernameExists($connection, $email) // this can function as both our si
     }
     // pass in the statement to execute, and the data types of the other parameters (N '<symbol> for n parameters') 1 's' for 1 parameter ($email)
     mysqli_stmt_bind_param($statement, "s", $email);
-    mysqli_stmt_execute($statement); // now run the statement 
-    
-    // $result = mysqli_query($connection, $query); 
+    mysqli_stmt_execute($statement); // now run the statement  
 
     $resultData = mysqli_stmt_get_result($statement); // get the data from the just executed SQL statement
 
@@ -91,7 +98,7 @@ function usernameExists($connection, $email) // this can function as both our si
         $result = false; 
         return $result; 
     }
-    // mysqli_close($connection); 
+    // mysqli_close(the sql statement + connection); 
     mysqli_stmt_close($statement);
 }
 
