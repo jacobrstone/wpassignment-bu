@@ -19,7 +19,7 @@
         case "wrongPassword":
             echo "<p>Password incorrect</p>"; 
             break;
-        case "wrongEmail":
+        case "invalidEmail":
             echo "<p>Email incorrect</p>"; 
             break;
     }

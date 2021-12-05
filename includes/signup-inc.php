@@ -32,7 +32,7 @@
             header("location: ../signup.php?error=passwordMismatch"); 
             exit();
         }
-        if(usernameExists($connection, $email) !== false) 
+        if(getUser($connection, $email) !== false) 
         {
             header("location: ../signup.php?error=usernameTaken"); 
             exit();

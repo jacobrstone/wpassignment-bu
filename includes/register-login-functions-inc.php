@@ -69,7 +69,7 @@ function matchPassword($password, $passwordVerified)
     return $result;
 }
 
-function usernameExists($connection, $email) // this can function as both our signup and our login function 
+function getUser($connection, $email) // this can function as both our signup and our login function 
 {
     $query = "SELECT * FROM Users WHERE email = ?"; 
     
@@ -142,15 +142,15 @@ function emptyInputLogin($username, $user_password)
 
 function loginUser($connection, $email, $password)
 {
-    $usernameExists = usernameExists($connection, $email);  
+    $getUser = getUser($connection, $email);  
 
-    if($usernameExists === false)
+    if($getUser === false)
     {
         header("location: ../login.php?error=invalidLogin"); 
         exit();
     }
 
-    $passwordHashed = $usernameExists["password"]; // grabbing the hashed password from the database
+    $passwordHashed = $getUser["password"]; // grabbing the hashed password from the database
     $checkPassword = password_verify($password, $passwordHashed); // if this returns true, we know they match
 
     if($checkPassword === false) // if checkPassword is false, send the user back to the session and exit the script
@@ -161,11 +161,53 @@ function loginUser($connection, $email, $password)
     else if($checkPassword === true) // if true 
     {
         // create a new session upon successful login - (done on line 1 of script)
-        // create session super globals that access the usernameExists associative array to obtain DB columns 
-        $_SESSION["userid"] = $usernameExists["email"]; 
-        $_SESSION["password"] = $usernameExists["password"];
-        $_SESSION["adminStatus"] = $usernameExists["adminStatus"]; 
+        // create session super globals that access the getUser associative array to obtain DB columns 
+        $_SESSION["userid"] = $getUser["email"]; 
+        $_SESSION["password"] = $getUser["password"];
+        $_SESSION["adminStatus"] = $getUser["adminStatus"]; 
+        $_SESSION["fullname"] = $getUser["first_name"] . " " . $getUser["last_name"];
         header("location: ../index.php"); 
         exit();
     }
 }
+
+// delete user function 
+
+function deleteUser($connection, $email, $password)
+{
+    $getUser = getUser($connection, $email); 
+
+    if($getUser === false)
+    {
+        header("location: ../login.php?error=noUser"); 
+        exit();
+    }
+
+    // check that inputted password is correct 
+    $passwordHashed = $getUser["password"]; // grabbing the hashed password from the database
+    $checkPassword = password_verify($password, $passwordHashed); // if this returns true, we know they match
+    $user_id = $getUser["user_id"]; 
+    if($checkPassword === false) // if checkPassword is false, send the user back to the session and exit the script
+    {
+        header("location: ../account.php?error=wrongPassword");
+        exit();
+    }
+
+    else if($checkPassword === true) // if true 
+    {  
+        $query = "DELETE FROM Users WHERE user_id = ?"; 
+        $statement = mysqli_stmt_init($connection); // use prepared statement 
+        if(!mysqli_stmt_prepare($statement, $query))
+        {
+            header("location: ../account.php?error=statementFailed"); 
+            exit(); 
+        }
+
+        mysqli_stmt_bind_param($statement, "i", $user_id); 
+        mysqli_stmt_execute($statement); 
+        mysqli_stmt_close($statement);
+        include_once 'logout-inc.php';
+    }
+
+}
+

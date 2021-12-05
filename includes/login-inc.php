@@ -11,7 +11,7 @@ if (isset($_POST['submit']))
         header("location: ../login.php?error=emptyInput"); 
         exit();
     }
-    if(invalidEmail($email)!== false)
+    if(invalidEmail($email)!== false) // check the email a user is logging in with is in the valid format 
     {
         header("location: ../signup.php?error=invalidEmail"); 
         exit();

@@ -1,9 +1,18 @@
 <?php 
     include_once "nav.php";
     require_once 'includes/dbhandler-inc.php';
+    session_start();
 ?>
 
 <h1>Dashboard</h1>
+
+<?php
+    if(isset($_SESSION["userid"])) // welcome message for user, if they are logged in
+    {
+        echo "<p>Hello " . $_SESSION["fullname"] . "</p>";  
+    } 
+?>
+
 
 <p>Tracking Number*</p>
 
