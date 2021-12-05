@@ -1,5 +1,5 @@
 <?php 
-// header("location: ../home.php"); // make sure no user can navigate to this script via the url (if they do, boot them to the home page)
+// header("location: ../index.php"); // make sure no user can navigate to this script via the url (if they do, boot them to the home page)
 // exit();
 session_start(); 
 // All functions below here are for REGSITERING a new user 
@@ -45,7 +45,7 @@ function invalidFullname($firstName, $secondName)
 function invalidEmail($email) 
 {
     $result=false;
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) // if the username violates the regular expression (has values that it should not) then throw error.
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) // if the email does not match the filter, throw an error
     {
         $result = true;
     } 
@@ -165,7 +165,7 @@ function loginUser($connection, $email, $password)
         $_SESSION["userid"] = $usernameExists["email"]; 
         $_SESSION["password"] = $usernameExists["password"];
         $_SESSION["adminStatus"] = $usernameExists["adminStatus"]; 
-        header("location: ../home.php"); 
+        header("location: ../index.php"); 
         exit();
     }
 }

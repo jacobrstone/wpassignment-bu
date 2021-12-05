@@ -10,7 +10,7 @@
 <body>
     <nav>
         <ul>
-            <li><a href="home.php">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <?php
             if(isset($_SESSION["userid"])) // checking that the user is already logged in
             { // display these links instead, if they are logged in
