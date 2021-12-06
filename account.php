@@ -1,4 +1,4 @@
-<?php require_once 'includes/dbhandler-inc.php';
+<?php
 include_once "nav.php";
 session_start();
 echo "<h1>" . $_SESSION["fullname"] . "</h1>";
@@ -11,7 +11,8 @@ echo "<h3>" . $_SESSION["userid"] . "</h3>";
 <section class="delete-account">
     <form action="includes/deleteUser-inc.php" method="POST">
         <input type="text" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">    
+        <input type="password" name="password" placeholder="Password">   
+        <input type="password" name="verify-password" placeholder="Confirm Password"> 
         <button type="submit" name="confirmDelete">Delete</button>
     </form>
 </section>
@@ -30,6 +31,12 @@ echo "<h3>" . $_SESSION["userid"] . "</h3>";
             break;
         case "wrongEmail":
             echo "<p>Email incorrect</p>"; 
+            break;
+        case "passwordMismatch": 
+            echo "<p>Please make sure both passwords are matching</p>";
+            break; 
+        case "noUser": 
+            echo "<p>There is no account with those credentials</p>"; 
             break;
     }
 ?> 

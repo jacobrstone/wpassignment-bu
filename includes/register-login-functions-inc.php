@@ -173,13 +173,13 @@ function loginUser($connection, $email, $password)
 
 // delete user function 
 
-function deleteUser($connection, $email, $password)
+function deleteUser($connection, $email, $password, $passwordVerified)
 {
     $getUser = getUser($connection, $email); 
 
     if($getUser === false)
     {
-        header("location: ../login.php?error=noUser"); 
+        header("location: ../account.php?error=noUser"); 
         exit();
     }
 
@@ -194,20 +194,26 @@ function deleteUser($connection, $email, $password)
     }
 
     else if($checkPassword === true) // if true 
-    {  
-        $query = "DELETE FROM Users WHERE user_id = ?"; 
-        $statement = mysqli_stmt_init($connection); // use prepared statement 
-        if(!mysqli_stmt_prepare($statement, $query))
+    {
+        if(matchPassword($password, $passwordVerified) !== false)
         {
-            header("location: ../account.php?error=statementFailed"); 
-            exit(); 
+            header("location: ../account.php?error=passwordMismatch"); 
+            exit();
         }
-
-        mysqli_stmt_bind_param($statement, "i", $user_id); 
-        mysqli_stmt_execute($statement); 
-        mysqli_stmt_close($statement);
-        include_once 'logout-inc.php';
+        else
+        {
+            $query = "DELETE FROM Users WHERE user_id = ?"; 
+            $statement = mysqli_stmt_init($connection); // use prepared statement 
+            if(!mysqli_stmt_prepare($statement, $query))
+            {
+                header("location: ../account.php?error=statementFailed"); 
+                exit(); 
+            }
+    
+            mysqli_stmt_bind_param($statement, "i", $user_id); 
+            mysqli_stmt_execute($statement); 
+            mysqli_stmt_close($statement);
+            include_once 'logout-inc.php';
+        }  
     }
-
 }
-
