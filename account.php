@@ -2,7 +2,7 @@
 include_once "nav.php";
 session_start();
 echo "<h1>" . $_SESSION["fullname"] . "</h1>";
-echo "<h3>" . $_SESSION["userid"] . "</h3>";
+echo "<h3>" . $_SESSION["email"] . "</h3>";
 ?>
 
 <h2>My info</h2>
@@ -38,6 +38,10 @@ echo "<h3>" . $_SESSION["userid"] . "</h3>";
         case "noUser": 
             echo "<p>There is no account with those credentials</p>"; 
             break;
+        case "invalidEmail":
+            echo "<p>You must use your own email</p>"; 
+            break;
+
     }
 ?> 
 

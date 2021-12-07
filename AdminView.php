@@ -21,7 +21,7 @@
             <th id="tracking_number">Tracking Number</th>
             <th id="order_date">Order date</th>
             <th id="parcel_status">Status</th>
-            <th id="delivery_address">Deliver to</th>
+            <th id="delivery_address">Deliver to</th> 
             <th id="city">City</th>
             <th id="country">Country</th>
             <th id="postcode">Postcode</th>

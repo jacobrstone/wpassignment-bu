@@ -26,6 +26,7 @@
             echo "<td>" . $row["tracking_number"] . "</td>" .
             "<td>" . $row["order_date"] . "</td>" . 
             "<td>" . $row["parcel_status"] . "</td>";
+            echo "<td>" . "<button>Add Parcel</button>" . "</td>";
             echo "</tr>";
         }
     }
@@ -35,6 +36,6 @@
         exit();
     }
 ?>
-</table>
+</table>    
 
 <?php include 'footer.php' ?> 

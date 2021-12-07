@@ -162,7 +162,8 @@ function loginUser($connection, $email, $password)
     {
         // create a new session upon successful login - (done on line 1 of script)
         // create session super globals that access the getUser associative array to obtain DB columns 
-        $_SESSION["userid"] = $getUser["email"]; 
+        $_SESSION["email"] = $getUser["email"]; 
+        $_SESSION["userid"] = $getUser["user_id"];
         $_SESSION["password"] = $getUser["password"];
         $_SESSION["adminStatus"] = $getUser["adminStatus"]; 
         $_SESSION["fullname"] = $getUser["first_name"] . " " . $getUser["last_name"];
@@ -176,17 +177,22 @@ function loginUser($connection, $email, $password)
 function deleteUser($connection, $email, $password, $passwordVerified)
 {
     $getUser = getUser($connection, $email); 
-
     if($getUser === false)
     {
         header("location: ../account.php?error=noUser"); 
         exit();
     }
 
+    if($email !== $_SESSION["email"])
+    {
+        header("location: ../account.php?error=invalidEmail"); 
+        exit();
+    }
+    // use session variable instead of passing the user id so that a user can only delete their own account 
     // check that inputted password is correct 
     $passwordHashed = $getUser["password"]; // grabbing the hashed password from the database
     $checkPassword = password_verify($password, $passwordHashed); // if this returns true, we know they match
-    $user_id = $getUser["user_id"]; 
+    $user_id = $_SESSION["userid"];
     if($checkPassword === false) // if checkPassword is false, send the user back to the session and exit the script
     {
         header("location: ../account.php?error=wrongPassword");
