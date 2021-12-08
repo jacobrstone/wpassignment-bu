@@ -8,9 +8,9 @@
         require_once 'dbhandler-inc.php';
         require_once 'register-login-functions-inc.php';
 
-        deleteUser($connection, $email, $password, $passwordVerified);
+        deleteUser($connection, $email, $password, $passwordVerified); // call the delete user function, to delete the user's account 
     }
-    else {
+    else { // if they somehow reach this page without using the approprite methods, kick them back to the index and exit the script 
         header("location: ../index.php"); 
         exit();
     }

@@ -27,7 +27,12 @@ function emptyInputSignUp($firstName, $secondName, $email, $password, $passwordV
     return $result;
 }
 
-// Invalid username check
+/**
+ * Checks if the user has input an invalid first or second name
+ * @param string $firstName - the value of the user's first name from the input form 
+ * @param string $secondName - the value of the user's surname from the input form 
+ * @return boolean returns either true or false after checking the user inputs
+ *  */
 function invalidFullname($firstName, $secondName)
 {
     $result=false;
@@ -41,7 +46,11 @@ function invalidFullname($firstName, $secondName)
     }
     return $result;
 }
-
+/**
+ * Checks if the user has submitted an email that is not in the correct format, or using a domain that does not exist
+ * @param string $email - the value of the user's email from the email input text box 
+ * @return boolean returns a boolean of either true or false after checking the user input against a filter 
+ */
 function invalidEmail($email) 
 {
     $result=false;
@@ -56,6 +65,12 @@ function invalidEmail($email)
     return $result;
 }
 
+/** 
+ * Checks that the passwords the user has submitted are the same
+ * @param string $password - the value of the password taken from the input password box 
+ * @param string $passwordVerified - the value of the password taken from the input confirmed password box 
+ * @return boolean return true or false after checking the user inputs match 
+ */
 function matchPassword($password, $passwordVerified) 
 {
     if($password !== $passwordVerified) // if the passwords do not match
@@ -68,7 +83,12 @@ function matchPassword($password, $passwordVerified)
     }
     return $result;
 }
-
+/**
+ * This is used to get any record from the users table in the database
+ * @param mysqli $connection - this is the connection variable, it initialises connection to the MySQL database in order to start transactions 
+ * @param string $email - this is the users email passed into the function 
+ * @return array/boolean returns either an associative array containing 1 row of user data or a boolean false stating the fetch query failed 
+ */
 function getUser($connection, $email) // this can function as both our signup and our login function 
 {
     $query = "SELECT * FROM Users WHERE email = ?"; 
@@ -102,6 +122,16 @@ function getUser($connection, $email) // this can function as both our signup an
     mysqli_stmt_close($statement);
 }
 
+/**
+ * Creates a new user in the Users table, inserting their data into the database
+ * @param mysqli $connection - initialises a mysqli connection to the database, in order to start queries/transaction
+ * @param string $firstname - the user's first name, to be inserted into the relevant column in the Users table 
+ * @param string $secondName - the user's surname, to be inserted into the relevant column in the Users table 
+ * @param string $email - the user's email, to be inserted into the relevant column in the Users table 
+ * @param string $password - the user's password, to be inserted into the relevant column in the Users table 
+ * @param int $adminStatus - the user's administrator privilege, set to 0 by default, to be inserted into the relevant column in the Users table 
+ * @return null this function does not return any data 
+ */
 function createUser($connection, $firstName, $secondName, $email, $password, $adminStatus) // this can function as both our signup and our login function 
 {
     $query = "INSERT INTO Users(first_name, last_name, email, password, adminStatus) VALUES(?, ?, ?, ?, ?);"; 
@@ -124,7 +154,12 @@ function createUser($connection, $firstName, $secondName, $email, $password, $ad
 }
 
 // All functions below here are for LOGGING IN an already registered user 
-
+/**
+ * Checks the login page for empty inputs 
+ * @param $username - this is the username that the user logs in with, this is always just the user's email
+ * @param $user_password - the password they enter into the input box 
+ * @return boolean returns true or false after checking the inputs for null
+ */
 // Checking that the user isn't trying to log in with blank credentials 
 function emptyInputLogin($username, $user_password) 
 {
@@ -140,6 +175,13 @@ function emptyInputLogin($username, $user_password)
     return $result; // return a boolean 
 }
 
+/**
+ * Connects to the database, verifies the credentials and then logs the user into the web app
+ * @param mysqli $connection - initialises the connection to the database to allow querying to take place
+ * @param string $email - the user's email passed in as a string 
+ * @param string $password- the user's password passed in as a string
+ * @return null this function does not return data
+ */
 function loginUser($connection, $email, $password)
 {
     $getUser = getUser($connection, $email);  
@@ -173,7 +215,14 @@ function loginUser($connection, $email, $password)
 }
 
 // delete user function 
-
+/**
+ * Connects to the database, verifies credentials and then removes that user from the Users table
+ * @param mysqli $connection - initialises the database connection to allow querying to take place 
+ * @param string $email - the user's email passed through as a string 
+ * @param string $password - the user's password passed through as a string 
+ * @param string $passwordVerified - the user's password again, to confirm identity and increase security
+ * @return null this function does not return any data 
+ */
 function deleteUser($connection, $email, $password, $passwordVerified)
 {
     $getUser = getUser($connection, $email); 
@@ -222,4 +271,44 @@ function deleteUser($connection, $email, $password, $passwordVerified)
             include_once 'logout-inc.php';
         }  
     }
+}
+
+function trackingExists($connection, $trackingNumber)
+{ 
+    $query = "SELECT * FROM parcels WHERE tracking_number = ?"; // MySQL query to find the parcel with the corresponding tracking number 
+    $statement = mysqli_stmt_init($connection); 
+    if(!mysqli_stmt_prepare($statement, $query))
+    {
+        header("location: index.php?error=stmtFailed");
+        exit(); 
+    }
+
+    mysqli_stmt_bind_param($statement, "s", $trackingNumber); 
+    mysqli_stmt_execute($statement);
+    if($data = mysqli_stmt_get_result($statement))
+    {
+        return $data;
+    } 
+    else
+    {
+        return false;  
+    }
+}
+
+function addParcel($connection, $parcelID, $userID)
+{
+    $query = "INSERT INTO user_parcel_link(user_id, parcel_id) VALUES(?, ?);"; 
+    $statement = mysqli_stmt_init($connection);
+    if(!mysqli_stmt_prepare($statement, $query))
+    {
+        header("location: ../index.php?error=stmtFailed");
+        exit(); 
+    }
+
+    mysqli_stmt_bind_param($statement, "ii", $userID, $parcelID);
+    mysqli_stmt_execute($statement); 
+    mysqli_stmt_close($statement); 
+    header("location: ../index.php"); 
+    echo "<p>Parcel Added</p>"; 
+    exit(); 
 }

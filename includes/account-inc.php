@@ -1,13 +1,13 @@
 <?php 
 
-if(isset($_POST['confirmDelete']))
+if(isset($_POST['confirmDelete'])) // check that the user has pressed the delete account button 
 {
-    require_once 'register-login-functions-inc.php'; 
+    require_once 'register-login-functions-inc.php'; // import our login functions script, which enables our input sanitisation checks 
     $email = $_POST['email'];
     $user_password = $_POST['password'];
     $passwordVerified = $_POST['verify-password'];
-
-    if(emptyInputSignUp($firstName, $secondName, $email, $user_password, $passwordVerified) !== false) // if errors exiset, send them back to signup page.
+    
+    if(emptyInputSignUp($firstName, $secondName, $email, $user_password, $passwordVerified) !== false) // if errors exist, send them back to signup page.
     { 
         header("location: ../account.php?error=emptyInput"); 
         exit();

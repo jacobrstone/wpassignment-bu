@@ -25,4 +25,4 @@ $connection = mysqli_init(); // Initializes MySQLi and returns a resource for us
             "Error (" . mysqli_connect_errno() . "): " . mysqli_connect_error() . "</p>";
         } 
     } 
-mysqli_set_charset($connection, "utf8"); 
+mysqli_set_charset($connection, "utf8"); // allows any and all characters in UTF-8 character encoding to be dispalyed and used in the web app

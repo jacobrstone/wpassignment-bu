@@ -10,4 +10,4 @@ function logout()
     exit();
 }
 
-logout();
+logout(); 
