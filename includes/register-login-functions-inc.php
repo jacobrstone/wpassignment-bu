@@ -293,6 +293,7 @@ function trackingExists($connection, $trackingNumber)
     {
         return false;  
     }
+    mysqli_stmt_close($statement);
 }
 
 function addParcel($connection, $parcelID, $userID)
@@ -311,4 +312,33 @@ function addParcel($connection, $parcelID, $userID)
     header("location: ../index.php"); 
     echo "<p>Parcel Added</p>"; 
     exit(); 
+}
+
+function myParcels($connection, $userID)
+{
+    $query = "SELECT * FROM parcels WHERE parcel_id IN (SELECT parcel_id FROM user_parcel_link WHERE user_id = ?)";
+    $statement = mysqli_stmt_init($connection);
+
+    if(!mysqli_stmt_prepare($statement, $query))
+    {
+        header("location: ../myParcels.php?error=stmtFailed");
+        exit(); 
+    }
+
+    mysqli_stmt_bind_param($statement, "i", $userID); 
+    mysqli_stmt_execute($statement); 
+
+    if($data = mysqli_stmt_get_result($statement))
+    {
+        return $data;
+    }
+    else
+    {
+        return false; 
+    }
+    mysqli_stmt_close($statement);
+    header("location: ../myParcels.php"); 
+    exit(); 
+
+
 }
