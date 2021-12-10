@@ -9,7 +9,7 @@
         $passwordVerified = $_POST['verify-password']; 
         // including our database handling script and credential verifying scripts
         require_once 'dbhandler-inc.php';
-        require_once 'register-login-functions-inc.php'; 
+        require_once 'all-functions-inc.php'; 
 
         // check for any value that isn't false, since, we're looking for errors, if presence of error is anything but false, that's bad. 
         if(emptyInputSignUp($firstName, $secondName, $email, $user_password, $passwordVerified) !== false) // if errors exiset, send them back to signup page.

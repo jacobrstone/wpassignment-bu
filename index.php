@@ -1,7 +1,7 @@
 <?php 
     include_once "nav.php"; // adding the navigation script in every file
     require_once 'includes/dbhandler-inc.php'; // adding the database handler 
-    require_once 'includes/register-login-functions-inc.php'; 
+    require_once 'includes/all-functions-inc.php'; 
     session_start(); // start a session 
 ?>
 

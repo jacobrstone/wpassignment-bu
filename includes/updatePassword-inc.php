@@ -5,7 +5,7 @@ if(isset($_POST['updatePassword'])) { // if page is accessed by submit button
     $new_password = $_POST['newPassword'];
     // including our database handling script and credential verifying scripts
     require_once 'dbhandler-inc.php';
-    require_once 'register-login-functions-inc.php';
+    require_once 'all-functions-inc.php';
 
     updatePassword($connection, $old_password, $new_password); // call the delete user function, to delete the user's account 
 }

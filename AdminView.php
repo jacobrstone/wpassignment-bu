@@ -1,6 +1,19 @@
 <?php require_once 'includes/dbhandler-inc.php'?>
 <?php include_once "nav.php" ?>
-    <h1>Admin View - All packages, Trackers, Destinations and Dates</h1>
+
+
+<h3>Create parcel</h3>
+    <form action="includes/adminCreateParcel-inc.php" method="POST">
+        <input type="text" name="tracking_number" placeholder="AB012345678CD">
+        <input type="date" name="order_date">
+        <input type="text" name="parcel_status" placeholder="Status">
+        <input type="text" name="street_address" placeholder="Street address">
+        <input type="text" name="city" placeholder="City">
+        <input type="text" name="country" placeholder="Country">
+        <input type="text" name="postcode" placeholder="Postcode">
+        <button type="submit" name="createParcel">Create Parcel</button>
+    </form>
+<h3>Admin View - All packages, Trackers, Destinations and Dates</h3>
     <?php 
     // Create a query that selects all fields in all tables in format <table.column>
     // Performs an INNER JOIN onto the parcel to link table, then onto the user table to the link table
@@ -50,7 +63,8 @@
             echo "</tr>";
         }
         ?>
-    </table>   
+    </table>
+
     <script>
         $(document).ready(function() {
             $('#adminTable').DataTable( {

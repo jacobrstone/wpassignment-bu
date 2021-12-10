@@ -310,7 +310,6 @@ function addParcel($connection, $parcelID, $userID)
     mysqli_stmt_execute($statement); 
     mysqli_stmt_close($statement); 
     header("location: ../index.php"); 
-    echo "<p>Parcel Added</p>"; 
     exit(); 
 }
 
@@ -374,6 +373,33 @@ function updatePassword($connection, $old_password, $new_password)
         header("location: ../account.php"); 
         exit();
     }
+}
 
+function createParcel($connection, $trackingNumber, $orderDate, $parcelStatus, $streetAddress, $city, $country, $postcode)
+{
+    $statusList = array("Delivered", "Held at PO", "Dispatched", "Out for delivery", "Lost in transit", "Returned to sender", "Parcel diverted", "Payment received"); 
+    $pattern = "/^[a-zA-Z]+[\d]{9}[a-zA-Z]+$/i";
+    if(!preg_match($pattern, $trackingNumber))
+    {
+        header("location: ../AdminView.php?error=invalidTrackFormat");
+        exit();
+    }
+    if(!in_array($parcelStatus, $statusList))
+    {
+        header("location: ../AdminView.php?error=invalidStatus"); 
+        exit(); 
+    } 
+    $query = "INSERT INTO parcels(tracking_number, parcel_status, order_date, city, street_address, postcode, country) VALUES(?,?,?,?,?,?,?);"; 
+    $statement = mysqli_stmt_init($connection);  
+    if(!mysqli_stmt_prepare($statement, $query))
+    {
+        header("location: ../index.php?error=stmtFailed");
+        exit(); 
+    }
 
+    mysqli_stmt_bind_param($statement, "sssssss", $trackingNumber, $parcelStatus, $orderDate, $city, $streetAddress, $postcode, $country);
+    mysqli_stmt_execute($statement); 
+    mysqli_stmt_close($statement); 
+    header("location: ../AdminView.php"); 
+    exit();
 }

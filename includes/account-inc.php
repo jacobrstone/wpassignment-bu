@@ -2,7 +2,7 @@
 
 if(isset($_POST['confirmDelete'])) // check that the user has pressed the delete account button 
 {
-    require_once 'register-login-functions-inc.php'; // import our login functions script, which enables our input sanitisation checks 
+    require_once 'all-functions-inc.php'; // import our login functions script, which enables our input sanitisation checks 
     $email = $_POST['email'];
     $user_password = $_POST['password'];
     $passwordVerified = $_POST['verify-password'];

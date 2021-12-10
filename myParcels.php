@@ -1,7 +1,7 @@
 <?php 
 include_once 'nav.php';
 require_once 'includes/dbhandler-inc.php'; 
-require_once 'includes/register-login-functions-inc.php'; 
+require_once 'includes/all-functions-inc.php'; 
 session_start(); 
 
 echo "<table id='myParcels'>";  
