@@ -19,6 +19,16 @@ echo "<h3>" . $_SESSION["email"] . "</h3>";
     </form>
 </section>
 
+<h3>Update my password</h3>
+
+<section>
+    <form action="includes/updatePassword-inc.php" method="POST">
+        <input type="password" name="oldPassword" placeholder="Old Password">
+        <input type="password" name="newPassword" placeholder="New Password">
+        <button type="submit" name="updatePassword">Update Password</button>
+    </form>
+</section>
+
 <?php 
 
     $errorMessage = $_GET["error"]; // this gets are error messages and stores them in a varaible
@@ -43,7 +53,9 @@ echo "<h3>" . $_SESSION["email"] . "</h3>";
         case "invalidEmail": // when the email given is not in the correct format, display this message 
             echo "<p>You must use your own email</p>"; 
             break;
-
+        case "passwordSame": 
+            echo "<p>Use a different password to your old password to change it"; 
+            break; 
     }
 ?> 
 

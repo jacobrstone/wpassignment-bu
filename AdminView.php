@@ -10,12 +10,11 @@
     INNER JOIN user_parcel_link ON parcels.parcel_id = user_parcel_link.parcel_id
     INNER JOIN Users ON user_parcel_link.user_id = Users.user_id
     ORDER BY parcels.order_date DESC, parcels.tracking_number LIMIT 25";
-
     // stores the database connection data, from connectdb ($connection), and the query data $get_parcel_data into a $result variable
     $result = mysqli_query($connection, $get_parcel_data);
     mysqli_close($connection); // close the connection, as we have our data stored in result
     ?>
-    <table> <!-- HTML Table to format all the MySQL data -->
+    <table id="adminTable" class="display"> <!-- HTML Table to format all the MySQL data -->
         <caption>Parcels</caption>
         <tr id="head">
             <th id="tracking_number">Tracking Number</th>
@@ -51,6 +50,14 @@
             echo "</tr>";
         }
         ?>
-    </table>
-
+    </table>   
+    <script>
+        $(document).ready(function() {
+            $('#adminTable').DataTable( {
+            "processing": true,
+            "serverSide": true,
+            "ajax": "../server_side/scripts/server_processing.php"
+    } );
+} );
+    </script>
 <?php include_once "footer.php" ?>

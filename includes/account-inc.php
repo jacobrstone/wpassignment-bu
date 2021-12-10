@@ -23,3 +23,16 @@ if(isset($_POST['confirmDelete'])) // check that the user has pressed the delete
         exit();
     }
 }
+
+if(isset($_POST['updatePassword'])) // check that the user has pressed the delete account button 
+{
+    require_once 'register-login-functions-inc.php'; // import our login functions script, which enables our input sanitisation checks 
+    $old_password = $_POST['oldPassword'];
+    $new_password = $_POST['newPassword'];
+    
+    if(matchPassword($old_password, $new_password) === false)
+    {   
+        header("location: ../signup.php?error=passwordSame"); 
+        exit();
+    }
+}

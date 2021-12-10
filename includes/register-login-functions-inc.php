@@ -339,6 +339,41 @@ function myParcels($connection, $userID)
     mysqli_stmt_close($statement);
     header("location: ../myParcels.php"); 
     exit(); 
+}
+
+function updatePassword($connection, $old_password, $new_password)
+{
+    $user = getUser($connection, $_SESSION['email']); 
+    $user_id = $user['user_id'];
+    if($user === false)
+    {
+        header("location: ../account.php?error=noUser"); 
+        exit();
+    }
+
+    $passwordHashed = $user["password"]; 
+    $checkPassword = password_verify($old_password, $passwordHashed); 
+    if($checkPassword === false)
+    {
+        header("location: ../account.php?error=wrongPassword"); 
+        exit(); 
+    } 
+    else
+    {
+        $query = "UPDATE Users SET password = ? WHERE user_id = ?"; 
+        $statement = mysqli_stmt_init($connection); 
+        if(!mysqli_stmt_prepare($statement, $query))
+        {
+            header("location: ../account.php?error=statementFailed"); 
+            exit(); 
+        }
+        $new_passwordHashed = password_hash($new_password, PASSWORD_DEFAULT);
+        mysqli_stmt_bind_param($statement, "ss", $new_passwordHashed, $user_id); 
+        mysqli_stmt_execute($statement); 
+        mysqli_stmt_close($statement); 
+        header("location: ../account.php"); 
+        exit();
+    }
 
 
 }
