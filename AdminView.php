@@ -13,11 +13,16 @@
         <input type="text" name="postcode" placeholder="Postcode">
         <button type="submit" name="createParcel">Create Parcel</button>
     </form>
-<h3>Admin View - All packages, Trackers, Destinations and Dates</h3>
+<h3>Delete parcel</h3>
+    <form action="includes/adminDeleteParcel-inc.php" method="POST">
+        <input type="text" name="tracking_number" placeholder="AB012345678CD">
+        <button type="submit" name="deleteParcel">Delete Parcel</button>
+    </form>
+<h3>Admin View - Full Database Overview</h3>
     <?php 
     // Create a query that selects all fields in all tables in format <table.column>
     // Performs an INNER JOIN onto the parcel to link table, then onto the user table to the link table
-    $get_parcel_data = "SELECT parcels.tracking_number, parcels.order_date, parcels.parcel_id, parcels.parcel_status, parcels.country, 
+    $get_parcel_data = "SELECT parcels.parcel_id, parcels.tracking_number, parcels.order_date, parcels.parcel_status, parcels.country, 
     parcels.city, parcels.street_address, parcels.postcode, Users.first_name, Users.last_name, Users.user_id, Users.email, Users.adminStatus
     FROM parcels 
     INNER JOIN user_parcel_link ON parcels.parcel_id = user_parcel_link.parcel_id
@@ -30,9 +35,9 @@
     <table id="adminTable" class="display"> <!-- HTML Table to format all the MySQL data -->
         <caption>Parcels</caption>
         <tr id="head">
+            <th id="parcel_id">Parcel ID</th>
             <th id="tracking_number">Tracking Number</th>
             <th id="order_date">Order date</th>
-            <th id="parcel_id">Parcel ID</th>
             <th id="parcel_status">Status</th>
             <th id="delivery_address">Deliver to</th> 
             <th id="city">City</th>
@@ -48,9 +53,9 @@
             while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) 
             { 
             echo "<tr>"; 
-            echo "<td>" . $row["tracking_number"] . "</td>" .
+            echo "<td>" . $row["parcel_id"] . "</td>" .
+            "<td>" . $row["tracking_number"] . "</td>" .
             "<td>" . $row["order_date"] . "</td>" . 
-            "<td>" . $row["parcel_id"] . "</td>" .
             "<td>" . $row["parcel_status"] . "</td>" . 
             "<td>" . $row["street_address"] . "</td>" . 
             "<td>" . $row["city"] . "</td>" .
@@ -62,6 +67,18 @@
             "<td>" . $row["adminStatus"] . "</td>";
             echo "</tr>";
         }
+
+        $errorMessage = $_GET["error"];
+        switch($errorMessage)
+        {
+            case "stmtFailed": 
+                echo "<p>Something went wrong"; 
+                break;
+            case "invalidTrackFormat"; 
+                echo "<p>Please enter a tracking number with a valid format</p>";
+                break;
+        }
+
         ?>
     </table>
 

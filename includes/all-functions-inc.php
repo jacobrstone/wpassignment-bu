@@ -403,3 +403,26 @@ function createParcel($connection, $trackingNumber, $orderDate, $parcelStatus, $
     header("location: ../AdminView.php"); 
     exit();
 }
+
+function deleteParcel($connection, $trackingNumber)
+{
+    $pattern = "/^[a-zA-Z]+[\d]{9}[a-zA-Z]+$/i";
+    if(!preg_match($pattern, $trackingNumber))
+    {
+        header("location: ../AdminView.php?error=invalidTrackFormat");
+        exit();
+    }
+    $query = "DELETE FROM parcels WHERE tracking_number = ?"; 
+    $statement = mysqli_stmt_init($connection);  
+    if(!mysqli_stmt_prepare($statement, $query))
+    {
+        header("location: ../index.php?error=stmtFailed");
+        exit(); 
+    }
+
+    mysqli_stmt_bind_param($statement, "s", $trackingNumber); 
+    mysqli_stmt_execute($statement); 
+    mysqli_stmt_close($statement); 
+    header("location: ../AdminView.php"); 
+    exit();
+}
