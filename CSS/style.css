@@ -1,0 +1,30 @@
+table {
+    border: 1px solid #2206e1;  
+}
+
+/* Nav-bar Override CSS */ 
+
+.navbar {
+    background: linear-gradient(163deg, #200cdd 0%, #4043e7 48%, #2206e1 100%);
+}
+
+.active {
+    color: #ffffff !important; 
+}
+
+/* Button Override CSS */
+
+.btn-outline-primary {
+    border: 1px solid #2206e1 !important;
+    color: #200cdd !important; 
+}
+.btn-outline-primary:hover {
+    background-color: #2206e1 !important;
+    color: whitesmoke !important;
+}
+
+/* Pagination Override CSS */
+.page-link
+{
+    color: #2206e1 !important;
+}

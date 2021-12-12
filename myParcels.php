@@ -4,7 +4,7 @@ require_once 'includes/dbhandler-inc.php';
 require_once 'includes/all-functions-inc.php'; 
 session_start(); 
 
-echo "<table id='myParcels'>";  
+echo "<table class='table table-hover'>";  
 echo "<caption>My Parcels</caption>";
 echo "<tr id='tableHead'>";
 echo "<th id='tracking_number'>Tracking Number</th>"; 
@@ -35,12 +35,4 @@ switch($error)
         break;
 }
 ?>
-
-<script>
-    $(document).ready( function () 
-    {       
-        $('#myParcels').DataTable();
-    });
-</script>
-
 <?php include_once 'footer.php'; ?>

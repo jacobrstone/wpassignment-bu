@@ -209,7 +209,7 @@ function loginUser($connection, $email, $password)
         $_SESSION["password"] = $getUser["password"];
         $_SESSION["adminStatus"] = $getUser["adminStatus"]; 
         $_SESSION["fullname"] = $getUser["first_name"] . " " . $getUser["last_name"];
-        header("location: ../index.php"); 
+        header("location: ../index.php?message=successfulLogin"); 
         exit();
     }
 }
@@ -285,13 +285,14 @@ function trackingExists($connection, $trackingNumber)
 
     mysqli_stmt_bind_param($statement, "s", $trackingNumber); 
     mysqli_stmt_execute($statement);
+    ;
     if($data = mysqli_stmt_get_result($statement))
     {
         return $data;
     } 
     else
     {
-        return false;  
+        return false;
     }
     mysqli_stmt_close($statement);
 }
