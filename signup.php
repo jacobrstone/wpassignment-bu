@@ -1,16 +1,19 @@
 <?php include_once 'nav.php' ?>
-
-<section class="signup-form">
+<div class="container">
     <h2>Sign Up</h2>
-    <form action="includes/signup-inc.php" method="POST"> <!-- POST method so that data is not seen inside URL --> 
-        <input type="text" name="first-name" placeholder="First name" maxlength="50">
-        <input type="text" name="second-name" placeholder="Second name" maxlength="50">
-        <input type="text" name="email" placeholder="Email" maxlength="50">
-        <input type="password" name="password" placeholder="Password" maxlength="50">
-        <input type="password" name="verify-password" placeholder="Confirm Password" maxlength="50">
-        <button type="submit" name="submit">Sign Up</button>
-    </form>
-</section>
+        <form action="includes/signup-inc.php" method="POST"> <!-- POST method so that data is not seen inside URL --> 
+            <div class="input-group mb-3 text-center">
+                <input type="text" name="first-name" placeholder="First name" maxlength="50">
+                <input type="text" name="second-name" placeholder="Second name" maxlength="50">
+                <input type="text" name="email" placeholder="Email" maxlength="50">
+                <input type="password" name="password" placeholder="Password" maxlength="50">
+                <input type="password" name="verify-password" placeholder="Confirm Password" maxlength="50">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-primary btn-sm" type="submit" name="submit">Sign Up</button>
+                </div>
+            </div>
+        </form>
+</div>
 
 <?php 
 

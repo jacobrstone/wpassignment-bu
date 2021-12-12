@@ -2,7 +2,6 @@
     include_once "nav.php"; // adding the navigation script in every file
     require_once 'includes/dbhandler-inc.php'; // adding the database handler 
     require_once 'includes/all-functions-inc.php'; 
-    session_start(); // start a session 
 ?>
 
 <div class="container-fluid text-center">
@@ -15,9 +14,14 @@
     <p>Tracking Number*</p>
     <!-- Submission form to search for a parcel from the home page -->
     <form action="includes/searchParcel-inc.php" method="GET"> 
-        <input type="text" name="tracking_number_input" placeholder="e.g. AA123456789UK" minlength="13" maxlength="50">
-        <button type="submit" name="trackParcel">Track Parcel</button>
+        <div class="input-group mb-3 justify-content-center">
+            <input type="text" name="tracking_number_input" placeholder="e.g. AA123456789UK" minlength="13" maxlength="50">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-primary btn-sm" type="submit" name="trackParcel">Track Parcel</button>
+            </div>
+        </div>
     </form>
+
     <?php 
         if(isset($_GET['tracking']))
         {
@@ -45,7 +49,7 @@
                 echo "<form action='includes/addParcel-inc.php' method='POST'>";
                 echo "<input type='hidden' name='userid' value=". $_SESSION['userid'] . ">"; 
                 echo "<input type='hidden' name='parcelid' value=". $parcel_ID . ">";
-                echo "<button type='submit' name='submit'>Add parcel</button>";
+                echo "<button class='btn btn-outline-primary btn-sm' type='submit' name='submit'>Add parcel</button>";
                 echo "</form>";
             }
 
@@ -73,10 +77,10 @@
         }
 
     ?>
+</div>
     <form action="includes/addParcel-inc.php">
         <input type="hidden" name="userid" value="$_SESSION['userid']">
         <input type="hidden" name="parcelid" value="row['parcel_id']">
-    </form>
-</div> 
+    </form> 
 
 <?php include_once "footer.php" ?>

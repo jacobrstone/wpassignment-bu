@@ -1,31 +1,40 @@
-<?php include_once "nav.php"; ?>
+<?php include_once "nav.php"; 
+if(!isset($_SESSION["userid"]))
+{
+    header("location: index.php");
+}
+?>
 <div class="container text-center">
     <h1>My info</h1>
     <?php
-    session_start(); // start a session, allowing session variables to be used
     // using session variables to display/personalise the user's account page 
     echo "<h2>" . $_SESSION["fullname"] . "</h2>";
     echo "<h3>" . $_SESSION["email"] . "</h3>";
     ?>
-
     <h3>Delete my account</h3>
     <!-- A user input form to obtain the password and email from the user, to verify it's them deleting their account -->
     <section class="delete-account">
         <form action="includes/deleteUser-inc.php" method="POST"> <!-- send the data to the deleteUser-inc.php file within the includes folder --> 
-            <input type="text" name="email" placeholder="Email" maxlength="50">
-            <input type="password" name="password" placeholder="Password" maxlength="50">   
-            <input type="password" name="verify-password" placeholder="Confirm Password" maxlength="50"> 
-            <button type="submit" name="confirmDelete">Delete</button>
+            <div class="input-group mb-3 justify-content-center">
+                <input type="text" name="email" placeholder="Email" maxlength="50">
+                <input type="password" name="password" placeholder="Password" maxlength="50">   
+                <input type="password" name="verify-password" placeholder="Confirm Password" maxlength="50"> 
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-primary btn-sm" type="submit" name="confirmDelete">Delete</button>
+                </div>
+            </div>
         </form>
     </section>
-
     <h3>Update my password</h3>
-
     <section>
         <form action="includes/updatePassword-inc.php" method="POST">
-            <input type="password" name="oldPassword" placeholder="Old Password">
-            <input type="password" name="newPassword" placeholder="New Password">
-            <button type="submit" name="updatePassword">Update Password</button>
+            <div class="input-group mb-3 justify-content-center">
+                <input type="password" name="oldPassword" placeholder="Old Password">
+                <input type="password" name="newPassword" placeholder="New Password">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-primary btn-sm" type="submit" name="updatePassword">Update Password</button>
+                </div>
+            </div>
         </form>
     </section>
 
@@ -59,5 +68,4 @@
         }
     ?>
 </div>
-
 <?php include_once "footer.php" ?>

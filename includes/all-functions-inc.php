@@ -1,6 +1,4 @@
 <?php 
-// header("location: ../index.php"); // make sure no user can navigate to this script via the url (if they do, boot them to the home page)
-// exit();
 session_start(); 
 // All functions below here are for REGSITERING a new user 
 
@@ -285,15 +283,10 @@ function trackingExists($connection, $trackingNumber)
 
     mysqli_stmt_bind_param($statement, "s", $trackingNumber); 
     mysqli_stmt_execute($statement);
-    ;
     if($data = mysqli_stmt_get_result($statement))
     {
         return $data;
     } 
-    else
-    {
-        return false;
-    }
     mysqli_stmt_close($statement);
 }
 
@@ -407,23 +400,44 @@ function createParcel($connection, $trackingNumber, $orderDate, $parcelStatus, $
 
 function deleteParcel($connection, $trackingNumber)
 {
-    $pattern = "/^[a-zA-Z]+[\d]{9}[a-zA-Z]+$/i";
-    if(!preg_match($pattern, $trackingNumber))
+    $parcel = trackingExists($connection, $trackingNumber);
+    if(mysqli_num_rows($parcel) === 0)
     {
-        header("location: ../AdminView.php?error=invalidTrackFormat");
+        header("location: ../AdminView.php?error=noParcel");
+        exit();
+    } 
+    else
+    {
+        $query = "DELETE FROM parcels WHERE tracking_number = ?"; 
+        $statement = mysqli_stmt_init($connection);  
+        if(!mysqli_stmt_prepare($statement, $query))
+        {
+            header("location: ../index.php?error=stmtFailed");
+            exit(); 
+        }
+    
+        mysqli_stmt_bind_param($statement, "s", $trackingNumber); 
+        mysqli_stmt_execute($statement); 
+        mysqli_stmt_close($statement); 
+        header("location: ../AdminView.php"); 
         exit();
     }
-    $query = "DELETE FROM parcels WHERE tracking_number = ?"; 
-    $statement = mysqli_stmt_init($connection);  
+}
+
+function setAdmin($connection, $email)
+{
+    $user = getUser($connection, $email);
+    $user_id = $user["user_id"];
+    $query = "UPDATE Users SET adminStatus = 1 WHERE user_id = ?"; 
+    $statement = mysqli_stmt_init($connection); 
     if(!mysqli_stmt_prepare($statement, $query))
     {
-        header("location: ../index.php?error=stmtFailed");
+        header("location: ../AdminView.php?error=statementFailed"); 
         exit(); 
     }
-
-    mysqli_stmt_bind_param($statement, "s", $trackingNumber); 
+    mysqli_stmt_bind_param($statement, "s", $user_id);
     mysqli_stmt_execute($statement); 
-    mysqli_stmt_close($statement); 
-    header("location: ../AdminView.php"); 
+    mysqli_stmt_close($statement);
+    header("location: ../AdminView.php?error=adminSet"); 
     exit();
 }

@@ -1,19 +1,39 @@
-<?php require_once 'includes/dbhandler-inc.php'?>
-<?php include_once "nav.php" ?>
+<?php 
+    include_once "nav.php";
+    require_once 'includes/dbhandler-inc.php';
+    
+    if(!isset($_SESSION))
+    {
+        header("location: index.php");
+    }
+    else
+    {
+        if($_SESSION["adminStatus"] !== 1)
+        {
+            header("location: index.php");
+        }
+    }
+?>
+<!-- Admin Create Parcel Form -->
 <div class="container-fluid">
     <h3>Create parcel</h3>
     <!-- Input form for creating a parcel, set placeholders for usability, maxlength for consistency and to not exceed the storage in the database -->
         <form action="includes/adminCreateParcel-inc.php" method="POST">
-            <input type="text" name="tracking_number" placeholder="AB012345678CD" minlength="13" maxlength="50"> 
-            <input type="date" name="order_date">
-            <input type="text" name="parcel_status" placeholder="Status" maxlength="18">
-            <input type="dropdown" name="street_address" placeholder="Street address" maxlength="50">
-            <input type="text" name="city" placeholder="City" maxlength="50">
-            <input type="text" name="country" placeholder="Country" maxlength="50">
-            <input type="text" name="postcode" placeholder="Postcode" maxlength="50">
-            <button class="btn btn-outline-primary btn-sm" type="submit" name="createParcel">Create Parcel</button>
+            <div class="input-group mb-3">
+                <input type="text" name="tracking_number" placeholder="AB012345678CD" minlength="13" maxlength="50"> 
+                <input type="date" name="order_date">
+                <input type="text" name="parcel_status" placeholder="Status" maxlength="18">
+                <input type="dropdown" name="street_address" placeholder="Street address" maxlength="50">
+                <input type="text" name="city" placeholder="City" maxlength="50">
+                <input type="text" name="country" placeholder="Country" maxlength="50">
+                <input type="text" name="postcode" placeholder="Postcode" maxlength="50">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-primary btn-sm" type="submit" name="createParcel">Create Parcel</button>
+                </div>
+            </div>
         </form>
 </div>
+<!-- Admin Delete Parcel Form -->
 <div class="container-fluid">
     <hr>
     <h3>Delete parcel</h3>
@@ -26,7 +46,40 @@
         </div>
     </form>
     <hr>
+    <?php 
+    // get error messages from URL, and use switch to display error messages
+    $errorMessage = $_GET["error"];
+    switch($errorMessage)
+    {
+        case "stmtFailed": 
+            echo "<p style='color: red;'>Something went wrong"; 
+            break;
+        case "invalidTrackFormat": 
+            echo "<p style='color: red;'>Please enter a tracking number with a valid format</p>";
+            break;
+        case "noParcel":
+            echo "<p style='color: red;'>Parcel does not exist</p>"; 
+            break;
+        case "adminSet":
+            echo "<p style='color: green;'>Administrator status set</p>"; 
+            break;
+    }
+    ?>
 </div>
+<!-- Set Admin Form -->
+<div class="container-fluid">
+    <h3>Create Admin</h3>
+    <form action="includes/setAdminStatus-inc.php" method="POST">
+            <div class="input-group mb-3">
+                <input type="text" name="email" placeholder="Email" maxlength="50"> 
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-primary btn-sm" type="submit" name="setAdmin">Set Admin</button>
+                </div>
+            </div>
+    </form>
+    <hr>
+</div>
+
 <div class="container-fluid">
     <h3>Admin View - Full Database Overview</h3>
         <!-- HTML Table to format all the MySQL data -->
@@ -100,24 +153,13 @@
                 echo "</tr>";
                 }
                 echo "<nav>"; 
-                echo "<ul class='pagination justify-content-center'>";
+                echo "<ul class='pagination justify-content-center pagination-sm'>";
                 //display the link of the pages in URL  
                 for($page = 1; $page<= $number_of_page; $page++) {  
                     echo "<li class='page-item'><a class='page-link' href='AdminView.php?page=" . $page . "'>" . $page . "</a></li>";  
                 } 
                 echo "</ul>";
                 echo "</nav>";
-                // get error messages from URL, and use switch to display error messages
-                $errorMessage = $_GET["error"];
-                switch($errorMessage)
-                {
-                    case "stmtFailed": 
-                        echo "<p>Something went wrong"; 
-                        break;
-                    case "invalidTrackFormat"; 
-                        echo "<p>Please enter a tracking number with a valid format</p>";
-                        break;
-                }
             ?>
         </table>
         <hr>

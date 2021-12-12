@@ -1,4 +1,5 @@
-<?php session_start(); ?> 
+<?php session_start();
+    ob_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> 
     <!-- jQuery and Bootstrap bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">D•O•T•S</a>
@@ -31,6 +33,8 @@
                     echo "<li class='nav-item'><a class='nav-link' href='includes/logout-inc.php'>Log Out</a></li>"; 
                     if($_SESSION["adminStatus"] === 1)
                     {
+                        echo "<li class='nav-item'><a class='nav-link' href='AdminView_users.php'>Users</a></li>";
+                        echo "<li class='nav-item'><a class='nav-link' href='AdminView_parcels.php'>Parcels</a></li>";
                         echo "<li class='nav-item'><a class='nav-link' href='AdminView.php'>Admin</a></li>";
                     }
                 }
@@ -43,5 +47,3 @@
             </ul>
         </div> 
     </nav>
-    <!-- JS Logic -->
-    <script type="text/javascript" src="JS/linkActive.js"></script>
