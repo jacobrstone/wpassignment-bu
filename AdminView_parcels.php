@@ -14,6 +14,29 @@ else
     }
 }
 ?>
+
+<!-- Admin Update Parcel Form -->
+<div class="container">
+    <h3>Update parcel info</h3>
+    <!-- Input form for creating a parcel, set placeholders for usability, maxlength for consistency and to not exceed the storage in the database -->
+        <form action="includes/adminUpdateParcel-inc.php" method="POST">
+            <div class="input-group mb-3">
+                <input type="text" name="parcel_id" placeholder="Parcel ID"  value="<?php echo $_POST['parcelID']; ?>" minlength="1"> 
+                <input type="text" name="tracking_number" placeholder="AB012345678CD" value="<?php echo $_POST['tracking_number']; ?>" minlength="13" maxlength="50"> 
+                <input type="date" name="order_date" value="<?php echo $_POST['order_date']; ?>">
+                <input type="text" name="parcel_status" placeholder="Status" value="<?php echo $_POST['parcel_stats']; ?>" maxlength="18">
+                <input type="dropdown" name="street_address" placeholder="Street address"  value="<?php echo $_POST['street_address']; ?>" maxlength="50">
+                <input type="text" name="city" placeholder="City" value="<?php echo $_POST['city']; ?>" maxlength="50">
+                <input type="text" name="country" placeholder="Country" value="<?php echo $_POST['country']; ?>" maxlength="50">
+                <input type="text" name="postcode" placeholder="Postcode" value="<?php echo $_POST['postcode']; ?>" maxlength="50">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-primary btn-sm" type="submit" name="updateParcel">Update Parcel</button>
+                </div>
+            </div>
+        </form>
+    <hr>
+</div>
+
 <div class="container">
     <h3>View of all parcels in database</h3>
         <!-- HTML Table to format all the MySQL data -->
@@ -65,7 +88,17 @@ else
                 "<td>" . $row["street_address"] . "</td>" . 
                 "<td>" . $row["city"] . "</td>" .
                 "<td>" . $row["country"] . "</td>" . 
-                "<td>" . $row["postcode"] . "</td>";
+                "<td>" . $row["postcode"] . "</td>" . 
+                "<td>" . "<form method='POST'><button type='submit' name='selectParcel' class='btn btn-outline-primary btn-sm'>Select</button>
+                <input type='hidden' name='parcelID' value='$row[parcel_id]'>" . 
+                "<input type='hidden' name='tracking_number' value='$row[tracking_number]'>" . 
+                "<input type='hidden' name='order_date' value='$row[order_date]'>" .
+                "<input type='hidden' name='parcel_status' value='$row[parcel_status]'>" .
+                "<input type='hidden' name='street_address' value='$row[street_address]'>" .
+                "<input type='hidden' name='city' value='$row[city]'>" . 
+                "<input type='hidden' name='country' value='$row[country]'>" .
+                "<input type='hidden' name='postcode' value='$row[postcode]'>" .
+                "</form>" . "</td>"; 
                 echo "</tr>";
                 }
                 echo "<nav>"; 

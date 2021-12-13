@@ -3,8 +3,8 @@
     require_once 'includes/dbhandler-inc.php'; // adding the database handler 
     require_once 'includes/all-functions-inc.php'; 
 ?>
-
-<div class="container-fluid text-center">
+<!-- text-center -->
+<div class="container text-center"> 
     <?php
         if(isset($_SESSION["userid"])) // welcome message for user, if they are logged in
         {
@@ -21,11 +21,10 @@
             </div>
         </div>
     </form>
-
     <?php 
         if(isset($_GET['tracking']))
         {
-            echo "<table table-sm table-hover table-responsive>";  
+            echo "<table id='indexTable' class='table table-hover table-responsive'>";  
             echo "<tr id='tableHead'>";
             echo "<th id='tracking_number'>Tracking Number</th>"; 
             echo "<th id='parcel_id'>Parcel ID</th>";
