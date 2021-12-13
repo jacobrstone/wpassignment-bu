@@ -5,7 +5,7 @@ if(!isset($_SESSION["userid"])) // only allow logged in users to access this pag
 }
 ?>
 <div class="container text-center"> 
-    <h1>My info</h1>
+    <h1>Account Information</h1>
     <?php
     // using session variables to display/personalise the user's account page 
     echo "<h2>" . $_SESSION["fullname"] . "</h2>";

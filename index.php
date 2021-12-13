@@ -43,7 +43,7 @@
                 echo "</table>"; 
                 $parcel_ID = $row['parcel_id'];
             }
-            if(session_status() === PHP_SESSION_ACTIVE) // display the add parcel button, to allow usrers to add the tracked parcel to their account 
+            if(isset($_SESSION["userid"])) // display the add parcel button, to allow usrers to add the tracked parcel to their account 
             {
                 echo "<form action='includes/addParcel-inc.php' method='POST'>";
                 echo "<input type='hidden' name='userid' value=". $_SESSION['userid'] . ">"; 
