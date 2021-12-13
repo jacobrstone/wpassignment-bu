@@ -449,19 +449,16 @@ function updateParcel($connection, $parcelID, $trackingNumber, $orderDate, $parc
     $parcel = trackingExists($connection, $trackingNumber); 
     if(mysqli_num_rows($parcel) === 0) // check that the parcel exists 
     {
-        header("location: ../AdminView.php?error=noParcel"); 
+        header("location: ../AdminView_parcels.php?error=noParcel"); 
         exit(); 
     }
     if(!in_array($parcelStatus, $statusList)) // check the status given is valid  
     {
-        header("location: ../AdminView.php?error=invalidStatus"); 
+        header("location: ../AdminView_parcels.php?error=invalidStatus"); 
         exit(); 
     } 
     // query to send to the database 
     $query = "UPDATE parcels SET tracking_number = ?, order_date = ?, parcel_status = ?, street_address = ?, city = ?, country = ?, postcode = ? WHERE parcel_id = ?";
-
-    
-
     $statement = mysqli_stmt_init($connection);  
     if(!mysqli_stmt_prepare($statement, $query))
     {
@@ -469,9 +466,9 @@ function updateParcel($connection, $parcelID, $trackingNumber, $orderDate, $parc
         exit(); 
     }
 
-    mysqli_stmt_bind_param($statement, "isssssss", $parcelID, $trackingNumber, $parcelStatus, $orderDate, $city, $streetAddress, $postcode, $country);
+    mysqli_stmt_bind_param($statement, "sssssssi", $trackingNumber, $orderDate, $parcelStatus, $streetAddress, $city, $country, $postcode, $parcelID);
     mysqli_stmt_execute($statement); 
     mysqli_stmt_close($statement); 
-    header("location: ../AdminView.php"); 
+    header("location: ../AdminView_parcels.php?error=parcelUpdate"); 
     exit();
 }
