@@ -13,8 +13,8 @@
 </div>
 
 <?php 
-    $errorMessage = $_GET["error"];
-
+    $errorMessage = $_GET["error"]; // get the error message 
+    // output further details depending on the error message 
     switch($errorMessage)
     {
         case "emptyInput":

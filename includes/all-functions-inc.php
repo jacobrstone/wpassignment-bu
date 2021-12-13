@@ -1,7 +1,7 @@
 <?php 
 session_start(); 
 // All functions below here are for REGSITERING a new user 
-
+// Empty Input on Sign Up Function
 /**
  * Checks if the user input fields are null or not
  * @param string $firstName - first name input box on the sign up page
@@ -24,7 +24,7 @@ function emptyInputSignUp($firstName, $secondName, $email, $password, $passwordV
     }
     return $result;
 }
-
+// Invalid Name Function
 /**
  * Checks if the user has input an invalid first or second name
  * @param string $firstName - the value of the user's first name from the input form 
@@ -44,6 +44,7 @@ function invalidFullname($firstName, $secondName)
     }
     return $result;
 }
+// Invalid Email Function
 /**
  * Checks if the user has submitted an email that is not in the correct format, or using a domain that does not exist
  * @param string $email - the value of the user's email from the email input text box 
@@ -81,6 +82,7 @@ function matchPassword($password, $passwordVerified)
     }
     return $result;
 }
+// Get User Function
 /**
  * This is used to get any record from the users table in the database
  * @param mysqli $connection - this is the connection variable, it initialises connection to the MySQL database in order to start transactions 
@@ -119,7 +121,7 @@ function getUser($connection, $email) // this can function as both our signup an
     // mysqli_close(the sql statement + connection); 
     mysqli_stmt_close($statement);
 }
-
+// Create User Function
 /**
  * Creates a new user in the Users table, inserting their data into the database
  * @param mysqli $connection - initialises a mysqli connection to the database, in order to start queries/transaction
@@ -150,7 +152,6 @@ function createUser($connection, $firstName, $secondName, $email, $password, $ad
     header("location: ../signup.php?error=none"); // send the user back to the signup page 
     exit();
 }
-
 // All functions below here are for LOGGING IN an already registered user 
 /**
  * Checks the login page for empty inputs 
@@ -172,7 +173,7 @@ function emptyInputLogin($username, $user_password)
     }
     return $result; // return a boolean 
 }
-
+// Login User Function
 /**
  * Connects to the database, verifies the credentials and then logs the user into the web app
  * @param mysqli $connection - initialises the connection to the database to allow querying to take place
@@ -211,8 +212,7 @@ function loginUser($connection, $email, $password)
         exit();
     }
 }
-
-// delete user function 
+// Delete User Function 
 /**
  * Connects to the database, verifies credentials and then removes that user from the Users table
  * @param mysqli $connection - initialises the database connection to allow querying to take place 
@@ -270,7 +270,13 @@ function deleteUser($connection, $email, $password, $passwordVerified)
         }  
     }
 }
-
+// Tracking Exists Function
+/**
+ * Checks that the parcel tracking number exists in the database
+ * @param mysqli $connection - initialises the database connection to allow queries to run
+ * @param string $trackingNumber - the tracking number submitted by user input
+ * @return mysqli_result returns a mysqli_result object if the data exists 
+ */
 function trackingExists($connection, $trackingNumber)
 { 
     $query = "SELECT * FROM parcels WHERE tracking_number = ?"; // MySQL query to find the parcel with the corresponding tracking number 
@@ -289,141 +295,192 @@ function trackingExists($connection, $trackingNumber)
     } 
     mysqli_stmt_close($statement);
 }
-
+// Add Parcel Function
+/**
+ * Allows any user to add a parcel to their account to view on the My Parcels page
+ * @param mysqli $connection - initialises the database connection to allow queries to run
+ * @param int $parcelID - integer ID that uniquely identifies a parcel in the database
+ * @param int $userID - integer ID that uniquely identifies a user in the database
+ * @return null this function does not return any data
+ */
 function addParcel($connection, $parcelID, $userID)
 {
+    // query to run on the SQL server
     $query = "INSERT INTO user_parcel_link(user_id, parcel_id) VALUES(?, ?);"; 
-    $statement = mysqli_stmt_init($connection);
-    if(!mysqli_stmt_prepare($statement, $query))
+    $statement = mysqli_stmt_init($connection); // initialise prepared statement 
+    if(!mysqli_stmt_prepare($statement, $query)) // if preparing the statement fails (if the query given has invalid syntax)
     {
-        header("location: ../index.php?error=stmtFailed");
-        exit(); 
+        header("location: ../index.php?error=stmtFailed"); // throw error, statementFailed, send the user to the home page 
+        exit(); // exit the script 
     }
 
-    mysqli_stmt_bind_param($statement, "ii", $userID, $parcelID);
-    mysqli_stmt_execute($statement); 
-    mysqli_stmt_close($statement); 
-    header("location: ../index.php"); 
-    exit(); 
+    mysqli_stmt_bind_param($statement, "ii", $userID, $parcelID); // bind the parameters to the statement, declaring their data types 
+    mysqli_stmt_execute($statement); // execute the prepared statement 
+    mysqli_stmt_close($statement); // close the statement (and the connection)
+    header("location: ../index.php"); // return back to the index page 
+    exit(); // exit the script 
 }
-
+// My Parcels Function 
+/**
+ * Display all the tracked parcels for the currently logged in user 
+ * @param mysqli $connection - initialises the database connection to allow queries to run
+ * @param int $userID - integer ID that uniquely identifies a user in the database
+ * @return mysqli_result,false returns either the result from the query, or a boolean, false if the data does not exist
+ */
 function myParcels($connection, $userID)
 {
+    // query to be run on the SQL server
     $query = "SELECT * FROM parcels WHERE parcel_id IN (SELECT parcel_id FROM user_parcel_link WHERE user_id = ?)";
-    $statement = mysqli_stmt_init($connection);
-
-    if(!mysqli_stmt_prepare($statement, $query))
+    $statement = mysqli_stmt_init($connection); // initialise prepared statement 
+    if(!mysqli_stmt_prepare($statement, $query)) // if preparing the statement fails (if the query given has invalid syntax)
     {
-        header("location: ../myParcels.php?error=stmtFailed");
-        exit(); 
+        header("location: ../myParcels.php?error=stmtFailed"); // throw error, statementFailed, send the user to the home page 
+        exit(); // exit the script 
     }
 
-    mysqli_stmt_bind_param($statement, "i", $userID); 
-    mysqli_stmt_execute($statement); 
+    mysqli_stmt_bind_param($statement, "i", $userID); // bind the parameters to the statement, declaring their data types 
+    mysqli_stmt_execute($statement); // execute the prepared statement 
 
-    if($data = mysqli_stmt_get_result($statement))
+    if($data = mysqli_stmt_get_result($statement)) // get the results of the prepared statement, save them to the $data variable and return them
     {
         return $data;
     }
-    else
+    else // if that fails, return false 
     {
         return false; 
     }
-    mysqli_stmt_close($statement);
-    header("location: ../myParcels.php"); 
-    exit(); 
+    mysqli_stmt_close($statement); // close the statement (and the connection)
+    header("location: ../myParcels.php"); // send the user to the My Parcels page after executing this function
+    exit(); // exit the script 
 }
-
+// Update Password Function 
+/**
+ * Allows the user to change their old password to a new password
+ * @param mysqli $connection - initialises the database connection to allow queries to run
+ * @param string $old_password - the user's old password, submitted via POST method 
+ * @param string $new_password - the user's new password, submitted via POST method 
+ * @return null this function does not return any data
+ */
 function updatePassword($connection, $old_password, $new_password)
 {
+    // get the user's account details using a session variable that stores their email 
     $user = getUser($connection, $_SESSION['email']); 
-    $user_id = $user['user_id'];
-    if($user === false)
+    if($user === false) // check that the user exists 
     {
-        header("location: ../account.php?error=noUser"); 
+        header("location: ../account.php?error=noUser"); // if it doesn't send them to the account page, with error code "noUser"
         exit();
     }
-
-    $passwordHashed = $user["password"]; 
-    $checkPassword = password_verify($old_password, $passwordHashed); 
-    if($checkPassword === false)
+    $user_id = $user['user_id']; // assign the user ID from the associative array created by the getUser function
+    $passwordHashed = $user["password"]; // get the user's hashed password 
+    $checkPassword = password_verify($old_password, $passwordHashed); // verify their input password matches the password in the database
+    if($checkPassword === false) // if the check is false 
     {
-        header("location: ../account.php?error=wrongPassword"); 
+        header("location: ../account.php?error=wrongPassword"); // show error code wrongPassword, and exit script 
         exit(); 
     } 
-    else
+    else // if all checks pass, complete the change password request 
     {
+        // query to be run on the SQL server 
         $query = "UPDATE Users SET password = ? WHERE user_id = ?"; 
-        $statement = mysqli_stmt_init($connection); 
-        if(!mysqli_stmt_prepare($statement, $query))
+        $statement = mysqli_stmt_init($connection); // initialise prepared statement 
+        if(!mysqli_stmt_prepare($statement, $query)) // check the syntax 
         {
-            header("location: ../account.php?error=statementFailed"); 
-            exit(); 
+            header("location: ../account.php?error=statementFailed"); // if it fails, show statementFailed error 
+            exit(); // exit the script 
         }
-        $new_passwordHashed = password_hash($new_password, PASSWORD_DEFAULT);
-        mysqli_stmt_bind_param($statement, "ss", $new_passwordHashed, $user_id); 
-        mysqli_stmt_execute($statement); 
-        mysqli_stmt_close($statement); 
-        header("location: ../account.php"); 
-        exit();
+        $new_passwordHashed = password_hash($new_password, PASSWORD_DEFAULT); // hash the new password 
+        mysqli_stmt_bind_param($statement, "ss", $new_passwordHashed, $user_id); // bind the parameters, using the new password in place of their old 
+        mysqli_stmt_execute($statement); // execute the statement 
+        mysqli_stmt_close($statement); // close the statement 
+        header("location: ../account.php"); // direct them back to the My Account page 
+        exit(); // exit the script 
     }
 }
-
+// Create Parcel Function
+/**
+ * Allows an authenticated user (admin) to create a new parcel and insert it into the database
+ * @param mysqli $connection - initialises the database connection to allow queries to run
+ * @param string $trackingNumber - the tracking number of an entry in the database 
+ * @param date $orderDate - the date the parcel was order was placed 
+ * @param string $parcelStatus - the current status of the parcel 
+ * @param string $streetAddress - the address the parcel needs to be delivered to
+ * @param string $city - the city the parcel needs to be delivered to 
+ * @param string $country - the country the parcel needs to be delivered to 
+ * @param string $postcode - the postcode the parcel needs to be delivered to
+ * @return null this function does not return any data  
+ */
 function createParcel($connection, $trackingNumber, $orderDate, $parcelStatus, $streetAddress, $city, $country, $postcode)
 {
+    // list of available statuses the user can input
     $statusList = array("Delivered", "Held at PO", "Dispatched", "Out for delivery", "Lost in transit", "Returned to sender", "Parcel diverted", "Payment received"); 
+    // regular expression for the tracking number format 
     $pattern = "/^[a-zA-Z]+[\d]{9}[a-zA-Z]+$/i";
-    if(!preg_match($pattern, $trackingNumber))
+    // run the regular expression checker method on the pattern and the trackingNumber, to verify that it's appropriate
+    if(!preg_match($pattern, $trackingNumber)) // checking if they DO NOT match, and then sending an error in the URL if they don't
     {
         header("location: ../AdminView.php?error=invalidTrackFormat");
         exit();
     }
-    if(!in_array($parcelStatus, $statusList))
+    if(!in_array($parcelStatus, $statusList)) // checking if the status given IS NOT listed in the available status list 
     {
-        header("location: ../AdminView.php?error=invalidStatus"); 
+        header("location: ../AdminView.php?error=invalidStatus"); // send an error message if the status does not exist 
         exit(); 
     } 
+    // else, run the query as normal
     $query = "INSERT INTO parcels(tracking_number, parcel_status, order_date, city, street_address, postcode, country) VALUES(?,?,?,?,?,?,?);"; 
-    $statement = mysqli_stmt_init($connection);  
-    if(!mysqli_stmt_prepare($statement, $query))
+    $statement = mysqli_stmt_init($connection);  // initialise prepared statement 
+    if(!mysqli_stmt_prepare($statement, $query)) // validate the syntax of the prepared statement 
     {
-        header("location: ../index.php?error=stmtFailed");
+        header("location: ../index.php?error=stmtFailed"); // throw an error if it is invalid 
         exit(); 
     }
-
+    // bind all the parameters, and their given datatypes 
     mysqli_stmt_bind_param($statement, "sssssss", $trackingNumber, $parcelStatus, $orderDate, $city, $streetAddress, $postcode, $country);
-    mysqli_stmt_execute($statement); 
-    mysqli_stmt_close($statement); 
-    header("location: ../AdminView.php"); 
-    exit();
+    mysqli_stmt_execute($statement); // execute the statement 
+    mysqli_stmt_close($statement); // close the statement 
+    header("location: ../AdminView.php"); // return to the admin page 
+    exit(); // exit the script 
 }
-
+// Delete Parcel From Database Function 
+/**
+ * Allows an authenticated user (admin) to create a new parcel and insert it into the database
+ * @param mysqli $connection - initialises the database connection to allow queries to run
+ * @param string $trackingNumber - the tracking number of an entry in the database 
+ * @return null this function does not return any data  
+ */
 function deleteParcel($connection, $trackingNumber)
 {
+    // check that a parcel exists 
     $parcel = trackingExists($connection, $trackingNumber);
-    if(mysqli_num_rows($parcel) === 0)
+    if(mysqli_num_rows($parcel) === 0) // if there are no rows returned in the $parcel variable, then it does not exist
     {
-        header("location: ../AdminView.php?error=noParcel");
-        exit();
+        header("location: ../AdminView.php?error=noParcel"); // send them a noParcel error 
+        exit(); // exit script 
     } 
-    else
+    else // if it does have rows (data) 
     {
-        $query = "DELETE FROM parcels WHERE tracking_number = ?"; 
-        $statement = mysqli_stmt_init($connection);  
-        if(!mysqli_stmt_prepare($statement, $query))
+        $query = "DELETE FROM parcels WHERE tracking_number = ?"; // run the delete query 
+        $statement = mysqli_stmt_init($connection);  // initialise prepared statement 
+        if(!mysqli_stmt_prepare($statement, $query)) // check for invalid syntax 
         {
-            header("location: ../index.php?error=stmtFailed");
-            exit(); 
+            header("location: ../index.php?error=stmtFailed"); // catch the error if there is any 
+            exit(); // exit script 
         }
-    
+        // bind the parameters 
         mysqli_stmt_bind_param($statement, "s", $trackingNumber); 
-        mysqli_stmt_execute($statement); 
-        mysqli_stmt_close($statement); 
-        header("location: ../AdminView.php"); 
-        exit();
+        mysqli_stmt_execute($statement); // execute the statement 
+        mysqli_stmt_close($statement); // close it 
+        header("location: ../AdminView.php"); // send them back to the Admin page 
+        exit(); // exit the script 
     }
 }
-
+// Set/Create New Admin Function
+/**
+ * Allows an authenticated user (admin) to create a new parcel and insert it into the database
+ * @param mysqli $connection - initialises the database connection to allow queries to run
+ * @param string $email - the email of the user passed into the submission form, through the URL via POST method 
+ * @return null this function does not return any data 
+ */
 function setAdmin($connection, $email)
 {
     $user = getUser($connection, $email);
@@ -441,34 +498,47 @@ function setAdmin($connection, $email)
     header("location: ../AdminView.php?error=adminSet"); 
     exit();
 }
-
+// Update Parcel Information Function 
+/**
+ * Allows an authenticated user (admin) to create a new parcel and insert it into the database
+ * @param mysqli $connection - initialises the database connection to allow queries to run
+ * @param string $trackingNumber - the tracking number of an entry in the database 
+ * @param date $orderDate - the date the parcel was order was placed 
+ * @param string $parcelStatus - the current status of the parcel 
+ * @param string $streetAddress - the address the parcel needs to be delivered to
+ * @param string $city - the city the parcel needs to be delivered to 
+ * @param string $country - the country the parcel needs to be delivered to 
+ * @param string $postcode - the postcode the parcel needs to be delivered to
+ * @return null this function does not return any data  
+ */
 function updateParcel($connection, $parcelID, $trackingNumber, $orderDate, $parcelStatus, $streetAddress, $city, $country, $postcode)
 {
+    // list of valid parcel statuses 
     $statusList = array("Delivered", "Held at PO", "Dispatched", "Out for delivery", "Lost in transit", "Returned to sender", "Parcel diverted", "Payment received"); 
-
+    // check a parcel exists 
     $parcel = trackingExists($connection, $trackingNumber); 
-    if(mysqli_num_rows($parcel) === 0) // check that the parcel exists 
+    if(mysqli_num_rows($parcel) === 0) // if num_rows = 0, then the parcel doesn't exist in the database 
     {
-        header("location: ../AdminView_parcels.php?error=noParcel"); 
-        exit(); 
+        header("location: ../AdminView_parcels.php?error=noParcel"); // throw noParcel error message 
+        exit(); // exit the script 
     }
     if(!in_array($parcelStatus, $statusList)) // check the status given is valid  
     {
-        header("location: ../AdminView_parcels.php?error=invalidStatus"); 
-        exit(); 
+        header("location: ../AdminView_parcels.php?error=invalidStatus"); // if it's not valid, throw invalidStatus error message 
+        exit(); // exit the script 
     } 
     // query to send to the database 
     $query = "UPDATE parcels SET tracking_number = ?, order_date = ?, parcel_status = ?, street_address = ?, city = ?, country = ?, postcode = ? WHERE parcel_id = ?";
-    $statement = mysqli_stmt_init($connection);  
-    if(!mysqli_stmt_prepare($statement, $query))
+    $statement = mysqli_stmt_init($connection);  // initialise the prepared statement 
+    if(!mysqli_stmt_prepare($statement, $query)) // check for invalid syntax 
     {
-        header("location: ../index.php?error=stmtFailed");
-        exit(); 
+        header("location: ../index.php?error=stmtFailed"); // catch the error, send them to the home page and display stmtFailed error message 
+        exit(); // exit the script 
     }
-
+    // bind the parameters to the statement 
     mysqli_stmt_bind_param($statement, "sssssssi", $trackingNumber, $orderDate, $parcelStatus, $streetAddress, $city, $country, $postcode, $parcelID);
-    mysqli_stmt_execute($statement); 
-    mysqli_stmt_close($statement); 
-    header("location: ../AdminView_parcels.php?error=parcelUpdate"); 
-    exit();
+    mysqli_stmt_execute($statement); // execute the statement 
+    mysqli_stmt_close($statement); // close the statement 
+    header("location: ../AdminView_parcels.php?error=parcelUpdate"); // send back to the AdminView_parcels page, and a message saying parcel info updated 
+    exit(); // exit the script 
 }

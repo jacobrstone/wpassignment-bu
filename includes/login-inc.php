@@ -1,6 +1,7 @@
 <?php 
-if (isset($_POST['submit'])) 
+if (isset($_POST['submit'])) // check the login button has been clicked  
 {
+    // get data passed through the URL through POST method
     $email = $_POST["email"];
     $user_password = $_POST["password"]; 
     require_once 'dbhandler-inc.php';

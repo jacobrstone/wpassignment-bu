@@ -1,10 +1,10 @@
 <?php include_once "nav.php"; 
-if(!isset($_SESSION["userid"]))
-{
-    header("location: index.php");
+if(!isset($_SESSION["userid"])) // only allow logged in users to access this page 
+{ // this stops users from typing account.php into the URL to navigate here 
+    header("location: index.php"); // send back user's who are not logged in
 }
 ?>
-<div class="container text-center">
+<div class="container text-center"> 
     <h1>My info</h1>
     <?php
     // using session variables to display/personalise the user's account page 

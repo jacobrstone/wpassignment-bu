@@ -22,18 +22,18 @@
         </div>
     </form>
     <?php 
-        if(isset($_GET['tracking']))
+        if(isset($_GET['tracking'])) // if the track parcel button has been clicked 
         {
-            echo "<table id='indexTable' class='table table-hover table-responsive'>";  
+            echo "<table id='indexTable' class='table table-hover table-responsive'>";  // echo a table to display the data 
             echo "<tr id='tableHead'>";
             echo "<th id='tracking_number'>Tracking Number</th>"; 
             echo "<th id='parcel_id'>Parcel ID</th>";
             echo "<th id='order_date'>Shipped</th>"; 
             echo "<th id='parcel_status'>Status</th>";
             echo "</tr>"; 
-            $parcel = trackingExists($connection, $_GET['tracking']); 
+            $parcel = trackingExists($connection, $_GET['tracking']); // get the parcel data as mysqli_result 
             while($row = mysqli_fetch_assoc($parcel)) 
-            {   // fetch an associative array from the result variable, accessing each element by column name from the database
+            {   // fetch an associative array from the result variable, accessing each element by column name from the database and populate the table
                 echo "<tr>"; 
                 echo "<td>" . $row["tracking_number"] . "</td>" .
                 "<td>" . $row["parcel_id"] . "</td>" . 
@@ -43,7 +43,7 @@
                 echo "</table>"; 
                 $parcel_ID = $row['parcel_id'];
             }
-            if(session_status() === PHP_SESSION_ACTIVE)
+            if(session_status() === PHP_SESSION_ACTIVE) // display the add parcel button, to allow usrers to add the tracked parcel to their account 
             {
                 echo "<form action='includes/addParcel-inc.php' method='POST'>";
                 echo "<input type='hidden' name='userid' value=". $_SESSION['userid'] . ">"; 
@@ -54,9 +54,9 @@
 
         }
 
-        $error = $_GET["error"]; 
-
-        switch($error)
+        $error = $_GET["error"]; // get the error message 
+        // switch the error message, and do something depending on the contents of the message 
+        switch($error) 
         {
             case "stmtFailed": 
                 echo "<p style='color: red;'>Something went wrong</p>"; 
@@ -66,7 +66,7 @@
                 break; 
         }
 
-        if(isset($_GET["message"]))
+        if(isset($_GET["message"])) // login message 
         {
             $message = $_GET["message"];
             if($message == "successfulLogin")

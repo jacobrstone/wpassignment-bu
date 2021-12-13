@@ -1,7 +1,7 @@
 <?php 
 include_once "nav.php"; 
 require_once 'includes/dbhandler-inc.php';
-
+// verify that authenticated users are the only ones accessing this page 
 if(!isset($_SESSION))
 {
     header("location: index.php");

@@ -1,6 +1,7 @@
 <?php 
 
 if(isset($_POST['updatePassword'])) { // if page is accessed by submit button
+    // get data passed through the URL through POST method
     $old_password = $_POST['oldPassword'];
     $new_password = $_POST['newPassword'];
     // including our database handling script and credential verifying scripts

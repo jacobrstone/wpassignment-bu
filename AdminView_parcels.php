@@ -1,7 +1,7 @@
 <?php
 include_once "nav.php";
 require_once 'includes/dbhandler-inc.php';
-
+// verify authenticated users are the only ones accessing this page 
 if (!isset($_SESSION)) {
     header("location: index.php");
 } else {
@@ -76,7 +76,7 @@ if (!isset($_SESSION)) {
         // fetch an associative array from the result variable, accessing each element by column name from the database
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             echo "<tr>";
-            echo "<td>" . $row["parcel_id"] . "</td>" .
+            echo "<td>" . $row["parcel_id"] . "</td>" . 
                 "<td>" . $row["tracking_number"] . "</td>" .
                 "<td>" . $row["order_date"] . "</td>" .
                 "<td>" . $row["parcel_status"] . "</td>" .
@@ -85,8 +85,8 @@ if (!isset($_SESSION)) {
                 "<td>" . $row["country"] . "</td>" .
                 "<td>" . $row["postcode"] . "</td>" .
                 "<td>" . "<form method='POST'><button type='submit' name='selectParcel' class='btn btn-outline-primary btn-sm'>Select</button>
-                <input type='hidden' name='parcelID' value='$row[parcel_id]'>" .
-                "<input type='hidden' name='tracking_number' value='$row[tracking_number]'>" .
+                <input type='hidden' name='parcelID' value='$row[parcel_id]'>" . // this section of messy code, allows the admin to select any package in the table 
+                "<input type='hidden' name='tracking_number' value='$row[tracking_number]'>" . // and have the parcel info appear in the update parcel form
                 "<input type='hidden' name='order_date' value='$row[order_date]'>" .
                 "<input type='hidden' name='parcel_status' value='$row[parcel_status]'>" .
                 "<input type='hidden' name='street_address' value='$row[street_address]'>" .
@@ -106,7 +106,8 @@ if (!isset($_SESSION)) {
         echo "</nav>";
         // get error messages from URL, and use switch to display error messages
         $errorMessage = $_GET["error"];
-        switch ($errorMessage) {
+        switch ($errorMessage) 
+        {
             case "stmtFailed":
                 echo "<p style='color: red;'>Something went wrong";
                 break;

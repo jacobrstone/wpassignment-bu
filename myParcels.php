@@ -2,6 +2,12 @@
 include_once 'nav.php';
 require_once 'includes/dbhandler-inc.php'; 
 require_once 'includes/all-functions-inc.php'; 
+
+if(!isset($_SESSION["userid"])) // only allow logged in users to access this page 
+{ // this stops users from typing account.php into the URL to navigate here 
+    header("location: index.php"); // send back user's who are not logged in
+}
+// create the whole table in php, by echoing the html elements 
 echo "<div class='container'>";
     echo "<h3>View more infomation about your parcels</h3>";
     echo "<hr>";
@@ -22,7 +28,7 @@ echo "</div>";
 $parcels = myParcels($connection, $_SESSION['userid']); 
 
 while($row = mysqli_fetch_assoc($parcels)) 
-    {   // fetch an associative array from the result variable, accessing each element by column name from the database
+    {   // fetch an associative array from the result variable, accessing each element by column name from the database and populate the table
         echo "<tr>"; 
         echo "<td>" . $row["tracking_number"] . "</td>" .
         "<td>" . $row["parcel_id"] . "</td>" . 

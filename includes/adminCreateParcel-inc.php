@@ -1,6 +1,7 @@
 <?php 
-if (isset($_POST['createParcel'])) 
+if (isset($_POST['createParcel'])) // check the create parcel button has been clicked 
 {
+    // get data passed through the URL through POST method
     $trackingNumber = $_POST["tracking_number"];
     $orderDate = $_POST["order_date"];
     $parcelStatus = $_POST["parcel_status"];
@@ -8,12 +9,13 @@ if (isset($_POST['createParcel']))
     $city = $_POST["city"];
     $country = $_POST["country"];
     $postcode = $_POST["postcode"]; 
+    // call dbhandler script and all-functions script 
     require_once 'dbhandler-inc.php';
     require_once 'all-functions-inc.php'; 
-
+    // call create parcel function to create a new parcel
     createParcel($connection, $trackingNumber, $orderDate, $parcelStatus, $streetAddress, $city, $country, $postcode); 
 }
-else {
+else { // send user back to the login page if they do not access this file through the button
     header("location: ../login.php"); 
     exit();
 }

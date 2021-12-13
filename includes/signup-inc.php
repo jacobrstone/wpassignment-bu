@@ -17,30 +17,30 @@
             header("location: ../signup.php?error=emptyInput"); 
             exit();
         }
-        if(invalidFullname($firstName, $lastName) !== false) 
+        if(invalidFullname($firstName, $lastName) !== false) // run invalid name check 
         {
             header("location: ../signup.php?error=invalidName"); 
             exit();
         }
-        if(invalidEmail($email) !== false) 
+        if(invalidEmail($email) !== false) // run the invalid email check 
         {
             header("location: ../signup.php?error=invalidEmail"); 
             exit();
         }
-        if(matchPassword($user_password, $passwordVerified) !== false)
+        if(matchPassword($user_password, $passwordVerified) !== false) // run the match_password check 
         {   
             header("location: ../signup.php?error=passwordMismatch"); 
             exit();
         }
-        if(getUser($connection, $email) !== false) 
+        if(getUser($connection, $email) !== false) // check if the user name used already exists
         {
             header("location: ../signup.php?error=usernameTaken"); 
             exit();
         }
         
-        createUser($connection, $firstName, $secondName, $email, $user_password, 0); 
+        createUser($connection, $firstName, $secondName, $email, $user_password, 0); // if all checks pass, then create the user 
     }
     else {
-        header("location: ../signup.php"); 
+        header("location: ../signup.php"); // if they get to this page without clicking signup, send them back to signup 
         exit();
     }
