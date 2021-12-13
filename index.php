@@ -17,7 +17,7 @@
         <div class="input-group mb-3 justify-content-center">
             <input type="text" name="tracking_number_input" placeholder="e.g. AA123456789UK" minlength="13" maxlength="50">
             <div class="input-group-prepend">
-                <button class="btn btn-outline-primary btn-sm" type="submit" name="trackParcel">Track Parcel</button>
+                <button class="btn btn-outline-primary btn-sm" type="submit" name="trackParcel">Search Parcel</button>
             </div>
         </div>
     </form>
