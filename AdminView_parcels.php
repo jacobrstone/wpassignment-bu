@@ -68,7 +68,7 @@ if (!isset($_SESSION)) {
         //determine the sql LIMIT starting number for the results on the displaying page  
         $page_first_result = ($page - 1) * $results_per_page;
         //retrieve the selected results from database   
-        $get_parcel_data = "SELECT * FROM parcels LIMIT " . $page_first_result . ',' . $results_per_page;
+        $get_parcel_data = "SELECT * FROM parcels ORDER BY parcel_id DESC LIMIT " . $page_first_result . ',' . $results_per_page;
 
         $result = mysqli_query($connection, $get_parcel_data);
 

@@ -22,25 +22,25 @@
     switch($errorMessage)
     {
         case "emptyInput":
-            echo "<p>Please fill in all fields</p>";
+            echo "<p style='color: red'>Please fill in all fields</p>";
             break; 
         case "invalidName":
-            echo "<p>Please enter an appropriate name</p>"; 
+            echo "<p style='color: red'>Please enter an appropriate name</p>"; 
             break;
         case "invalidEmail":
-            echo "<p>Please enter a valid email</p>";
+            echo "<p style='color: red'>Please enter a valid email</p>";
             break;
         case "passwordMismatch": 
-            echo "<p>Please make sure both passwords are matching</p>";
+            echo "<p style='color: red'>Please make sure both passwords are matching</p>";
             break; 
         case "usernameTaken": 
-            echo "<p>That email is already in use</p>"; 
+            echo "<p style='color: red'>That email is already in use</p>"; 
             break;
         case "statementFailed":
-            echo "<p>Oh, it seems something went wrong - Try again!</p>"; 
+            echo "<p style='color: red'>Something went wrong</p>"; 
             break;
         case "none": 
-            echo "<p>Congrats, you've signed up!</p>";
+            echo "<p style='color: green'>Congrats, you've signed up!</p>";
             break;
     }
 ?>

@@ -82,7 +82,7 @@
 </div>
 
 <div class="container-fluid">
-    <h3>Admin View - Full Database Overview</h3>
+    <h3>Admin View - User Tracked Parcels</h3>
         <!-- HTML Table to format all the MySQL data -->
         <table class="table-sm table-hover table-responsive">
             <caption>User tracked parcels</caption>

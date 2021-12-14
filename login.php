@@ -18,13 +18,13 @@
     switch($errorMessage)
     {
         case "emptyInput":
-            echo "<p>Please fill in all fields</p>";
+            echo "<p> style='color: red'Please fill in all fields</p>";
             break; 
         case "wrongPassword":
-            echo "<p>Password incorrect</p>"; 
+            echo "<p style='color: red;'>Password incorrect</p>"; 
             break;
         case "invalidEmail":
-            echo "<p>Email incorrect</p>"; 
+            echo "<p style='color: red'>Email incorrect</p>"; 
             break;
     }
 ?>
