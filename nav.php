@@ -32,14 +32,14 @@
                 if(isset($_SESSION["userid"])) // checking that the user is already logged in
                 { // display these links instead, if they are logged in
                     echo "<li class='nav-item'><a class='nav-link' href='account.php'>My Account</a></li>"; 
-                    echo "<li class='nav-item'><a class='nav-link' href='myParcels.php'>My Parcels</a></li>";
-                    echo "<li class='nav-item'><a class='nav-link' href='includes/logout-inc.php'>Log Out</a></li>"; 
+                    echo "<li class='nav-item'><a class='nav-link' href='myParcels.php'>My Parcels</a></li>"; 
                     if($_SESSION["adminStatus"] === 1) // if the user logged in is also an admin (authenticated) then display these nav links 
                     {
                         echo "<li class='nav-item'><a class='nav-link' href='AdminView_users.php'>Users</a></li>";
                         echo "<li class='nav-item'><a class='nav-link' href='AdminView_parcels.php'>Parcels</a></li>";
                         echo "<li class='nav-item'><a class='nav-link' href='AdminView.php'>Admin</a></li>";
                     }
+                    echo "<li class='nav-item'><a class='nav-link' href='includes/logout-inc.php'>Log Out</a></li>";
                 }
                 else 
                 { // if they aren't logged in, offer options to sign up or login 
