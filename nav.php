@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>DOTS | Delivery Order Tracking Service</title>
-    <link rel="stylesheet" href="CSS/style.css">  
+    <link rel="stylesheet" href="CSS/style.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
     <!-- jQuery and Bootstrap bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/jquery-3.5.1.slim.min.js"></script>
+    <script src="JS/bootstrap.bundle.min.js"></script>
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
     <link rel="icon" type="image/png" href="favicon/favicon.png">
